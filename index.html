@@ -3,46 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#45a9df">
+<meta name="theme-color" content="#25282B">
 <title>OBCH | لیست محصولات</title>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;min-height:100%;font-family:Tahoma,Arial,sans-serif}
-body{background:#eef9ff;color:#17384e}
+body{background:#F4F4F4;color:#25282B}
 button,input{font:inherit}
 button{cursor:pointer}
 .wrap{max-width:1100px;margin:auto;padding:18px}
-.header{background:linear-gradient(135deg,#45a9df,#8bd0f2);color:#fff;border-radius:20px;padding:22px 20px;margin-bottom:14px;box-shadow:0 8px 24px #7bbbd533}
+.header{background:linear-gradient(135deg,#25282B,#3A3E42);color:#fff;border-radius:20px;padding:22px 20px;margin-bottom:14px;box-shadow:0 8px 24px #25282B22}
 .brand{font-size:30px;font-weight:900;letter-spacing:2px}
 .subtitle{margin-top:5px;font-size:14px;opacity:.95}
-.card{background:#fff;border:1px solid #c7e5f5;border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 5px 18px #74b5d91c}
-label{display:block;font-size:14px;font-weight:700;margin-bottom:7px;color:#28546d}
-input{width:100%;border:1px solid #a9d5eb;border-radius:11px;padding:12px;background:#fbfeff;color:#17384e;outline:none}
-input:focus{border-color:#45a9df;box-shadow:0 0 0 3px #45a9df22}
+.card{background:#fff;border:1px solid #D9D9D9;border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 5px 18px #74b5d91c}
+label{display:block;font-size:14px;font-weight:700;margin-bottom:7px;color:#3A3E42}
+input{width:100%;border:1px solid #C8C8C8;border-radius:11px;padding:12px;background:#FFFFFF;color:#25282B;outline:none}
+input:focus{border-color:#25282B;box-shadow:0 0 0 3px #25282B22}
 .rateRow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}
 .actions{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
 .btn{border:0;border-radius:11px;padding:11px 15px;font-weight:700}
-.primary{background:#45a9df;color:#fff}
-.secondary{background:#e8f6fd;color:#236485;border:1px solid #a9d5eb}
-.danger{background:#fff0f1;color:#b52a39;border:1px solid #efa1aa}
+.primary{background:#25282B;color:#fff}
+.secondary{background:#F4F4F4;color:#25282B;border:1px solid #C8C8C8}
+.danger{background:#FDECEC;color:#C62828;border:1px solid #E6A3A3}
 .small{padding:8px 11px;font-size:13px}
-.tableWrap{overflow:auto;border:1px solid #c7e5f5;border-radius:14px}
+.editBtn{background:#EAF7EE;color:#218838;border:1px solid #A9D8B5}
+.tableWrap{overflow:auto;border:1px solid #D9D9D9;border-radius:14px}
 table{width:100%;border-collapse:collapse;min-width:760px}
-th,td{padding:12px 10px;border-bottom:1px solid #d9edf7;text-align:right;white-space:nowrap}
-th{background:#dff3fc;color:#28546d;font-size:14px}
+th,td{padding:12px 10px;border-bottom:1px solid #D9D9D9;text-align:right;white-space:nowrap}
+th{background:#E9E9E9;color:#3A3E42;font-size:14px}
 td{text-align:center}
 td.product{text-align:right;white-space:normal}
 tr:last-child td{border-bottom:0}
-.empty{text-align:center;color:#6d8ea2;padding:30px}
-.modalBack{position:fixed;inset:0;background:#17384e88;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}
+.empty{text-align:center;color:#70757A;padding:30px}
+.modalBack{position:fixed;inset:0;background:#25282B88;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}
 .modalBack.show{display:flex}
-.modal{width:min(460px,100%);background:#fff;border-radius:18px;padding:20px;box-shadow:0 20px 60px #17384e55;position:relative}
-.modal h2{margin:0 0 16px;color:#236485;font-size:20px}
-.close{position:absolute;left:14px;top:10px;border:0;background:transparent;font-size:28px;color:#7895a5}
+.modal{width:min(460px,100%);background:#fff;border-radius:18px;padding:20px;box-shadow:0 20px 60px #25282B55;position:relative}
+.modal h2{margin:0 0 16px;color:#25282B;font-size:20px}
+.close{position:absolute;left:14px;top:10px;border:0;background:transparent;font-size:28px;color:#666666}
 .field{margin-bottom:13px}
 .modalActions{display:flex;gap:8px;justify-content:flex-start;margin-top:16px}
-.note{font-size:12px;color:#6d8ea2;margin-top:6px}
-.footer{text-align:center;color:#6d8ea2;font-size:12px;padding:4px 0 15px}
+.note{font-size:12px;color:#70757A;margin-top:6px}
+.footer{text-align:center;color:#70757A;font-size:12px;padding:4px 0 15px}
 @media(max-width:600px){
 .wrap{padding:10px}.header{padding:18px;border-radius:16px}.brand{font-size:25px}
 .rateRow{grid-template-columns:1fr}.actions .btn{flex:1}
@@ -51,18 +52,19 @@ tr:last-child td{border-bottom:0}
 body{background:#fff;color:#111}
 .wrap{max-width:none;padding:0}
 .header{background:#fff;color:#111;box-shadow:none;border:0;padding:0 0 10px}
-.brand{color:#2297d4}.subtitle{color:#555}
+.brand{color:#25282B}.subtitle{color:#555}
 .rateCard,.actions,.footer,.noPrint,.ops{display:none!important}
 .card{border:0;box-shadow:none;padding:0}
 .tableWrap{overflow:visible;border:1px solid #bbb}
 table{min-width:0;width:100%}
-th{background:#eaf6fc!important;color:#111}
+th{background:#EEEEEE!important;color:#111}
 th,td{border-color:#bbb;color:#111}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
+
 <header class="header">
 <div class="brand">OBCH</div>
 <div class="subtitle">مدیریت و محاسبه قیمت محصولات</div>
@@ -105,6 +107,7 @@ th,td{border-color:#bbb;color:#111}
 <div class="footer">اطلاعات در همین مرورگر ذخیره می‌شود.</div>
 </div>
 
+<!-- Add/Edit -->
 <div class="modalBack" id="productModal">
 <div class="modal">
 <button class="close" data-close="productModal" type="button">×</button>
@@ -127,6 +130,7 @@ th,td{border-color:#bbb;color:#111}
 </div>
 </div>
 
+<!-- Password -->
 <div class="modalBack" id="passwordModal">
 <div class="modal">
 <button class="close" data-close="passwordModal" type="button">×</button>
@@ -144,6 +148,7 @@ th,td{border-color:#bbb;color:#111}
 </div>
 </div>
 
+<!-- Delete -->
 <div class="modalBack" id="deleteModal">
 <div class="modal">
 <button class="close" data-close="deleteModal" type="button">×</button>
@@ -157,6 +162,7 @@ th,td{border-color:#bbb;color:#111}
 </div>
 </div>
 
+<!-- Settings -->
 <div class="modalBack" id="settingsModal">
 <div class="modal">
 <button class="close" data-close="settingsModal" type="button">×</button>
@@ -224,20 +230,29 @@ let deleteIndex = -1;
 function loadProducts(){
 try{
 const raw = localStorage.getItem(PRODUCTS_KEY);
+
 if(raw){
 const parsed = JSON.parse(raw);
+
 if(Array.isArray(parsed)) return parsed;
 }
 }catch(e){}
-return defaultProducts.map(x=>({name:x[0],usd:x[1]}));
+
+return defaultProducts.map(x=>({
+name:x[0],
+usd:x[1]
+}));
 }
 
 function saveProducts(){
-localStorage.setItem(PRODUCTS_KEY,JSON.stringify(products));
+localStorage.setItem(
+PRODUCTS_KEY,
+JSON.stringify(products)
+);
 }
 
 function getRate(){
-return Number($("rate").value)||0;
+return Number($("rate").value) || 0;
 }
 
 function formatNumber(n){
@@ -245,13 +260,16 @@ return Number(n).toLocaleString("fa-IR");
 }
 
 function esc(s){
-return String(s).replace(/[&<>"']/g,ch=>({
+return String(s).replace(
+/[&<>"']/g,
+ch => ({
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#39;"
-}[ch]));
+}[ch])
+);
 }
 
 function openModal(id){
@@ -263,18 +281,28 @@ $(id).classList.remove("show");
 }
 
 function render(){
+
 const body=$("tbody");
+
 body.innerHTML="";
-$("empty").style.display=products.length?"none":"block";
+
+$("empty").style.display =
+products.length ? "none" : "block";
 
 products.forEach((p,i)=>{
-const price=Math.round(Number(p.usd)*getRate());
+
+const price =
+Math.round(
+Number(p.usd) * getRate()
+);
 
 const tr=document.createElement("tr");
 
-tr.innerHTML=
+tr.innerHTML =
 "<td>"+formatNumber(i+1)+"</td>"+
-'<td class="product">'+esc(p.name)+"</td>"+
+'<td class="product">'+
+esc(p.name)+
+"</td>"+
 "<td>"+formatNumber(p.usd)+"</td>"+
 "<td>"+formatNumber(price)+"</td>"+
 '<td class="ops">'+
@@ -283,39 +311,75 @@ tr.innerHTML=
 "</td>";
 
 body.appendChild(tr);
+
 });
 }
 
 function openAdd(){
+
 editIndex=-1;
+
 $("productTitle").textContent="افزودن محصول";
+
 $("nameInput").value="";
 $("usdInput").value="";
+
 openModal("productModal");
-setTimeout(()=>$("nameInput").focus(),50);
+
+setTimeout(
+()=>$("nameInput").focus(),
+50
+);
 }
 
 function openEdit(i){
+
 pendingEditIndex=i;
+
 $("passwordInput").value="";
+
 openModal("passwordModal");
-setTimeout(()=>$("passwordInput").focus(),50);
+
+setTimeout(
+()=>$("passwordInput").focus(),
+50
+);
 }
 
 function showEditForm(i){
+
 editIndex=i;
+
 $("productTitle").textContent="ویرایش محصول";
-$("nameInput").value=products[i].name;
-$("usdInput").value=products[i].usd;
+
+$("nameInput").value=
+products[i].name;
+
+$("usdInput").value=
+products[i].usd;
+
 openModal("productModal");
-setTimeout(()=>$("nameInput").focus(),50);
+
+setTimeout(
+()=>$("nameInput").focus(),
+50
+);
 }
 
-$("addBtn").addEventListener("click",openAdd);
+$("addBtn").addEventListener(
+"click",
+openAdd
+);
 
-$("saveProduct").addEventListener("click",()=>{
-const name=$("nameInput").value.trim();
-const usd=Number($("usdInput").value);
+$("saveProduct").addEventListener(
+"click",
+()=>{
+
+const name=
+$("nameInput").value.trim();
+
+const usd=
+Number($("usdInput").value);
 
 if(!name){
 alert("نام محصول را وارد کنید.");
@@ -328,118 +392,252 @@ return;
 }
 
 if(editIndex===-1){
-products.push({name:name,usd:usd});
+
+products.push({
+name:name,
+usd:usd
+});
+
 }else{
-products[editIndex]={name:name,usd:usd};
+
+products[editIndex]={
+name:name,
+usd:usd
+};
+
 }
 
 saveProducts();
-render();
-closeModal("productModal");
-});
 
-$("tbody").addEventListener("click",e=>{
-const edit=e.target.closest(".editBtn");
-const del=e.target.closest(".deleteBtn");
+render();
+
+closeModal("productModal");
+
+}
+);
+
+$("tbody").addEventListener(
+"click",
+e=>{
+
+const edit=
+e.target.closest(".editBtn");
+
+const del=
+e.target.closest(".deleteBtn");
 
 if(edit){
-openEdit(Number(edit.dataset.i));
+
+openEdit(
+Number(edit.dataset.i)
+);
+
 }
 
 if(del){
-deleteIndex=Number(del.dataset.i);
+
+deleteIndex=
+Number(del.dataset.i);
+
 $("deleteMessage").textContent=
-"آیا محصول «"+products[deleteIndex].name+"» حذف شود؟";
+"آیا محصول «"+
+products[deleteIndex].name+
+"» حذف شود؟";
+
 openModal("deleteModal");
+
 }
-});
 
-$("passwordOk").addEventListener("click",()=>{
-const saved=localStorage.getItem(PASS_KEY)||DEFAULT_PASS;
+}
+);
 
-if($("passwordInput").value!==saved){
+$("passwordOk").addEventListener(
+"click",
+()=>{
+
+const saved=
+localStorage.getItem(PASS_KEY) ||
+DEFAULT_PASS;
+
+if(
+$("passwordInput").value!==saved
+){
+
 alert("رمز عبور اشتباه است.");
+
 return;
 }
 
 closeModal("passwordModal");
-showEditForm(pendingEditIndex);
-});
 
-$("deleteOk").addEventListener("click",()=>{
+showEditForm(
+pendingEditIndex
+);
+
+}
+);
+
+$("deleteOk").addEventListener(
+"click",
+()=>{
+
 if(deleteIndex>=0){
-products.splice(deleteIndex,1);
+
+products.splice(
+deleteIndex,
+1
+);
+
 saveProducts();
+
 render();
+
 }
 
 deleteIndex=-1;
-closeModal("deleteModal");
-});
 
-$("settingsBtn").addEventListener("click",()=>{
+closeModal("deleteModal");
+
+}
+);
+
+$("settingsBtn").addEventListener(
+"click",
+()=>{
+
 $("oldPass").value="";
 $("newPass").value="";
 $("repeatPass").value="";
-openModal("settingsModal");
-setTimeout(()=>$("oldPass").focus(),50);
-});
 
-$("changePass").addEventListener("click",()=>{
-const saved=localStorage.getItem(PASS_KEY)||DEFAULT_PASS;
-const old=$("oldPass").value;
-const np=$("newPass").value;
-const rp=$("repeatPass").value;
+openModal("settingsModal");
+
+setTimeout(
+()=>$("oldPass").focus(),
+50
+);
+
+}
+);
+
+$("changePass").addEventListener(
+"click",
+()=>{
+
+const saved=
+localStorage.getItem(PASS_KEY) ||
+DEFAULT_PASS;
+
+const old=
+$("oldPass").value;
+
+const np=
+$("newPass").value;
+
+const rp=
+$("repeatPass").value;
 
 if(old!==saved){
+
 alert("رمز فعلی اشتباه است.");
+
 return;
 }
 
 if(!np){
+
 alert("رمز جدید را وارد کنید.");
+
 return;
 }
 
 if(np!==rp){
+
 alert("تکرار رمز جدید یکسان نیست.");
+
 return;
 }
 
-localStorage.setItem(PASS_KEY,np);
+localStorage.setItem(
+PASS_KEY,
+np
+);
 
 closeModal("settingsModal");
 
-alert("رمز ویرایش با موفقیت تغییر کرد.");
-});
+alert(
+"رمز ویرایش با موفقیت تغییر کرد."
+);
 
-$("rate").value=localStorage.getItem(RATE_KEY)||DEFAULT_RATE;
+}
+);
 
-$("rate").addEventListener("input",()=>{
-localStorage.setItem(RATE_KEY,String(getRate()));
+$("rate").value =
+localStorage.getItem(RATE_KEY) ||
+DEFAULT_RATE;
+
+$("rate").addEventListener(
+"input",
+()=>{
+
+localStorage.setItem(
+RATE_KEY,
+String(getRate())
+);
+
 render();
-});
 
-$("pdfBtn").addEventListener("click",()=>{
-const popup=window.open("","_blank");
+}
+);
+
+/* خروجی PDF */
+
+$("pdfBtn").addEventListener(
+"click",
+()=>{
+
+const popup=
+window.open(
+"",
+"_blank"
+);
 
 if(!popup){
-alert("باز شدن پنجره جدید توسط مرورگر مسدود شده است. اجازه Pop-up را برای سایت فعال کنید.");
+
+alert(
+"باز شدن پنجره جدید توسط مرورگر مسدود شده است. اجازه Pop-up را برای سایت فعال کنید."
+);
+
 return;
 }
 
 const rate=getRate();
 
-const rows=products.map((p,i)=>{
-const price=Math.round(Number(p.usd)*rate);
+const rows=
+products.map(
+(p,i)=>{
+
+const price=
+Math.round(
+Number(p.usd)*rate
+);
 
 return "<tr>"+
-"<td>"+formatNumber(i+1)+"</td>"+
-"<td>"+esc(p.name)+"</td>"+
-"<td>"+formatNumber(p.usd)+"</td>"+
-"<td>"+formatNumber(price)+"</td>"+
+"<td>"+
+formatNumber(i+1)+
+"</td>"+
+"<td>"+
+esc(p.name)+
+"</td>"+
+"<td>"+
+formatNumber(p.usd)+
+"</td>"+
+"<td>"+
+formatNumber(price)+
+"</td>"+
 "</tr>";
-}).join("");
+
+}
+).join("");
 
 popup.document.open();
 
@@ -449,63 +647,182 @@ popup.document.write(
 <head>
 <meta charset="UTF-8">
 <title>OBCH - لیست محصولات</title>
+
 <style>
-@page{size:A4;margin:12mm}
-body{font-family:Tahoma,Arial,sans-serif;color:#17384e;margin:0}
-h1{text-align:center;font-size:25px;margin:0 0 8px;color:#2297d4}
-.meta{text-align:center;color:#58788b;font-size:13px;margin-bottom:18px}
-table{width:100%;border-collapse:collapse}
-th,td{border:1px solid #aebfca;padding:9px;font-size:13px}
-th{background:#eaf6fc}
-td{text-align:center}
-td:nth-child(2){text-align:right}
-.buttons{text-align:center;margin:22px}
-button{border:0;background:#45a9df;color:white;padding:11px 20px;border-radius:8px;font-family:Tahoma;cursor:pointer}
-@media print{.buttons{display:none}}
+
+@page{
+size:A4;
+margin:12mm
+}
+
+body{
+font-family:Tahoma,Arial,sans-serif;
+color:#25282B;
+margin:0
+}
+
+h1{
+text-align:center;
+font-size:25px;
+margin:0 0 8px;
+color:#25282B
+}
+
+.meta{
+text-align:center;
+color:#666666;
+font-size:13px;
+margin-bottom:18px
+}
+
+table{
+width:100%;
+border-collapse:collapse
+}
+
+th,td{
+border:1px solid #B8B8B8;
+padding:9px;
+font-size:13px
+}
+
+th{
+background:#EEEEEE
+}
+
+td{
+text-align:center
+}
+
+td:nth-child(2){
+text-align:right
+}
+
+.buttons{
+text-align:center;
+margin:22px
+}
+
+button{
+border:0;
+background:#25282B;
+color:white;
+padding:11px 20px;
+border-radius:8px;
+font-family:Tahoma;
+cursor:pointer
+}
+
+@media print{
+.buttons{
+display:none
+}
+}
+
 </style>
 </head>
+
 <body>
+
 <h1>OBCH</h1>
-<div class="meta">لیست محصولات &nbsp; | &nbsp; نرخ دلار: ${formatNumber(rate)} تومان</div>
+
+<div class="meta">
+لیست محصولات &nbsp; | &nbsp;
+نرخ دلار:
+${formatNumber(rate)}
+تومان
+</div>
+
 <table>
+
 <thead>
+
 <tr>
 <th>ردیف</th>
 <th>محصول</th>
 <th>دلار</th>
 <th>قیمت به تومان</th>
 </tr>
+
 </thead>
-<tbody>${rows}</tbody>
+
+<tbody>
+${rows}
+</tbody>
+
 </table>
+
 <div class="buttons">
-<button onclick="window.print()">چاپ / ذخیره به PDF</button>
+<button onclick="window.print()">
+چاپ / ذخیره به PDF
+</button>
 </div>
+
 </body>
 </html>`
 );
 
 popup.document.close();
-});
 
-document.querySelectorAll("[data-close]").forEach(btn=>{
-btn.addEventListener("click",()=>closeModal(btn.dataset.close));
-});
-
-document.querySelectorAll(".modalBack").forEach(back=>{
-back.addEventListener("click",e=>{
-if(e.target===back) closeModal(back.id);
-});
-});
-
-document.addEventListener("keydown",e=>{
-if(e.key==="Escape"){
-document.querySelectorAll(".modalBack.show")
-.forEach(m=>closeModal(m.id));
 }
-});
+);
+
+document.querySelectorAll(
+"[data-close]"
+).forEach(
+btn=>{
+
+btn.addEventListener(
+"click",
+()=>closeModal(
+btn.dataset.close
+)
+);
+
+}
+);
+
+document.querySelectorAll(
+".modalBack"
+).forEach(
+back=>{
+
+back.addEventListener(
+"click",
+e=>{
+
+if(e.target===back){
+
+closeModal(back.id);
+
+}
+
+}
+);
+
+}
+);
+
+document.addEventListener(
+"keydown",
+e=>{
+
+if(e.key==="Escape"){
+
+document.querySelectorAll(
+".modalBack.show"
+).forEach(
+m=>closeModal(m.id)
+);
+
+}
+
+}
+);
 
 render();
+
 </script>
+
 </body>
 </html>
