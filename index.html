@@ -674,14 +674,21 @@ $("pdfBtn").addEventListener("click", ()=>{
 <title>OBCH - لیست قیمت مصرف‌کننده</title>
 <style>
 @page{size:A4;margin:12mm}
+html,body,.hero,.sheet,table,thead,tbody,tr,th,td{
+  -webkit-print-color-adjust:exact !important;
+  print-color-adjust:exact !important;
+  color-adjust:exact !important;
+}
 body{
   font-family:'IRANSansX',Tahoma,Arial,sans-serif;
   margin:0;
+  min-height:100vh;
   color:#111111;
   background:
-    radial-gradient(circle at top right, rgba(184,15,34,.10), transparent 24%),
-    radial-gradient(circle at bottom left, rgba(185,188,198,.36), transparent 28%),
-    linear-gradient(145deg,#FCFCFD 0%,#F0F1F4 48%,#FBFBFC 100%);
+    radial-gradient(circle at 92% 8%, rgba(184,15,34,.12), transparent 22%),
+    radial-gradient(circle at 8% 88%, rgba(150,154,165,.34), transparent 30%),
+    radial-gradient(circle at 50% 48%, rgba(255,255,255,.92), transparent 38%),
+    linear-gradient(135deg,#D9DBE1 0%,#F8F8FA 34%,#C8CBD2 67%,#F7F7F8 100%) !important;
 }
 .wrap{max-width:1000px;margin:0 auto}
 .hero{
@@ -749,19 +756,19 @@ th,td{padding:12px 10px;border-bottom:1px solid #E7E7EB;font-size:13px;vertical-
   background:#F4F4F6;color:#8A909D;border:1px solid #E0E0E5;margin:auto;font-size:12px
 }
 th{
-  background:linear-gradient(180deg,#C7182F,#9C1022);
-  color:#FFFFFF;
+  background:#B80F22 !important;
+  color:#FFFFFF !important;
   text-align:center;
   font-weight:900;
 }
 td{
   text-align:center;
-  background:rgba(255,255,255,.82);
-  color:#111111;
+  background:rgba(255,255,255,.88) !important;
+  color:#111111 !important;
 }
-tbody tr:nth-child(even) td{background:rgba(249,249,250,.92)}
-td:nth-child(3){text-align:right;color:#111111}
-td:nth-child(4){color:#111111;font-weight:700}
+tbody tr:nth-child(even) td{background:rgba(238,239,242,.88) !important}
+td:nth-child(3){text-align:right;color:#111111 !important}
+td:nth-child(4){color:#111111 !important;font-weight:700}
 .buttons{
   text-align:center;
   margin:22px 0 4px;
@@ -795,8 +802,28 @@ button{
   margin-top:10px;
 }
 @media print{
-  body{background:#fff}
-  .hero,.sheet{box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  html,body{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+    color-adjust:exact !important;
+  }
+  body{
+    background:
+      radial-gradient(circle at 92% 8%, rgba(184,15,34,.12), transparent 22%),
+      radial-gradient(circle at 8% 88%, rgba(150,154,165,.34), transparent 30%),
+      radial-gradient(circle at 50% 48%, rgba(255,255,255,.92), transparent 38%),
+      linear-gradient(135deg,#D9DBE1 0%,#F8F8FA 34%,#C8CBD2 67%,#F7F7F8 100%) !important;
+  }
+  .hero{
+    background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(220,222,227,.92)) !important;
+    color:#111111 !important;
+    box-shadow:0 8px 24px rgba(45,48,55,.12) !important;
+  }
+  .brand,.title{color:#111111 !important}
+  .sheet{background:rgba(255,255,255,.78) !important;box-shadow:0 8px 22px rgba(45,48,55,.10) !important}
+  th{background:#B80F22 !important;color:#FFFFFF !important}
+  td{color:#111111 !important;background:rgba(255,255,255,.88) !important}
+  tbody tr:nth-child(even) td{background:rgba(238,239,242,.88) !important}
   .buttons,.note{display:none}
 }
 </style>
@@ -814,7 +841,7 @@ button{
           <tr>
             <th style="width:80px">ردیف</th>
             <th style="width:92px">تصویر</th>
-            <th>محصول</th>
+            <th>توضیحات محصول</th>
             <th style="width:180px">قیمت مصرف‌کننده</th>
           </tr>
         </thead>
