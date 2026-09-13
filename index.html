@@ -3,16 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#123A5A">
+<meta name="theme-color" content="#B80F22">
 <title>OBCH | مدیریت قیمت محصولات</title>
 <style>
-
 @font-face{
   font-family:'IRANSansX';
   src:url('IRANSansX-Black.ttf') format('truetype');
   font-weight:900;
   font-style:normal;
   font-display:swap;
+}
+
+:root{
+  --red:#B80F22;
+  --red-dark:#8F0D1B;
+  --red-soft:#FCEBED;
+  --silver-1:#F8F8F8;
+  --silver-2:#ECECEF;
+  --silver-3:#DADAE0;
+  --silver-4:#B9BCC6;
+  --ink:#21242B;
+  --ink-soft:#5E6470;
+  --white:#FFFFFF;
+  --green:#1F9D55;
+  --green-soft:#EAF8F0;
+  --danger:#C91F37;
+  --danger-soft:#FCECEF;
+  --shadow:0 18px 48px rgba(30,33,40,.12);
 }
 
 *{box-sizing:border-box}
@@ -23,304 +40,19 @@ html,body{
   font-family:'IRANSansX',Tahoma,Arial,sans-serif;
 }
 body{
-  color:#172631;
+  color:var(--ink);
   background:
-    radial-gradient(circle at 15% 12%,rgba(67,126,168,.26),transparent 28%),
-    radial-gradient(circle at 88% 8%,rgba(33,86,124,.24),transparent 30%),
-    radial-gradient(circle at 50% 100%,rgba(156,199,224,.24),transparent 36%),
-    linear-gradient(145deg,#F3F7FA 0%,#E6EEF3 48%,#F8FAFC 100%);
-  background-attachment:fixed;
+    radial-gradient(circle at top right, rgba(184,15,34,.09), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(180,180,188,.26), transparent 28%),
+    linear-gradient(145deg,#FCFCFD 0%,#F2F3F6 50%,#FBFBFC 100%);
   overflow-x:hidden;
 }
-body::before,
-body::after{
-  content:"";
-  position:fixed;
-  border-radius:50%;
-  filter:blur(26px);
-  pointer-events:none;
-  z-index:-1;
-}
-body::before{
-  width:240px;height:240px;
-  top:-70px;left:-70px;
-  background:rgba(31,84,120,.22);
-}
-body::after{
-  width:280px;height:280px;
-  right:-110px;bottom:-90px;
-  background:rgba(88,150,190,.18);
-}
+
 button,input{font:inherit;font-family:'IRANSansX',Tahoma,Arial,sans-serif}
 button{cursor:pointer}
-.wrap{max-width:1100px;margin:auto;padding:18px}
 
-.header{
-  position:relative;
-  overflow:hidden;
-  color:#fff;
-  border:1px solid rgba(255,255,255,.46);
-  border-radius:24px;
-  padding:24px 22px;
-  margin-bottom:16px;
-  background:
-    linear-gradient(135deg,rgba(18,58,90,.94),rgba(30,91,133,.78)),
-    rgba(255,255,255,.14);
-  backdrop-filter:blur(22px) saturate(165%);
-  -webkit-backdrop-filter:blur(22px) saturate(165%);
-  box-shadow:
-    0 18px 45px rgba(10,43,66,.28),
-    inset 0 1px 0 rgba(255,255,255,.30),
-    0 0 32px rgba(45,111,158,.16);
-}
-.header::after{
-  content:"";
-  position:absolute;
-  width:170px;height:170px;
-  left:-45px;top:-70px;
-  border-radius:50%;
-  background:rgba(255,255,255,.16);
-  filter:blur(2px);
-}
-.brand{
-  position:relative;
-  z-index:1;
-  font-size:31px;
-  font-weight:900;
-  letter-spacing:2px;
-  text-shadow:0 3px 16px rgba(5,28,44,.34);
-}
-.subtitle{
-  position:relative;
-  z-index:1;
-  margin-top:6px;
-  font-size:14px;
-  opacity:.96;
-}
+.wrap{max-width:1140px;margin:auto;padding:18px}
 
-.card{
-  background:rgba(255,255,255,.58);
-  border:1px solid rgba(255,255,255,.82);
-  border-radius:22px;
-  padding:17px;
-  margin-bottom:15px;
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:
-    0 14px 38px rgba(21,61,88,.12),
-    inset 0 1px 0 rgba(255,255,255,.95);
-}
-
-label{
-  display:block;
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:7px;
-  color:#2B4B61;
-}
-input{
-  width:100%;
-  border:1px solid rgba(63,99,123,.22);
-  border-radius:14px;
-  padding:13px;
-  background:rgba(255,255,255,.70);
-  color:#172631;
-  outline:none;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.90);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-input:focus{
-  border-color:#2E6F9E;
-  box-shadow:0 0 0 4px rgba(46,111,158,.14),0 0 24px rgba(46,111,158,.10);
-}
-.rateRow{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:10px;
-  align-items:end;
-}
-.actions{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin-bottom:14px;
-}
-.btn{
-  border-radius:14px;
-  padding:11px 15px;
-  font-weight:700;
-  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
-}
-.btn:active{transform:scale(.98)}
-.primary{
-  border:1px solid rgba(255,255,255,.30);
-  color:#fff;
-  background:linear-gradient(135deg,#123A5A,#1E5B85);
-  box-shadow:0 8px 20px rgba(18,58,90,.24),0 0 18px rgba(52,118,164,.15);
-}
-.primary:hover{
-  box-shadow:0 10px 26px rgba(18,58,90,.30),0 0 24px rgba(52,118,164,.20);
-}
-.secondary{
-  color:#244B67;
-  border:1px solid rgba(64,101,126,.20);
-  background:rgba(255,255,255,.58);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.90);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-.danger{
-  background:rgba(255,244,247,.82);
-  color:#c62845;
-  border:1px solid rgba(198,40,69,.20);
-}
-.small{padding:8px 11px;font-size:13px}
-.editBtn{
-  background:rgba(236,250,240,.82);
-  color:#218838;
-  border:1px solid rgba(33,136,56,.20);
-}
-
-.tableWrap{
-  overflow:auto;
-  border:1px solid rgba(255,255,255,.86);
-  border-radius:18px;
-  background:rgba(255,255,255,.30);
-  backdrop-filter:blur(14px) saturate(150%);
-  -webkit-backdrop-filter:blur(14px) saturate(150%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.85);
-}
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:760px;
-}
-th,td{
-  padding:12px 10px;
-  border-bottom:1px solid rgba(74,106,126,.12);
-  text-align:right;
-  white-space:nowrap;
-}
-th{
-  background:rgba(113,69,170,.10);
-  color:#2C4D63;
-  font-size:14px;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-td{
-  text-align:center;
-  background:rgba(255,255,255,.34);
-}
-tbody tr:hover td{
-  background:rgba(255,255,255,.54);
-}
-td.product{
-  text-align:right;
-  white-space:normal;
-}
-tr:last-child td{border-bottom:0}
-.empty{text-align:center;color:#687A86;padding:30px}
-
-.modalBack{
-  position:fixed;
-  inset:0;
-  background:rgba(9,35,52,.38);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  z-index:20;
-  backdrop-filter:blur(9px);
-  -webkit-backdrop-filter:blur(9px);
-}
-.modalBack.show{display:flex}
-.modal{
-  width:min(460px,100%);
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(255,255,255,.90);
-  border-radius:24px;
-  padding:21px;
-  box-shadow:
-    0 24px 70px rgba(10,42,63,.30),
-    inset 0 1px 0 rgba(255,255,255,.95),
-    0 0 35px rgba(43,107,151,.12);
-  position:relative;
-  backdrop-filter:blur(26px) saturate(175%);
-  -webkit-backdrop-filter:blur(26px) saturate(175%);
-}
-.modal h2{
-  margin:0 0 16px;
-  color:#173E5C;
-  font-size:20px;
-}
-.close{
-  position:absolute;
-  left:14px;
-  top:10px;
-  border:0;
-  background:transparent;
-  font-size:28px;
-  color:#587183;
-}
-.field{margin-bottom:13px}
-.modalActions{
-  display:flex;
-  gap:8px;
-  justify-content:flex-start;
-  margin-top:16px;
-}
-.note{font-size:12px;color:#617684;margin-top:6px}
-.footer{text-align:center;color:#647784;font-size:12px;padding:4px 0 15px}
-
-@media(max-width:600px){
-  .wrap{padding:10px}
-  .header{padding:19px;border-radius:20px}
-  .brand{font-size:26px}
-  .rateRow{grid-template-columns:1fr}
-  .actions .btn{flex:1}
-  .card{border-radius:19px}
-}
-
-@media print{
-  body{background:#fff;color:#111}
-  body::before,body::after{display:none!important}
-  .wrap{max-width:none;padding:0}
-  .header{
-    background:#fff;
-    color:#111;
-    box-shadow:none;
-    border:0;
-    padding:0 0 10px;
-    backdrop-filter:none;
-    -webkit-backdrop-filter:none;
-  }
-  .brand{color:#163B56;text-shadow:none}
-  .subtitle{color:#555}
-  .rateCard,.actions,.footer,.noPrint,.ops{display:none!important}
-  .card{
-    border:0;
-    box-shadow:none;
-    padding:0;
-    background:#fff;
-    backdrop-filter:none;
-    -webkit-backdrop-filter:none;
-  }
-  .tableWrap{
-    overflow:visible;
-    border:1px solid #bbb;
-    background:#fff;
-    backdrop-filter:none;
-    -webkit-backdrop-filter:none;
-  }
-  table{min-width:0;width:100%}
-  th{background:#eee!important;color:#111}
-  td{background:#fff!important}
-  th,td{border-color:#bbb;color:#111}
-}
-
-/* ===== OBCH Text Intro - CSS Only ===== */
 .textSplash{
   position:fixed;
   inset:0;
@@ -329,67 +61,231 @@ tr:last-child td{border-bottom:0}
   align-items:center;
   justify-content:center;
   background:
-    radial-gradient(circle at 50% 35%,rgba(62,124,165,.28),transparent 30%),
-    linear-gradient(145deg,#0B1D2A 0%,#12344B 48%,#08131D 100%);
-  animation:splashOut .65s ease 2.65s forwards;
+    radial-gradient(circle at 50% 35%, rgba(184,15,34,.16), transparent 32%),
+    linear-gradient(140deg,#E9E9ED 0%,#C9CBD2 45%,#9DA3AE 100%);
+  animation:splashOut .65s ease 2.6s forwards;
 }
-.textSplashBox{
-  text-align:center;
-  color:#fff;
-  padding:24px;
-}
-.textSplashFa{
-  font-size:36px;
-  font-weight:900;
-  opacity:0;
-  transform:translateY(16px);
-  animation:introUp .6s ease .15s forwards;
-}
+.textSplashBox{text-align:center;color:var(--ink);padding:24px}
 .textSplashEn{
-  margin-top:7px;
-  font-size:28px;
+  font-size:34px;
   font-weight:900;
   letter-spacing:8px;
-  color:#EAF4FA;
+  color:var(--red);
   opacity:0;
-  transform:translateY(16px);
-  animation:introUp .6s ease .55s forwards;
+  transform:translateY(14px);
+  animation:introUp .6s ease .15s forwards;
 }
 .textSplashLine{
-  width:0;
-  height:2px;
-  margin:16px auto 0;
-  background:linear-gradient(90deg,transparent,#A9D2EA,transparent);
-  box-shadow:0 0 12px rgba(169,210,234,.50);
-  animation:introLine .65s ease .95s forwards;
+  width:0;height:3px;margin:16px auto 0;border-radius:99px;
+  background:linear-gradient(90deg,transparent,var(--red),transparent);
+  box-shadow:0 0 14px rgba(184,15,34,.24);
+  animation:introLine .6s ease .6s forwards;
 }
 .textSplashWelcome{
   margin-top:15px;
   font-size:15px;
   font-weight:700;
-  color:#DDECF5;
+  color:#5A5F69;
   opacity:0;
-  animation:introFade .5s ease 1.3s forwards;
+  animation:introFade .5s ease 1s forwards;
 }
-@keyframes introUp{
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes introFade{
-  to{opacity:1}
-}
-@keyframes introLine{
-  to{width:220px}
-}
+@keyframes introUp{to{opacity:1;transform:translateY(0)}}
+@keyframes introLine{to{width:210px}}
+@keyframes introFade{to{opacity:1}}
 @keyframes splashOut{
   0%{opacity:1;visibility:visible;pointer-events:auto}
   99%{opacity:0;visibility:visible;pointer-events:none}
   100%{opacity:0;visibility:hidden;pointer-events:none}
 }
-@media(max-width:600px){
-  .textSplashFa{font-size:31px}
-  .textSplashEn{font-size:24px;letter-spacing:6px}
+
+.header{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  padding:26px 24px;
+  margin-bottom:16px;
+  color:var(--white);
+  background:
+    linear-gradient(135deg, rgba(34,37,44,.92), rgba(95,101,112,.84)),
+    linear-gradient(135deg, #F3F3F6, #C6CAD3);
+  border:1px solid rgba(255,255,255,.48);
+  box-shadow:0 22px 60px rgba(33,36,43,.18);
+}
+.header::before{
+  content:"";
+  position:absolute;
+  inset:auto -40px -70px auto;
+  width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle, rgba(184,15,34,.95) 0%, rgba(184,15,34,.35) 42%, transparent 72%);
+  filter:blur(8px);
+  opacity:.72;
+}
+.header::after{
+  content:"";
+  position:absolute;
+  inset:-40px auto auto -40px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.16) 0%, transparent 70%);
+}
+.brand{position:relative;z-index:1;font-size:33px;font-weight:900;letter-spacing:3px}
+.subtitle{position:relative;z-index:1;margin-top:8px;font-size:14px;opacity:.96}
+.brandTag{
+  position:relative;z-index:1;display:inline-flex;gap:8px;align-items:center;
+  margin-top:14px;padding:8px 14px;border-radius:999px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
+  font-size:12px;
 }
 
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,248,249,.92));
+  border:1px solid var(--silver-3);
+  border-radius:24px;
+  padding:18px;
+  margin-bottom:15px;
+  box-shadow:var(--shadow);
+}
+label{display:block;font-size:14px;font-weight:700;margin-bottom:8px;color:#383D46}
+input{
+  width:100%;
+  border:1px solid var(--silver-4);
+  border-radius:16px;
+  padding:13px 14px;
+  background:#fff;
+  color:var(--ink);
+  outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+}
+input:focus{
+  border-color:var(--red);
+  box-shadow:0 0 0 4px rgba(184,15,34,.10);
+}
+
+.rateRow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+
+.btn{
+  border:0;
+  border-radius:15px;
+  padding:11px 16px;
+  font-weight:700;
+  transition:transform .15s ease,box-shadow .2s ease,opacity .2s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:scale(.98)}
+
+.primary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  box-shadow:0 10px 22px rgba(184,15,34,.22);
+}
+.secondary{
+  color:#2D323B;
+  background:linear-gradient(135deg,#FFFFFF,#ECECEF);
+  border:1px solid var(--silver-3);
+  box-shadow:0 8px 18px rgba(80,85,95,.08);
+}
+.danger{
+  color:var(--danger);
+  background:var(--danger-soft);
+  border:1px solid rgba(201,31,55,.20);
+}
+.small{padding:8px 12px;font-size:13px}
+.editBtn{
+  background:var(--green-soft);
+  color:var(--green);
+  border:1px solid rgba(31,157,85,.22);
+}
+
+.note{font-size:12px;color:var(--ink-soft);margin-top:7px}
+
+.tableWrap{
+  overflow:auto;
+  border:1px solid var(--silver-3);
+  border-radius:18px;
+  background:#fff;
+}
+table{width:100%;border-collapse:collapse;min-width:920px}
+th,td{
+  padding:13px 10px;
+  border-bottom:1px solid #ECECF0;
+  white-space:nowrap;
+}
+th{
+  background:linear-gradient(180deg,#FAFAFB,#ECECEF);
+  color:#3A3F48;
+  font-size:14px;
+  text-align:center;
+}
+td{
+  text-align:center;
+  background:#fff;
+}
+tbody tr:hover td{background:#FCF7F8}
+td.product{text-align:right;white-space:normal}
+tr:last-child td{border-bottom:0}
+.empty{text-align:center;color:#737986;padding:30px}
+
+.productThumb{
+  width:52px;height:52px;object-fit:cover;border-radius:12px;
+  border:1px solid #DDDDE3;background:#fff;display:block;margin:auto;
+  box-shadow:0 4px 14px rgba(80,85,95,.10);
+}
+.productThumbPlaceholder{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:52px;height:52px;border-radius:12px;background:#F4F4F6;color:#8A909D;border:1px solid #E0E0E5;
+  margin:auto;font-size:12px
+}
+.imagePreviewWrap{margin-top:10px;display:flex;justify-content:flex-start}
+.imagePreview{
+  width:94px;height:94px;object-fit:cover;border-radius:16px;
+  border:1px solid #DDDDE3;background:#fff;display:none;box-shadow:0 6px 16px rgba(80,85,95,.11);
+}
+.imageHint{font-size:12px;color:#717783;margin-top:6px}
+
+.modalBack{
+  position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+  padding:18px;z-index:20;background:rgba(36,40,48,.40);backdrop-filter:blur(8px);
+}
+.modalBack.show{display:flex}
+.modal{
+  width:min(480px,100%);position:relative;
+  background:linear-gradient(180deg,#FFFFFF,#F6F6F8);
+  border:1px solid #E3E3E8;border-radius:26px;padding:22px;
+  box-shadow:0 24px 70px rgba(26,30,38,.18);
+}
+.modal h2{margin:0 0 16px;color:#343942;font-size:20px}
+.close{
+  position:absolute;left:14px;top:10px;border:0;background:transparent;
+  font-size:28px;color:#7D8390
+}
+.field{margin-bottom:13px}
+.modalActions{display:flex;gap:8px;justify-content:flex-start;margin-top:16px}
+.footer{text-align:center;color:#737986;font-size:12px;padding:4px 0 15px}
+
+@media(max-width:700px){
+  .wrap{padding:10px}
+  .header{padding:21px 18px;border-radius:22px}
+  .brand{font-size:28px}
+  .rateRow{grid-template-columns:1fr}
+  .actions .btn{flex:1}
+  .card{border-radius:20px}
+}
+@media print{
+  body{background:#fff;color:#111}
+  .textSplash,.rateCard,.actions,.footer,.noPrint,.ops{display:none!important}
+  th:nth-child(2),td:nth-child(2){display:none!important}
+  .wrap{max-width:none;padding:0}
+  .header{background:#fff;color:#111;box-shadow:none;border:0;padding:0 0 10px}
+  .header::before,.header::after{display:none}
+  .brand{color:var(--red)}
+  .subtitle{color:#555}
+  .card{border:0;box-shadow:none;padding:0;background:#fff}
+  .tableWrap{overflow:visible;border:1px solid #bbb;background:#fff}
+  table{min-width:0;width:100%}
+  th{background:#eee!important;color:#111}
+  td{background:#fff!important}
+  th,td{border-color:#bbb;color:#111}
+}
 </style>
 </head>
 <body>
@@ -406,6 +302,7 @@ tr:last-child td{border-bottom:0}
   <header class="header">
     <div class="brand">OBCH</div>
     <div class="subtitle">مدیریت و محاسبه قیمت محصولات</div>
+    <div class="brandTag">⚡ طراحی نقره‌ای و قرمز</div>
   </header>
 
   <section class="card rateCard">
@@ -424,11 +321,17 @@ tr:last-child td{border-bottom:0}
       <button class="btn primary" id="addBtn" type="button">＋ افزودن محصول</button>
       <button class="btn secondary" id="pdfBtn" type="button">↓ خروجی PDF لیست</button>
     </div>
+
     <div class="tableWrap">
       <table>
         <thead>
           <tr>
-            <th>ردیف</th><th>محصول</th><th>دلار</th><th>قیمت به تومان</th><th class="ops">عملیات</th>
+            <th>ردیف</th>
+            <th>تصویر</th>
+            <th>محصول</th>
+            <th>دلار</th>
+            <th>قیمت به تومان</th>
+            <th class="ops">عملیات</th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>
@@ -436,22 +339,34 @@ tr:last-child td{border-bottom:0}
       <div id="empty" class="empty" style="display:none">محصولی ثبت نشده است.</div>
     </div>
   </section>
-  <div class="footer">اطلاعات در همین مرورگر ذخیره می‌شود.</div>
+
+  <div class="footer">اطلاعات، رمز و عکس‌ها در همین مرورگر ذخیره می‌شوند.</div>
 </div>
 
-<!-- Add/Edit -->
 <div class="modalBack" id="productModal">
   <div class="modal">
     <button class="close" data-close="productModal" type="button">×</button>
     <h2 id="productTitle">افزودن محصول</h2>
+
     <div class="field">
       <label for="nameInput">نام محصول</label>
       <input id="nameInput" type="text" autocomplete="off">
     </div>
+
     <div class="field">
       <label for="usdInput">قیمت به دلار</label>
       <input id="usdInput" type="number" inputmode="decimal" min="0" step="0.001">
     </div>
+
+    <div class="field">
+      <label for="imageInput">عکس محصول</label>
+      <input id="imageInput" type="file" accept="image/*">
+      <div class="imageHint">عکس در همین مرورگر ذخیره می‌شود.</div>
+      <div class="imagePreviewWrap">
+        <img id="imagePreview" class="imagePreview" alt="پیش‌نمایش عکس محصول">
+      </div>
+    </div>
+
     <div class="modalActions">
       <button class="btn primary" id="saveProduct" type="button">ثبت</button>
       <button class="btn secondary" data-close="productModal" type="button">انصراف</button>
@@ -459,7 +374,6 @@ tr:last-child td{border-bottom:0}
   </div>
 </div>
 
-<!-- Password -->
 <div class="modalBack" id="passwordModal">
   <div class="modal">
     <button class="close" data-close="passwordModal" type="button">×</button>
@@ -475,7 +389,6 @@ tr:last-child td{border-bottom:0}
   </div>
 </div>
 
-<!-- Delete -->
 <div class="modalBack" id="deleteModal">
   <div class="modal">
     <button class="close" data-close="deleteModal" type="button">×</button>
@@ -488,23 +401,26 @@ tr:last-child td{border-bottom:0}
   </div>
 </div>
 
-<!-- Settings -->
 <div class="modalBack" id="settingsModal">
   <div class="modal">
     <button class="close" data-close="settingsModal" type="button">×</button>
     <h2>تغییر رمز ویرایش</h2>
+
     <div class="field">
       <label for="oldPass">رمز فعلی</label>
       <input id="oldPass" type="password" inputmode="numeric" autocomplete="current-password">
     </div>
+
     <div class="field">
       <label for="newPass">رمز جدید</label>
       <input id="newPass" type="password" inputmode="numeric" autocomplete="new-password">
     </div>
+
     <div class="field">
       <label for="repeatPass">تکرار رمز جدید</label>
       <input id="repeatPass" type="password" inputmode="numeric" autocomplete="new-password">
     </div>
+
     <div class="modalActions">
       <button class="btn primary" id="changePass" type="button">ثبت رمز جدید</button>
       <button class="btn secondary" data-close="settingsModal" type="button">انصراف</button>
@@ -514,47 +430,43 @@ tr:last-child td{border-bottom:0}
 
 <script>
 "use strict";
+
 const $ = id => document.getElementById(id);
-const PRODUCTS_KEY = "obch_products_v2";
-const RATE_KEY = "obch_rate_v2";
-const PASS_KEY = "obch_edit_password_v2";
+
+const PRODUCTS_KEY = "obch_products_v4";
+const RATE_KEY = "obch_rate_v4";
+const PASS_KEY = "obch_edit_password_v4";
 const DEFAULT_RATE = 234000;
 const DEFAULT_PASS = "1234";
 
 const defaultProducts = [
-  ["لامپ اشکی 7 وات",0.72],
-  ["لامپ حبابی 9 وات",0.725],
-  ["لامپ حبابی 12 وات",0.912],
-  ["لامپ حبابی 15 وات",1.28],
-  ["لامپ حبابی 20 وات",1.7],
-  ["لامپ حبابی 25 وات",2.25],
-  ["لامپ استوانه ای 25 وات",2.59],
-  ["لامپ استوانه ای 30 وات",2.84],
-  ["لامپ استوانه ای 40 وات",3.82],
-  ["لامپ استوانه ای 50 وات",4.821],
-  ["پنل توکار سایز شو 10وات",1.8],
-  ["پنل توکار سایز شو 18 وات",2.714],
-  ["پنل توکار سایز شو 24 وات",3.84],
-  ["پنل توکار سایز شو 36 وات",5.908],
-  ["پنل روکار 18وات",3.513],
-  ["پنل روکار 24وات",4.872],
-  ["پنل روکار 36 وات",6.74]
+  ["محافظ ولتاژ تک‌فاز 63 آمپر",0],
+  ["محافظ ولتاژ تک‌فاز 40 آمپر",0],
+  ["محافظ ولتاژ سه‌فاز 80 آمپر",0],
+  ["محافظ ولتاژ تک‌فاز 80 آمپر",0]
 ];
 
 let products = loadProducts();
 let editIndex = -1;
 let pendingEditIndex = -1;
 let deleteIndex = -1;
+let currentImageData = "";
 
 function loadProducts(){
   try{
     const raw = localStorage.getItem(PRODUCTS_KEY);
     if(raw){
       const parsed = JSON.parse(raw);
-      if(Array.isArray(parsed)) return parsed;
+      if(Array.isArray(parsed)){
+        return parsed.map(p=>({
+          name:p.name||"",
+          usd:Number(p.usd)||0,
+          image:p.image||""
+        }));
+      }
     }
   }catch(e){}
-  return defaultProducts.map(x=>({name:x[0],usd:x[1]}));
+  return defaultProducts.map(x=>({name:x[0], usd:x[1], image:""}));
 }
 function saveProducts(){ localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products)); }
 function getRate(){ return Number($("rate").value) || 0; }
@@ -569,6 +481,16 @@ function esc(s){
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   }[ch]));
 }
+function updateImagePreview(src){
+  const img = $("imagePreview");
+  if(src){
+    img.src = src;
+    img.style.display = "block";
+  }else{
+    img.removeAttribute("src");
+    img.style.display = "none";
+  }
+}
 function openModal(id){ $(id).classList.add("show"); }
 function closeModal(id){ $(id).classList.remove("show"); }
 
@@ -580,75 +502,103 @@ function render(){
   products.forEach((p,i)=>{
     const price = Math.round(Number(p.usd) * getRate());
     const tr = document.createElement("tr");
+    const imageCell = p.image
+      ? '<img class="productThumb" src="'+p.image+'" alt="عکس محصول">'
+      : '<span class="productThumbPlaceholder">—</span>';
+
     tr.innerHTML =
       "<td>"+formatNumber(i+1)+"</td>"+
+      "<td>"+imageCell+"</td>"+
       '<td class="product">'+esc(p.name)+"</td>"+
       "<td>"+formatNumber(p.usd)+"</td>"+
       "<td>"+formatNumber(price)+"</td>"+
       '<td class="ops">'+
-        '<button class="btn small secondary editBtn" type="button" data-i="'+i+'">ویرایش</button> '+
-        '<button class="btn small danger deleteBtn" type="button" data-i="'+i+'">حذف</button>'+
+        '<button class="btn small editBtn" type="button" data-action="edit" data-i="'+i+'">ویرایش</button> '+
+        '<button class="btn small danger deleteBtn" type="button" data-action="delete" data-i="'+i+'">حذف</button>'+
       "</td>";
+
     body.appendChild(tr);
   });
 }
 
 function openAdd(){
-  editIndex=-1;
-  $("productTitle").textContent="افزودن محصول";
-  $("nameInput").value="";
-  $("usdInput").value="";
+  editIndex = -1;
+  currentImageData = "";
+  $("productTitle").textContent = "افزودن محصول";
+  $("nameInput").value = "";
+  $("usdInput").value = "";
+  $("imageInput").value = "";
+  updateImagePreview("");
   openModal("productModal");
   setTimeout(()=>$("nameInput").focus(),50);
 }
 
 function openEdit(i){
-  pendingEditIndex=i;
-  $("passwordInput").value="";
+  pendingEditIndex = i;
+  $("passwordInput").value = "";
   openModal("passwordModal");
   setTimeout(()=>$("passwordInput").focus(),50);
 }
 
 function showEditForm(i){
-  editIndex=i;
-  $("productTitle").textContent="ویرایش محصول";
-  $("nameInput").value=products[i].name;
-  $("usdInput").value=products[i].usd;
+  editIndex = i;
+  currentImageData = products[i].image || "";
+  $("productTitle").textContent = "ویرایش محصول";
+  $("nameInput").value = products[i].name;
+  $("usdInput").value = products[i].usd;
+  $("imageInput").value = "";
+  updateImagePreview(currentImageData);
   openModal("productModal");
   setTimeout(()=>$("nameInput").focus(),50);
 }
 
-$("addBtn").addEventListener("click",openAdd);
+$("addBtn").addEventListener("click", openAdd);
 
-$("saveProduct").addEventListener("click",()=>{
-  const name=$("nameInput").value.trim();
-  const usd=Number($("usdInput").value);
+$("imageInput").addEventListener("change", e=>{
+  const file = e.target.files && e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    currentImageData = String(ev.target.result || "");
+    updateImagePreview(currentImageData);
+  };
+  reader.readAsDataURL(file);
+});
+
+$("saveProduct").addEventListener("click", ()=>{
+  const name = $("nameInput").value.trim();
+  const usd = Number($("usdInput").value);
+
   if(!name){ alert("نام محصول را وارد کنید."); return; }
-  if(!Number.isFinite(usd) || usd<0){ alert("قیمت دلار را درست وارد کنید."); return; }
+  if(!Number.isFinite(usd) || usd < 0){ alert("قیمت دلار را درست وارد کنید."); return; }
 
-  if(editIndex===-1) products.push({name:name,usd:usd});
-  else products[editIndex]={name:name,usd:usd};
+  if(editIndex === -1){
+    products.push({name, usd, image: currentImageData || ""});
+  }else{
+    products[editIndex] = {name, usd, image: currentImageData || ""};
+  }
 
   saveProducts();
   render();
   closeModal("productModal");
 });
 
-$("tbody").addEventListener("click",e=>{
-  const edit=e.target.closest(".editBtn");
-  const del=e.target.closest(".deleteBtn");
+$("tbody").addEventListener("click", e=>{
+  const edit = e.target.closest(".editBtn");
+  const del = e.target.closest(".deleteBtn");
 
   if(edit) openEdit(Number(edit.dataset.i));
+
   if(del){
-    deleteIndex=Number(del.dataset.i);
-    $("deleteMessage").textContent="آیا محصول «"+products[deleteIndex].name+"» حذف شود؟";
+    deleteIndex = Number(del.dataset.i);
+    $("deleteMessage").textContent = "آیا محصول «"+products[deleteIndex].name+"» حذف شود؟";
     openModal("deleteModal");
   }
 });
 
-$("passwordOk").addEventListener("click",()=>{
-  const saved=localStorage.getItem(PASS_KEY) || DEFAULT_PASS;
-  if($("passwordInput").value!==saved){
+$("passwordOk").addEventListener("click", ()=>{
+  const saved = localStorage.getItem(PASS_KEY) || DEFAULT_PASS;
+  if($("passwordInput").value !== saved){
     alert("رمز عبور اشتباه است.");
     return;
   }
@@ -656,33 +606,33 @@ $("passwordOk").addEventListener("click",()=>{
   showEditForm(pendingEditIndex);
 });
 
-$("deleteOk").addEventListener("click",()=>{
-  if(deleteIndex>=0){
+$("deleteOk").addEventListener("click", ()=>{
+  if(deleteIndex >= 0){
     products.splice(deleteIndex,1);
     saveProducts();
     render();
   }
-  deleteIndex=-1;
+  deleteIndex = -1;
   closeModal("deleteModal");
 });
 
-$("settingsBtn").addEventListener("click",()=>{
-  $("oldPass").value="";
-  $("newPass").value="";
-  $("repeatPass").value="";
+$("settingsBtn").addEventListener("click", ()=>{
+  $("oldPass").value = "";
+  $("newPass").value = "";
+  $("repeatPass").value = "";
   openModal("settingsModal");
   setTimeout(()=>$("oldPass").focus(),50);
 });
 
-$("changePass").addEventListener("click",()=>{
-  const saved=localStorage.getItem(PASS_KEY) || DEFAULT_PASS;
-  const old=$("oldPass").value;
-  const np=$("newPass").value;
-  const rp=$("repeatPass").value;
+$("changePass").addEventListener("click", ()=>{
+  const saved = localStorage.getItem(PASS_KEY) || DEFAULT_PASS;
+  const old = $("oldPass").value;
+  const np = $("newPass").value;
+  const rp = $("repeatPass").value;
 
-  if(old!==saved){ alert("رمز فعلی اشتباه است."); return; }
+  if(old !== saved){ alert("رمز فعلی اشتباه است."); return; }
   if(!np){ alert("رمز جدید را وارد کنید."); return; }
-  if(np!==rp){ alert("تکرار رمز جدید یکسان نیست."); return; }
+  if(np !== rp){ alert("تکرار رمز جدید یکسان نیست."); return; }
 
   localStorage.setItem(PASS_KEY,np);
   closeModal("settingsModal");
@@ -690,85 +640,179 @@ $("changePass").addEventListener("click",()=>{
 });
 
 $("rate").value = localStorage.getItem(RATE_KEY) || DEFAULT_RATE;
-$("rate").addEventListener("input",()=>{
-  localStorage.setItem(RATE_KEY,String(getRate()));
+$("rate").addEventListener("input", ()=>{
+  localStorage.setItem(RATE_KEY, String(getRate()));
   render();
 });
 
-/* خروجی PDF: صفحه تمیز چاپ می‌شود و در پنجره چاپ گزینه Save as PDF دارد. */
-$("pdfBtn").addEventListener("click",()=>{
-  const popup=window.open("","_blank");
+$("pdfBtn").addEventListener("click", ()=>{
+  const popup = window.open("", "_blank");
   if(!popup){
     alert("باز شدن پنجره جدید توسط مرورگر مسدود شده است. اجازه Pop-up را برای سایت فعال کنید.");
     return;
   }
 
-  const rate=getRate();
-  const rows=products.map((p,i)=>{
-    const price=Math.round(Number(p.usd)*rate);
+  const rate = getRate();
+  const rows = products.map((p,i)=>{
+    const price = Math.round(Number(p.usd) * rate);
+    const imageCell = p.image
+      ? '<img class="pdfThumb" src="'+p.image+'" alt="عکس محصول">'
+      : '<span class="pdfThumbPlaceholder">—</span>';
     return "<tr>"+
       "<td>"+formatPdfNumber(i+1)+"</td>"+
+      "<td>"+imageCell+"</td>"+
       "<td>"+esc(p.name)+"</td>"+
       "<td>"+formatPdfNumber(price)+"</td>"+
       "</tr>";
   }).join("");
 
   popup.document.open();
-  popup.document.write(
-`<!doctype html>
+  popup.document.write(`<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>OBCH - لیست محصولات</title>
+<title>OBCH - لیست قیمت مصرف‌کننده</title>
 <style>
 @page{size:A4;margin:12mm}
-body{font-family:'IRANSansX',Tahoma,Arial,sans-serif;color:#163B56;margin:0}
-h1{text-align:center;font-size:25px;margin:0 0 8px;color:#163B56}
-.meta{text-align:center;color:#6F6875;font-size:13px;margin-bottom:18px}
+body{
+  font-family:'IRANSansX',Tahoma,Arial,sans-serif;
+  margin:0;
+  color:#24272E;
+  background:
+    linear-gradient(180deg,#FBFBFC 0%,#F4F4F6 100%);
+}
+.wrap{max-width:1000px;margin:0 auto}
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  padding:26px 24px 22px;
+  margin-bottom:18px;
+  color:#fff;
+  background:
+    linear-gradient(135deg, rgba(34,37,44,.96), rgba(98,103,112,.86));
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 15px 42px rgba(30,33,40,.16);
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  width:220px;height:220px;border-radius:50%;
+  right:-50px;bottom:-110px;
+  background:radial-gradient(circle, rgba(184,15,34,.95) 0%, rgba(184,15,34,.36) 38%, transparent 72%);
+}
+.brand{position:relative;z-index:1;font-size:30px;font-weight:900;letter-spacing:3px}
+.title{position:relative;z-index:1;margin-top:10px;font-size:22px;font-weight:900}
+.meta{position:relative;z-index:1;margin-top:8px;font-size:13px;color:#F5F5F7}
+.sheet{
+  background:#fff;
+  border:1px solid #DDDDE3;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 28px rgba(60,66,78,.10);
+}
 table{width:100%;border-collapse:collapse}
-th,td{border:1px solid #B9AFC1;padding:9px;font-size:13px}
-th{background:#E8EEF2}
-td{text-align:center}
-td:nth-child(2){text-align:right}
-.buttons{text-align:center;margin:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-button{border:0;background:#163B56;color:white;padding:11px 20px;border-radius:8px;font-family:'IRANSansX',Tahoma,Arial,sans-serif;cursor:pointer}
-.backBtn{background:#EAF0F4;color:#163B56;border:1px solid #B8C8D3}
-@media print{.buttons{display:none}}
+th,td{padding:12px 10px;border-bottom:1px solid #ECECF0;font-size:13px;vertical-align:middle}
+.pdfThumb{width:54px;height:54px;object-fit:cover;border-radius:12px;border:1px solid #DDDDE3;background:#fff;display:block;margin:auto;box-shadow:0 4px 14px rgba(80,85,95,.10)}
+.pdfThumbPlaceholder{display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:12px;background:#F4F4F6;color:#8A909D;border:1px solid #E0E0E5;margin:auto;font-size:12px}
+th{
+  background:linear-gradient(180deg,#FBFBFC,#EDEDF0);
+  color:#31363F;
+  text-align:center;
+}
+td{text-align:center;background:#fff}
+tbody tr:nth-child(even) td{background:#FCF8F8}
+td:nth-child(3){text-align:right}
+tfoot td{
+  background:#FAFAFB;font-weight:700;color:#5B616D
+}
+.buttons{
+  text-align:center;
+  margin:22px 0 4px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+button{
+  border:0;
+  border-radius:14px;
+  padding:11px 18px;
+  font-family:'IRANSansX',Tahoma,Arial,sans-serif;
+  font-weight:700;
+  cursor:pointer;
+}
+.printBtn{
+  color:#fff;
+  background:linear-gradient(135deg,#B80F22,#8F0D1B);
+  box-shadow:0 8px 18px rgba(184,15,34,.22);
+}
+.backBtn{
+  color:#2E333B;
+  background:linear-gradient(135deg,#FFFFFF,#ECECEF);
+  border:1px solid #DADAE0;
+}
+.note{
+  text-align:center;
+  color:#6A707B;
+  font-size:12px;
+  margin-top:10px;
+}
+@media print{
+  body{background:#fff}
+  .hero{box-shadow:none}
+  .buttons,.note{display:none}
+}
 </style>
 </head>
 <body>
-<h1>OBCH</h1>
-<div class="meta">لیست قیمت مصرف‌کننده محصولات</div>
-<table>
-<thead><tr><th>ردیف</th><th>محصول</th><th>قیمت مصرف‌کننده</th></tr></thead>
-<tbody>${rows}</tbody>
-</table>
-<div class="buttons">
-<button onclick="window.print()">چاپ / ذخیره به PDF</button>
-<button class="backBtn" onclick="if(window.opener){window.opener.focus();} window.close();">بازگشت</button>
-</div>
+  <div class="wrap">
+    <div class="hero">
+      <div class="brand">OBCH</div>
+      <div class="title">لیست قیمت مصرف‌کننده محصولات</div>
+      <div class="meta">طراحی نقره‌ای و قرمز</div>
+    </div>
+
+    <div class="sheet">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:80px">ردیف</th>
+            <th style="width:92px">تصویر</th>
+            <th>محصول</th>
+            <th style="width:180px">قیمت مصرف‌کننده</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+
+    <div class="buttons">
+      <button class="printBtn" onclick="window.print()">چاپ / ذخیره به PDF</button>
+      <button class="backBtn" onclick="if(window.opener){window.opener.focus();} window.close();">بازگشت</button>
+    </div>
+    <div class="note">در پنجره چاپ، گزینه Save as PDF را انتخاب کنید.</div>
+  </div>
 </body>
-</html>`
-  );
+</html>`);
   popup.document.close();
 });
 
 document.querySelectorAll("[data-close]").forEach(btn=>{
-  btn.addEventListener("click",()=>closeModal(btn.dataset.close));
+  btn.addEventListener("click", ()=>closeModal(btn.dataset.close));
 });
 
 document.querySelectorAll(".modalBack").forEach(back=>{
-  back.addEventListener("click",e=>{
-    if(e.target===back) closeModal(back.id);
+  back.addEventListener("click", e=>{
+    if(e.target === back) closeModal(back.id);
   });
 });
 
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape"){
     document.querySelectorAll(".modalBack.show").forEach(m=>closeModal(m.id));
   }
 });
-
 
 render();
 </script>
