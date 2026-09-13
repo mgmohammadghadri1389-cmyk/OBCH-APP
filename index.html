@@ -302,7 +302,7 @@ tr:last-child td{border-bottom:0}
   <header class="header">
     <div class="brand">OBCH</div>
     <div class="subtitle">مدیریت و محاسبه قیمت محصولات</div>
-    <div class="brandTag">⚡ طراحی نقره‌ای و قرمز</div>
+    
   </header>
 
   <section class="card rateCard">
@@ -677,55 +677,91 @@ $("pdfBtn").addEventListener("click", ()=>{
 body{
   font-family:'IRANSansX',Tahoma,Arial,sans-serif;
   margin:0;
-  color:#24272E;
+  color:#111111;
   background:
-    linear-gradient(180deg,#FBFBFC 0%,#F4F4F6 100%);
+    radial-gradient(circle at top right, rgba(184,15,34,.10), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(185,188,198,.36), transparent 28%),
+    linear-gradient(145deg,#FCFCFD 0%,#F0F1F4 48%,#FBFBFC 100%);
 }
 .wrap{max-width:1000px;margin:0 auto}
 .hero{
   position:relative;
   overflow:hidden;
-  border-radius:24px;
-  padding:26px 24px 22px;
+  border-radius:26px;
+  padding:28px 26px 22px;
   margin-bottom:18px;
-  color:#fff;
-  background:
-    linear-gradient(135deg, rgba(34,37,44,.96), rgba(98,103,112,.86));
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 15px 42px rgba(30,33,40,.16);
+  color:#111111;
+  background:linear-gradient(135deg, rgba(255,255,255,.70), rgba(236,236,239,.76));
+  border:1px solid rgba(255,255,255,.78);
+  box-shadow:0 18px 48px rgba(33,36,43,.12), inset 0 1px 0 rgba(255,255,255,.95);
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
 }
 .hero:before{
   content:"";
   position:absolute;
-  width:220px;height:220px;border-radius:50%;
-  right:-50px;bottom:-110px;
-  background:radial-gradient(circle, rgba(184,15,34,.95) 0%, rgba(184,15,34,.36) 38%, transparent 72%);
+  width:260px;height:260px;border-radius:50%;
+  right:-80px;top:-120px;
+  background:radial-gradient(circle, rgba(184,15,34,.22) 0%, rgba(184,15,34,.08) 42%, transparent 72%);
+  filter:blur(8px);
 }
-.brand{position:relative;z-index:1;font-size:30px;font-weight:900;letter-spacing:3px}
-.title{position:relative;z-index:1;margin-top:10px;font-size:22px;font-weight:900}
-.meta{position:relative;z-index:1;margin-top:8px;font-size:13px;color:#F5F5F7}
+.hero:after{
+  content:"";
+  position:absolute;
+  width:260px;height:260px;border-radius:50%;
+  left:-90px;bottom:-140px;
+  background:radial-gradient(circle, rgba(185,188,198,.46) 0%, rgba(185,188,198,.18) 38%, transparent 72%);
+  filter:blur(8px);
+}
+.brand{
+  position:relative;
+  z-index:1;
+  font-size:31px;
+  font-weight:900;
+  letter-spacing:3px;
+  color:#111111;
+}
+.title{
+  position:relative;
+  z-index:1;
+  margin-top:10px;
+  font-size:22px;
+  font-weight:900;
+  color:#111111;
+}
 .sheet{
-  background:#fff;
-  border:1px solid #DDDDE3;
-  border-radius:20px;
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:22px;
   overflow:hidden;
-  box-shadow:0 10px 28px rgba(60,66,78,.10);
+  box-shadow:0 12px 34px rgba(60,66,78,.10), inset 0 1px 0 rgba(255,255,255,.95);
+  backdrop-filter:blur(16px) saturate(145%);
+  -webkit-backdrop-filter:blur(16px) saturate(145%);
 }
 table{width:100%;border-collapse:collapse}
-th,td{padding:12px 10px;border-bottom:1px solid #ECECF0;font-size:13px;vertical-align:middle}
-.pdfThumb{width:54px;height:54px;object-fit:cover;border-radius:12px;border:1px solid #DDDDE3;background:#fff;display:block;margin:auto;box-shadow:0 4px 14px rgba(80,85,95,.10)}
-.pdfThumbPlaceholder{display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:12px;background:#F4F4F6;color:#8A909D;border:1px solid #E0E0E5;margin:auto;font-size:12px}
+th,td{padding:12px 10px;border-bottom:1px solid #E7E7EB;font-size:13px;vertical-align:middle}
+.pdfThumb{
+  width:54px;height:54px;object-fit:cover;border-radius:12px;border:1px solid #DDDDE3;background:#fff;
+  display:block;margin:auto;box-shadow:0 4px 14px rgba(80,85,95,.10)
+}
+.pdfThumbPlaceholder{
+  display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:12px;
+  background:#F4F4F6;color:#8A909D;border:1px solid #E0E0E5;margin:auto;font-size:12px
+}
 th{
-  background:linear-gradient(180deg,#FBFBFC,#EDEDF0);
-  color:#31363F;
+  background:linear-gradient(180deg,#C7182F,#9C1022);
+  color:#FFFFFF;
   text-align:center;
+  font-weight:900;
 }
-td{text-align:center;background:#fff}
-tbody tr:nth-child(even) td{background:#FCF8F8}
-td:nth-child(3){text-align:right}
-tfoot td{
-  background:#FAFAFB;font-weight:700;color:#5B616D
+td{
+  text-align:center;
+  background:rgba(255,255,255,.82);
+  color:#111111;
 }
+tbody tr:nth-child(even) td{background:rgba(249,249,250,.92)}
+td:nth-child(3){text-align:right;color:#111111}
+td:nth-child(4){color:#111111;font-weight:700}
 .buttons{
   text-align:center;
   margin:22px 0 4px;
@@ -754,13 +790,13 @@ button{
 }
 .note{
   text-align:center;
-  color:#6A707B;
+  color:#4F5560;
   font-size:12px;
   margin-top:10px;
 }
 @media print{
   body{background:#fff}
-  .hero{box-shadow:none}
+  .hero,.sheet{box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
   .buttons,.note{display:none}
 }
 </style>
@@ -770,7 +806,6 @@ button{
     <div class="hero">
       <div class="brand">OBCH</div>
       <div class="title">لیست قیمت مصرف‌کننده محصولات</div>
-      <div class="meta">طراحی نقره‌ای و قرمز</div>
     </div>
 
     <div class="sheet">
