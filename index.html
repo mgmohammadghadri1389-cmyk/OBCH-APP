@@ -659,10 +659,10 @@ $("pdfBtn").addEventListener("click", ()=>{
       ? '<img class="pdfThumb" src="'+p.image+'" alt="عکس محصول">'
       : '<span class="pdfThumbPlaceholder">—</span>';
     return "<tr>"+
-      "<td>"+formatPdfNumber(i+1)+"</td>"+
-      "<td>"+imageCell+"</td>"+
-      "<td>"+esc(p.name)+"</td>"+
-      "<td>"+formatPdfNumber(price)+"</td>"+
+      '<td class="colIndex">'+formatPdfNumber(i+1)+"</td>"+
+      '<td class="colImage">'+imageCell+"</td>"+
+      '<td class="colName productName">'+esc(p.name)+"</td>"+
+      '<td class="colPrice price">'+formatPdfNumber(price)+"</td>"+
       "</tr>";
   }).join("");
 
@@ -671,189 +671,174 @@ $("pdfBtn").addEventListener("click", ()=>{
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>OBCH - لیست قیمت مصرف‌کننده</title>
+<title>OBCH - لیست قیمت شهریور ماه ۱۴۰۵</title>
 <style>
-@page{size:A4;margin:12mm}
-html,body,.hero,.sheet,table,thead,tbody,tr,th,td{
+@font-face{
+  font-family:'IRANSansX';
+  src:url('IRANSansX-Black.ttf') format('truetype');
+  font-weight:900;
+  font-style:normal;
+  font-display:swap;
+}
+@page{size:A4 portrait;margin:8mm}
+html,body,.page,.topTitle,.brandRow,table,thead,tbody,tr,th,td{
   -webkit-print-color-adjust:exact !important;
   print-color-adjust:exact !important;
   color-adjust:exact !important;
 }
+*{box-sizing:border-box}
 body{
-  font-family:'IRANSansX',Tahoma,Arial,sans-serif;
   margin:0;
-  min-height:100vh;
-  color:#111111;
-  background:
-    radial-gradient(circle at 92% 8%, rgba(184,15,34,.12), transparent 22%),
-    radial-gradient(circle at 8% 88%, rgba(150,154,165,.34), transparent 30%),
-    radial-gradient(circle at 50% 48%, rgba(255,255,255,.92), transparent 38%),
-    linear-gradient(135deg,#D9DBE1 0%,#F8F8FA 34%,#C8CBD2 67%,#F7F7F8 100%) !important;
+  background:#fff !important;
+  color:#111;
+  font-family:'IRANSansX',Tahoma,Arial,sans-serif;
 }
-.wrap{max-width:1000px;margin:0 auto}
-.hero{
-  position:relative;
-  overflow:hidden;
-  border-radius:26px;
-  padding:28px 26px 22px;
-  margin-bottom:18px;
-  color:#111111;
-  background:linear-gradient(135deg, rgba(255,255,255,.70), rgba(236,236,239,.76));
-  border:1px solid rgba(255,255,255,.78);
-  box-shadow:0 18px 48px rgba(33,36,43,.12), inset 0 1px 0 rgba(255,255,255,.95);
-  backdrop-filter:blur(18px) saturate(150%);
-  -webkit-backdrop-filter:blur(18px) saturate(150%);
+.page{
+  width:100%;
+  margin:0 auto;
+  border:2px solid #111;
+  background:#fff;
 }
-.hero:before{
-  content:"";
-  position:absolute;
-  width:260px;height:260px;border-radius:50%;
-  right:-80px;top:-120px;
-  background:radial-gradient(circle, rgba(184,15,34,.22) 0%, rgba(184,15,34,.08) 42%, transparent 72%);
-  filter:blur(8px);
+.topTitle{
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#C55250 !important;
+  color:#fff !important;
+  font-size:20px;
+  font-weight:900;
+  border-bottom:2px solid #111;
 }
-.hero:after{
-  content:"";
-  position:absolute;
-  width:260px;height:260px;border-radius:50%;
-  left:-90px;bottom:-140px;
-  background:radial-gradient(circle, rgba(185,188,198,.46) 0%, rgba(185,188,198,.18) 38%, transparent 72%);
-  filter:blur(8px);
+.brandRow{
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff !important;
+  border-bottom:2px solid #111;
 }
 .brand{
-  position:relative;
-  z-index:1;
-  font-size:31px;
+  color:#D71920 !important;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:34px;
+  line-height:1;
+  font-style:italic;
   font-weight:900;
-  letter-spacing:3px;
-  color:#111111;
+  letter-spacing:-2px;
 }
-.title{
-  position:relative;
-  z-index:1;
-  margin-top:10px;
-  font-size:22px;
+table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
+thead th{
+  height:48px;
+  background:#C55250 !important;
+  color:#fff !important;
+  font-size:13px;
   font-weight:900;
-  color:#111111;
+  text-align:center;
+  border-left:1.5px solid #111;
+  border-bottom:1.5px solid #111;
+  padding:7px 5px;
 }
-.sheet{
-  background:rgba(255,255,255,.76);
-  border:1px solid rgba(255,255,255,.85);
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 12px 34px rgba(60,66,78,.10), inset 0 1px 0 rgba(255,255,255,.95);
-  backdrop-filter:blur(16px) saturate(145%);
-  -webkit-backdrop-filter:blur(16px) saturate(145%);
+thead th:last-child{border-left:0}
+tbody td{
+  height:69px;
+  color:#111 !important;
+  background:#fff !important;
+  font-size:12.5px;
+  font-weight:900;
+  text-align:center;
+  vertical-align:middle;
+  border-left:1.5px solid #111;
+  border-bottom:1.5px solid #111;
+  padding:5px 7px;
 }
-table{width:100%;border-collapse:collapse}
-th,td{padding:12px 10px;border-bottom:1px solid #E7E7EB;font-size:13px;vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tbody td:last-child{border-left:0}
+.colIndex{width:7%}
+.colImage{width:15%}
+.colName{width:57%}
+.colPrice{width:21%}
+.productName{
+  text-align:center !important;
+  white-space:normal;
+  line-height:1.75;
+  direction:rtl;
+}
+.price{
+  font-size:13px;
+  direction:ltr;
+  unicode-bidi:embed;
+  color:#111 !important;
+}
 .pdfThumb{
-  width:54px;height:54px;object-fit:cover;border-radius:12px;border:1px solid #DDDDE3;background:#fff;
-  display:block;margin:auto;box-shadow:0 4px 14px rgba(80,85,95,.10)
+  width:54px;
+  height:54px;
+  object-fit:contain;
+  display:block;
+  margin:auto;
+  background:#fff;
 }
 .pdfThumbPlaceholder{
-  display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:12px;
-  background:#F4F4F6;color:#8A909D;border:1px solid #E0E0E5;margin:auto;font-size:12px
-}
-th{
-  background:#B80F22 !important;
-  color:#FFFFFF !important;
-  text-align:center;
-  font-weight:900;
-}
-td{
-  text-align:center;
-  background:rgba(255,255,255,.88) !important;
-  color:#111111 !important;
-}
-tbody tr:nth-child(even) td{background:rgba(238,239,242,.88) !important}
-td:nth-child(3){text-align:right;color:#111111 !important}
-td:nth-child(4){color:#111111 !important;font-weight:700}
-.buttons{
-  text-align:center;
-  margin:22px 0 4px;
+  width:54px;
+  height:54px;
   display:flex;
-  gap:10px;
+  align-items:center;
   justify-content:center;
-  flex-wrap:wrap;
+  margin:auto;
+  color:#999;
+  font-size:16px;
+}
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:18px 0;
 }
 button{
   border:0;
-  border-radius:14px;
-  padding:11px 18px;
+  border-radius:8px;
+  padding:10px 18px;
   font-family:'IRANSansX',Tahoma,Arial,sans-serif;
-  font-weight:700;
+  font-weight:900;
   cursor:pointer;
 }
-.printBtn{
-  color:#fff;
-  background:linear-gradient(135deg,#B80F22,#8F0D1B);
-  box-shadow:0 8px 18px rgba(184,15,34,.22);
-}
-.backBtn{
-  color:#2E333B;
-  background:linear-gradient(135deg,#FFFFFF,#ECECEF);
-  border:1px solid #DADAE0;
-}
-.note{
-  text-align:center;
-  color:#4F5560;
-  font-size:12px;
-  margin-top:10px;
-}
+.printBtn{background:#C55250;color:#fff}
+.backBtn{background:#ECECEF;color:#222;border:1px solid #CCC}
 @media print{
-  html,body{
-    -webkit-print-color-adjust:exact !important;
-    print-color-adjust:exact !important;
-    color-adjust:exact !important;
-  }
-  body{
-    background:
-      radial-gradient(circle at 92% 8%, rgba(184,15,34,.12), transparent 22%),
-      radial-gradient(circle at 8% 88%, rgba(150,154,165,.34), transparent 30%),
-      radial-gradient(circle at 50% 48%, rgba(255,255,255,.92), transparent 38%),
-      linear-gradient(135deg,#D9DBE1 0%,#F8F8FA 34%,#C8CBD2 67%,#F7F7F8 100%) !important;
-  }
-  .hero{
-    background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(220,222,227,.92)) !important;
-    color:#111111 !important;
-    box-shadow:0 8px 24px rgba(45,48,55,.12) !important;
-  }
-  .brand,.title{color:#111111 !important}
-  .sheet{background:rgba(255,255,255,.78) !important;box-shadow:0 8px 22px rgba(45,48,55,.10) !important}
-  th{background:#B80F22 !important;color:#FFFFFF !important}
-  td{color:#111111 !important;background:rgba(255,255,255,.88) !important}
-  tbody tr:nth-child(even) td{background:rgba(238,239,242,.88) !important}
-  .buttons,.note{display:none}
+  body{background:#fff !important}
+  .buttons{display:none !important}
+  .page{break-inside:avoid}
 }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="hero">
+  <div class="page">
+    <div class="topTitle">لیست قیمت شهریور ماه ۱۴۰۵</div>
+
+    <div class="brandRow">
       <div class="brand">OBCH</div>
-      <div class="title">لیست قیمت مصرف‌کننده محصولات</div>
     </div>
 
-    <div class="sheet">
-      <table>
-        <thead>
-          <tr>
-            <th style="width:80px">ردیف</th>
-            <th style="width:92px">تصویر</th>
-            <th>توضیحات محصول</th>
-            <th style="width:180px">قیمت مصرف‌کننده</th>
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th class="colIndex">ردیف</th>
+          <th class="colImage">تصویر محصول</th>
+          <th class="colName">نام محصول</th>
+          <th class="colPrice">قیمت (تومان)</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>
 
-    <div class="buttons">
-      <button class="printBtn" onclick="window.print()">چاپ / ذخیره به PDF</button>
-      <button class="backBtn" onclick="if(window.opener){window.opener.focus();} window.close();">بازگشت</button>
-    </div>
-    <div class="note">در پنجره چاپ، گزینه Save as PDF را انتخاب کنید.</div>
+  <div class="buttons">
+    <button class="printBtn" onclick="window.print()">چاپ / ذخیره به PDF</button>
+    <button class="backBtn" onclick="if(window.opener){window.opener.focus();} window.close();">بازگشت</button>
   </div>
 </body>
 </html>`);
