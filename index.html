@@ -161,6 +161,30 @@ input:focus{
 }
 
 .rateRow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}
+.dateRow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+}
+select{
+  width:100%;
+  border:1px solid var(--silver-4);
+  border-radius:16px;
+  padding:13px 14px;
+  background:#fff;
+  color:var(--ink);
+  outline:none;
+  font:inherit;
+  font-family:'IRANSansX',Tahoma,Arial,sans-serif;
+}
+select:focus{
+  border-color:var(--red);
+  box-shadow:0 0 0 4px rgba(184,15,34,.10);
+}
+@media(max-width:700px){
+  .dateRow{grid-template-columns:1fr}
+}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 
 .btn{
@@ -313,6 +337,33 @@ tr:last-child td{border-bottom:0}
       </div>
       <button class="btn secondary" id="settingsBtn" type="button">⚙ تنظیمات رمز</button>
     </div>
+
+    <div class="dateRow">
+      <div>
+        <label for="priceMonth">ماه لیست قیمت</label>
+        <select id="priceMonth">
+          <option value="فروردین">فروردین</option>
+          <option value="اردیبهشت">اردیبهشت</option>
+          <option value="خرداد">خرداد</option>
+          <option value="تیر">تیر</option>
+          <option value="مرداد">مرداد</option>
+          <option value="شهریور">شهریور</option>
+          <option value="مهر">مهر</option>
+          <option value="آبان">آبان</option>
+          <option value="آذر">آذر</option>
+          <option value="دی">دی</option>
+          <option value="بهمن">بهمن</option>
+          <option value="اسفند">اسفند</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="priceYear">سال لیست قیمت</label>
+        <input id="priceYear" type="number" inputmode="numeric" min="1300" max="1600" step="1" value="1405">
+      </div>
+    </div>
+
+    <div class="note">عنوان PDF به‌صورت خودکار از ماه و سال انتخاب‌شده ساخته می‌شود.</div>
     <div class="note">قیمت محصول = قیمت دلاری × نرخ دلار</div>
   </section>
 
@@ -436,6 +487,8 @@ const $ = id => document.getElementById(id);
 const PRODUCTS_KEY = "obch_products_v4";
 const RATE_KEY = "obch_rate_v4";
 const PASS_KEY = "obch_edit_password_v4";
+const MONTH_KEY = "obch_price_month_v1";
+const YEAR_KEY = "obch_price_year_v1";
 const DEFAULT_RATE = 234000;
 const DEFAULT_PASS = "1234";
 
@@ -475,6 +528,20 @@ function formatPdfNumber(n){
   const en = Number(n).toLocaleString("en-US");
   const faDigits = "۰۱۲۳۴۵۶۷۸۹";
   return en.replace(/\d/g, d => faDigits[d]);
+}
+function toPersianDigits(value){
+  const faDigits = "۰۱۲۳۴۵۶۷۸۹";
+  return String(value).replace(/\d/g, d => faDigits[d]);
+}
+function getPriceMonth(){
+  return $("priceMonth").value || "شهریور";
+}
+function getPriceYear(){
+  const y = $("priceYear").value.trim();
+  return y || "1405";
+}
+function getPdfPriceTitle(){
+  return "لیست قیمت " + getPriceMonth() + " ماه " + toPersianDigits(getPriceYear());
 }
 function esc(s){
   return String(s).replace(/[&<>"']/g, ch => ({
@@ -645,6 +712,17 @@ $("rate").addEventListener("input", ()=>{
   render();
 });
 
+$("priceMonth").value = localStorage.getItem(MONTH_KEY) || "شهریور";
+$("priceYear").value = localStorage.getItem(YEAR_KEY) || "1405";
+
+$("priceMonth").addEventListener("change", ()=>{
+  localStorage.setItem(MONTH_KEY, getPriceMonth());
+});
+
+$("priceYear").addEventListener("input", ()=>{
+  localStorage.setItem(YEAR_KEY, getPriceYear());
+});
+
 $("pdfBtn").addEventListener("click", ()=>{
   const popup = window.open("", "_blank");
   if(!popup){
@@ -653,6 +731,7 @@ $("pdfBtn").addEventListener("click", ()=>{
   }
 
   const rate = getRate();
+  const pdfTitle = getPdfPriceTitle();
   const rows = products.map((p,i)=>{
     const price = Math.round(Number(p.usd) * rate);
     const imageCell = p.image
@@ -671,7 +750,7 @@ $("pdfBtn").addEventListener("click", ()=>{
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>OBCH - لیست قیمت شهریور ماه ۱۴۰۵</title>
+<title>OBCH - ${pdfTitle}</title>
 <style>
 @font-face{
   font-family:'IRANSansX';
@@ -817,7 +896,7 @@ button{
 </head>
 <body>
   <div class="page">
-    <div class="topTitle">لیست قیمت شهریور ماه ۱۴۰۵</div>
+    <div class="topTitle">${pdfTitle}</div>
 
     <div class="brandRow">
       <div class="brand">OBCH</div>
