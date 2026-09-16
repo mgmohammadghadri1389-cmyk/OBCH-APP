@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#B80F22">
 <title>OBCH | مدیریت قیمت محصولات</title>
+
 <style>
 @font-face{
   font-family:'IRANSansX';
@@ -33,26 +34,37 @@
 }
 
 *{box-sizing:border-box}
+
 html,body{
   margin:0;
   padding:0;
   min-height:100%;
   font-family:'IRANSansX',Tahoma,Arial,sans-serif;
 }
+
 body{
   color:var(--ink);
   background:
-    radial-gradient(circle at top right, rgba(184,15,34,.09), transparent 26%),
-    radial-gradient(circle at bottom left, rgba(180,180,188,.26), transparent 28%),
+    radial-gradient(circle at top right,rgba(184,15,34,.09),transparent 26%),
+    radial-gradient(circle at bottom left,rgba(180,180,188,.26),transparent 28%),
     linear-gradient(145deg,#FCFCFD 0%,#F2F3F6 50%,#FBFBFC 100%);
   overflow-x:hidden;
 }
 
-button,input{font:inherit;font-family:'IRANSansX',Tahoma,Arial,sans-serif}
+button,input,select{
+  font:inherit;
+  font-family:'IRANSansX',Tahoma,Arial,sans-serif;
+}
+
 button{cursor:pointer}
 
-.wrap{max-width:1140px;margin:auto;padding:18px}
+.wrap{
+  max-width:1140px;
+  margin:auto;
+  padding:18px;
+}
 
+/* ورود */
 .textSplash{
   position:fixed;
   inset:0;
@@ -61,11 +73,17 @@ button{cursor:pointer}
   align-items:center;
   justify-content:center;
   background:
-    radial-gradient(circle at 50% 35%, rgba(184,15,34,.16), transparent 32%),
+    radial-gradient(circle at 50% 35%,rgba(184,15,34,.16),transparent 32%),
     linear-gradient(140deg,#E9E9ED 0%,#C9CBD2 45%,#9DA3AE 100%);
   animation:splashOut .65s ease 2.6s forwards;
 }
-.textSplashBox{text-align:center;color:var(--ink);padding:24px}
+
+.textSplashBox{
+  text-align:center;
+  color:var(--ink);
+  padding:24px;
+}
+
 .textSplashEn{
   font-size:34px;
   font-weight:900;
@@ -75,12 +93,17 @@ button{cursor:pointer}
   transform:translateY(14px);
   animation:introUp .6s ease .15s forwards;
 }
+
 .textSplashLine{
-  width:0;height:3px;margin:16px auto 0;border-radius:99px;
+  width:0;
+  height:3px;
+  margin:16px auto 0;
+  border-radius:99px;
   background:linear-gradient(90deg,transparent,var(--red),transparent);
   box-shadow:0 0 14px rgba(184,15,34,.24);
   animation:introLine .6s ease .6s forwards;
 }
+
 .textSplashWelcome{
   margin-top:15px;
   font-size:15px;
@@ -89,15 +112,26 @@ button{cursor:pointer}
   opacity:0;
   animation:introFade .5s ease 1s forwards;
 }
-@keyframes introUp{to{opacity:1;transform:translateY(0)}}
-@keyframes introLine{to{width:210px}}
-@keyframes introFade{to{opacity:1}}
+
+@keyframes introUp{
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes introLine{
+  to{width:210px}
+}
+
+@keyframes introFade{
+  to{opacity:1}
+}
+
 @keyframes splashOut{
   0%{opacity:1;visibility:visible;pointer-events:auto}
   99%{opacity:0;visibility:visible;pointer-events:none}
   100%{opacity:0;visibility:hidden;pointer-events:none}
 }
 
+/* هدر */
 .header{
   position:relative;
   overflow:hidden;
@@ -106,67 +140,82 @@ button{cursor:pointer}
   margin-bottom:16px;
   color:var(--white);
   background:
-    linear-gradient(135deg, rgba(34,37,44,.92), rgba(95,101,112,.84)),
-    linear-gradient(135deg, #F3F3F6, #C6CAD3);
+    linear-gradient(135deg,rgba(34,37,44,.92),rgba(95,101,112,.84)),
+    linear-gradient(135deg,#F3F3F6,#C6CAD3);
   border:1px solid rgba(255,255,255,.48);
   box-shadow:0 22px 60px rgba(33,36,43,.18);
 }
+
 .header::before{
   content:"";
   position:absolute;
   inset:auto -40px -70px auto;
-  width:220px;height:220px;border-radius:50%;
-  background:radial-gradient(circle, rgba(184,15,34,.95) 0%, rgba(184,15,34,.35) 42%, transparent 72%);
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(184,15,34,.95) 0%,
+    rgba(184,15,34,.35) 42%,
+    transparent 72%
+  );
   filter:blur(8px);
   opacity:.72;
 }
+
 .header::after{
   content:"";
   position:absolute;
   inset:-40px auto auto -40px;
-  width:180px;height:180px;border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,.16) 0%, transparent 70%);
-}
-.brand{position:relative;z-index:1;font-size:33px;font-weight:900;letter-spacing:3px}
-.subtitle{position:relative;z-index:1;margin-top:8px;font-size:14px;opacity:.96}
-.brandTag{
-  position:relative;z-index:1;display:inline-flex;gap:8px;align-items:center;
-  margin-top:14px;padding:8px 14px;border-radius:999px;
-  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
-  font-size:12px;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(255,255,255,.16) 0%,
+    transparent 70%
+  );
 }
 
+.brand{
+  position:relative;
+  z-index:1;
+  font-size:33px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.subtitle{
+  position:relative;
+  z-index:1;
+  margin-top:8px;
+  font-size:14px;
+  opacity:.96;
+}
+
+/* کارت */
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,248,249,.92));
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.95),
+    rgba(248,248,249,.92)
+  );
   border:1px solid var(--silver-3);
   border-radius:24px;
   padding:18px;
   margin-bottom:15px;
   box-shadow:var(--shadow);
 }
-label{display:block;font-size:14px;font-weight:700;margin-bottom:8px;color:#383D46}
-input{
-  width:100%;
-  border:1px solid var(--silver-4);
-  border-radius:16px;
-  padding:13px 14px;
-  background:#fff;
-  color:var(--ink);
-  outline:none;
-  transition:border-color .2s ease, box-shadow .2s ease, transform .15s ease;
-}
-input:focus{
-  border-color:var(--red);
-  box-shadow:0 0 0 4px rgba(184,15,34,.10);
+
+label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:8px;
+  color:#383D46;
 }
 
-.rateRow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}
-.dateRow{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:12px;
-}
+input,
 select{
   width:100%;
   border:1px solid var(--silver-4);
@@ -175,143 +224,276 @@ select{
   background:#fff;
   color:var(--ink);
   outline:none;
-  font:inherit;
-  font-family:'IRANSansX',Tahoma,Arial,sans-serif;
 }
+
+input:focus,
 select:focus{
   border-color:var(--red);
   box-shadow:0 0 0 4px rgba(184,15,34,.10);
 }
-@media(max-width:700px){
-  .dateRow{grid-template-columns:1fr}
-}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 
+.rateRow{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  align-items:end;
+}
+
+.dateRow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+
+/* دکمه */
 .btn{
   border:0;
   border-radius:15px;
   padding:11px 16px;
   font-weight:700;
-  transition:transform .15s ease,box-shadow .2s ease,opacity .2s ease;
+  transition:transform .15s ease,box-shadow .2s ease;
 }
-.btn:hover{transform:translateY(-1px)}
-.btn:active{transform:scale(.98)}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+.btn:active{
+  transform:scale(.98);
+}
 
 .primary{
   color:#fff;
   background:linear-gradient(135deg,var(--red),var(--red-dark));
   box-shadow:0 10px 22px rgba(184,15,34,.22);
 }
+
 .secondary{
   color:#2D323B;
   background:linear-gradient(135deg,#FFFFFF,#ECECEF);
   border:1px solid var(--silver-3);
   box-shadow:0 8px 18px rgba(80,85,95,.08);
 }
+
 .danger{
   color:var(--danger);
   background:var(--danger-soft);
   border:1px solid rgba(201,31,55,.20);
 }
-.small{padding:8px 12px;font-size:13px}
+
+.small{
+  padding:8px 12px;
+  font-size:13px;
+}
+
 .editBtn{
   background:var(--green-soft);
   color:var(--green);
   border:1px solid rgba(31,157,85,.22);
 }
 
-.note{font-size:12px;color:var(--ink-soft);margin-top:7px}
+.note{
+  font-size:12px;
+  color:var(--ink-soft);
+  margin-top:7px;
+}
 
+/* جدول */
 .tableWrap{
   overflow:auto;
   border:1px solid var(--silver-3);
   border-radius:18px;
   background:#fff;
 }
-table{width:100%;border-collapse:collapse;min-width:920px}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:920px;
+}
+
 th,td{
   padding:13px 10px;
   border-bottom:1px solid #ECECF0;
   white-space:nowrap;
 }
+
 th{
   background:linear-gradient(180deg,#FAFAFB,#ECECEF);
   color:#3A3F48;
   font-size:14px;
   text-align:center;
 }
+
 td{
   text-align:center;
   background:#fff;
 }
-tbody tr:hover td{background:#FCF7F8}
-td.product{text-align:right;white-space:normal}
-tr:last-child td{border-bottom:0}
-.empty{text-align:center;color:#737986;padding:30px}
 
+tbody tr:hover td{
+  background:#FCF7F8;
+}
+
+td.product{
+  text-align:right;
+  white-space:normal;
+}
+
+tr:last-child td{
+  border-bottom:0;
+}
+
+.empty{
+  text-align:center;
+  color:#737986;
+  padding:30px;
+}
+
+/* عکس محصول */
 .productThumb{
-  width:52px;height:52px;object-fit:cover;border-radius:12px;
-  border:1px solid #DDDDE3;background:#fff;display:block;margin:auto;
+  width:52px;
+  height:52px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid #DDDDE3;
+  background:#fff;
+  display:block;
+  margin:auto;
   box-shadow:0 4px 14px rgba(80,85,95,.10);
 }
-.productThumbPlaceholder{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:52px;height:52px;border-radius:12px;background:#F4F4F6;color:#8A909D;border:1px solid #E0E0E5;
-  margin:auto;font-size:12px
-}
-.imagePreviewWrap{margin-top:10px;display:flex;justify-content:flex-start}
-.imagePreview{
-  width:94px;height:94px;object-fit:cover;border-radius:16px;
-  border:1px solid #DDDDE3;background:#fff;display:none;box-shadow:0 6px 16px rgba(80,85,95,.11);
-}
-.imageHint{font-size:12px;color:#717783;margin-top:6px}
 
-.modalBack{
-  position:fixed;inset:0;display:none;align-items:center;justify-content:center;
-  padding:18px;z-index:20;background:rgba(36,40,48,.40);backdrop-filter:blur(8px);
+.productThumbPlaceholder{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  border-radius:12px;
+  background:#F4F4F6;
+  color:#8A909D;
+  border:1px solid #E0E0E5;
+  margin:auto;
+  font-size:12px;
 }
-.modalBack.show{display:flex}
+
+.imagePreviewWrap{
+  margin-top:10px;
+  display:flex;
+  justify-content:flex-start;
+}
+
+.imagePreview{
+  width:94px;
+  height:94px;
+  object-fit:cover;
+  border-radius:16px;
+  border:1px solid #DDDDE3;
+  background:#fff;
+  display:none;
+  box-shadow:0 6px 16px rgba(80,85,95,.11);
+}
+
+.imageHint{
+  font-size:12px;
+  color:#717783;
+  margin-top:6px;
+}
+
+/* مودال */
+.modalBack{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:20;
+  background:rgba(36,40,48,.40);
+  backdrop-filter:blur(8px);
+}
+
+.modalBack.show{
+  display:flex;
+}
+
 .modal{
-  width:min(480px,100%);position:relative;
+  width:min(480px,100%);
+  position:relative;
   background:linear-gradient(180deg,#FFFFFF,#F6F6F8);
-  border:1px solid #E3E3E8;border-radius:26px;padding:22px;
+  border:1px solid #E3E3E8;
+  border-radius:26px;
+  padding:22px;
   box-shadow:0 24px 70px rgba(26,30,38,.18);
 }
-.modal h2{margin:0 0 16px;color:#343942;font-size:20px}
-.close{
-  position:absolute;left:14px;top:10px;border:0;background:transparent;
-  font-size:28px;color:#7D8390
+
+.modal h2{
+  margin:0 0 16px;
+  color:#343942;
+  font-size:20px;
 }
-.field{margin-bottom:13px}
-.modalActions{display:flex;gap:8px;justify-content:flex-start;margin-top:16px}
-.footer{text-align:center;color:#737986;font-size:12px;padding:4px 0 15px}
+
+.close{
+  position:absolute;
+  left:14px;
+  top:10px;
+  border:0;
+  background:transparent;
+  font-size:28px;
+  color:#7D8390;
+}
+
+.field{
+  margin-bottom:13px;
+}
+
+.modalActions{
+  display:flex;
+  gap:8px;
+  justify-content:flex-start;
+  margin-top:16px;
+}
+
+.footer{
+  text-align:center;
+  color:#737986;
+  font-size:12px;
+  padding:4px 0 15px;
+}
 
 @media(max-width:700px){
   .wrap{padding:10px}
-  .header{padding:21px 18px;border-radius:22px}
+
+  .header{
+    padding:21px 18px;
+    border-radius:22px;
+  }
+
   .brand{font-size:28px}
-  .rateRow{grid-template-columns:1fr}
-  .actions .btn{flex:1}
-  .card{border-radius:20px}
-}
-@media print{
-  body{background:#fff;color:#111}
-  .textSplash,.rateCard,.actions,.footer,.noPrint,.ops{display:none!important}
-  th:nth-child(2),td:nth-child(2){display:none!important}
-  .wrap{max-width:none;padding:0}
-  .header{background:#fff;color:#111;box-shadow:none;border:0;padding:0 0 10px}
-  .header::before,.header::after{display:none}
-  .brand{color:var(--red)}
-  .subtitle{color:#555}
-  .card{border:0;box-shadow:none;padding:0;background:#fff}
-  .tableWrap{overflow:visible;border:1px solid #bbb;background:#fff}
-  table{min-width:0;width:100%}
-  th{background:#eee!important;color:#111}
-  td{background:#fff!important}
-  th,td{border-color:#bbb;color:#111}
+
+  .rateRow,
+  .dateRow{
+    grid-template-columns:1fr;
+  }
+
+  .actions .btn{
+    flex:1;
+  }
+
+  .card{
+    border-radius:20px;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <div class="textSplash" aria-hidden="true">
@@ -323,160 +505,428 @@ tr:last-child td{border-bottom:0}
 </div>
 
 <div class="wrap">
-  <header class="header">
-    <div class="brand">OBCH</div>
-    <div class="subtitle">مدیریت و محاسبه قیمت محصولات</div>
-    
-  </header>
 
-  <section class="card rateCard">
-    <div class="rateRow">
-      <div>
-        <label for="rate">قیمت دلار به تومان</label>
-        <input id="rate" type="number" inputmode="numeric" min="0" step="1" value="234000">
-      </div>
-      <button class="btn secondary" id="settingsBtn" type="button">⚙ تنظیمات رمز</button>
+<header class="header">
+  <div class="brand">OBCH</div>
+  <div class="subtitle">مدیریت و محاسبه قیمت محصولات</div>
+</header>
+
+<section class="card rateCard">
+
+  <div class="rateRow">
+    <div>
+      <label for="rate">قیمت دلار به تومان</label>
+
+      <input
+        id="rate"
+        type="number"
+        inputmode="numeric"
+        min="0"
+        step="1"
+        value="234000"
+      >
     </div>
 
-    <div class="dateRow">
-      <div>
-        <label for="priceMonth">ماه لیست قیمت</label>
-        <select id="priceMonth">
-          <option value="فروردین">فروردین</option>
-          <option value="اردیبهشت">اردیبهشت</option>
-          <option value="خرداد">خرداد</option>
-          <option value="تیر">تیر</option>
-          <option value="مرداد">مرداد</option>
-          <option value="شهریور">شهریور</option>
-          <option value="مهر">مهر</option>
-          <option value="آبان">آبان</option>
-          <option value="آذر">آذر</option>
-          <option value="دی">دی</option>
-          <option value="بهمن">بهمن</option>
-          <option value="اسفند">اسفند</option>
-        </select>
-      </div>
+    <button
+      class="btn secondary"
+      id="settingsBtn"
+      type="button"
+    >
+      ⚙ تنظیمات رمز
+    </button>
+  </div>
 
-      <div>
-        <label for="priceYear">سال لیست قیمت</label>
-        <input id="priceYear" type="number" inputmode="numeric" min="1300" max="1600" step="1" value="1405">
-      </div>
+  <div class="dateRow">
+
+    <div>
+      <label for="priceMonth">ماه لیست قیمت</label>
+
+      <select id="priceMonth">
+        <option value="فروردین">فروردین</option>
+        <option value="اردیبهشت">اردیبهشت</option>
+        <option value="خرداد">خرداد</option>
+        <option value="تیر">تیر</option>
+        <option value="مرداد">مرداد</option>
+        <option value="شهریور">شهریور</option>
+        <option value="مهر">مهر</option>
+        <option value="آبان">آبان</option>
+        <option value="آذر">آذر</option>
+        <option value="دی">دی</option>
+        <option value="بهمن">بهمن</option>
+        <option value="اسفند">اسفند</option>
+      </select>
     </div>
 
-    <div class="note">عنوان PDF به‌صورت خودکار از ماه و سال انتخاب‌شده ساخته می‌شود.</div>
-    <div class="note">قیمت محصول = قیمت دلاری × نرخ دلار</div>
-  </section>
+    <div>
+      <label for="priceYear">سال لیست قیمت</label>
 
-  <section class="card">
-    <div class="actions">
-      <button class="btn primary" id="addBtn" type="button">＋ افزودن محصول</button>
-      <button class="btn secondary" id="pdfBtn" type="button">↓ خروجی PDF لیست</button>
+      <input
+        id="priceYear"
+        type="number"
+        inputmode="numeric"
+        min="1300"
+        max="1600"
+        step="1"
+        value="1405"
+      >
     </div>
 
-    <div class="tableWrap">
-      <table>
-        <thead>
-          <tr>
-            <th>ردیف</th>
-            <th>تصویر</th>
-            <th>محصول</th>
-            <th>دلار</th>
-            <th>قیمت به تومان</th>
-            <th class="ops">عملیات</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-      <div id="empty" class="empty" style="display:none">محصولی ثبت نشده است.</div>
-    </div>
-  </section>
+  </div>
 
-  <div class="footer">اطلاعات، رمز و عکس‌ها در همین مرورگر ذخیره می‌شوند.</div>
+  <div class="note">
+    عنوان PDF به‌صورت خودکار از ماه و سال انتخاب‌شده ساخته می‌شود.
+  </div>
+
+  <div class="note">
+    قیمت محصول = قیمت دلاری × نرخ دلار
+  </div>
+
+</section>
+
+<section class="card">
+
+  <div class="actions">
+
+    <button
+      class="btn primary"
+      id="addBtn"
+      type="button"
+    >
+      ＋ افزودن محصول
+    </button>
+
+    <button
+      class="btn secondary"
+      id="pdfBtn"
+      type="button"
+    >
+      ↓ خروجی PDF لیست
+    </button>
+
+  </div>
+
+  <div class="tableWrap">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>ردیف</th>
+          <th>تصویر</th>
+          <th>محصول</th>
+          <th>دلار</th>
+          <th>قیمت به تومان</th>
+          <th>عملیات</th>
+        </tr>
+      </thead>
+
+      <tbody id="tbody"></tbody>
+
+    </table>
+
+    <div
+      id="empty"
+      class="empty"
+      style="display:none"
+    >
+      محصولی ثبت نشده است.
+    </div>
+
+  </div>
+
+</section>
+
+<div class="footer">
+  اطلاعات، رمز و عکس‌ها در همین مرورگر ذخیره می‌شوند.
 </div>
 
+</div>
+
+<!-- افزودن / ویرایش -->
 <div class="modalBack" id="productModal">
+
   <div class="modal">
-    <button class="close" data-close="productModal" type="button">×</button>
-    <h2 id="productTitle">افزودن محصول</h2>
+
+    <button
+      class="close"
+      data-close="productModal"
+      type="button"
+    >
+      ×
+    </button>
+
+    <h2 id="productTitle">
+      افزودن محصول
+    </h2>
 
     <div class="field">
-      <label for="nameInput">نام محصول</label>
-      <input id="nameInput" type="text" autocomplete="off">
+
+      <label for="nameInput">
+        نام محصول
+      </label>
+
+      <input
+        id="nameInput"
+        type="text"
+        autocomplete="off"
+      >
+
     </div>
 
     <div class="field">
-      <label for="usdInput">قیمت به دلار</label>
-      <input id="usdInput" type="number" inputmode="decimal" min="0" step="0.001">
+
+      <label for="usdInput">
+        قیمت به دلار
+      </label>
+
+      <input
+        id="usdInput"
+        type="number"
+        inputmode="decimal"
+        min="0"
+        step="0.001"
+      >
+
     </div>
 
     <div class="field">
-      <label for="imageInput">عکس محصول</label>
-      <input id="imageInput" type="file" accept="image/*">
-      <div class="imageHint">عکس در همین مرورگر ذخیره می‌شود.</div>
-      <div class="imagePreviewWrap">
-        <img id="imagePreview" class="imagePreview" alt="پیش‌نمایش عکس محصول">
+
+      <label for="imageInput">
+        عکس محصول
+      </label>
+
+      <input
+        id="imageInput"
+        type="file"
+        accept="image/*"
+      >
+
+      <div class="imageHint">
+        عکس در همین مرورگر ذخیره می‌شود.
       </div>
+
+      <div class="imagePreviewWrap">
+
+        <img
+          id="imagePreview"
+          class="imagePreview"
+          alt="پیش‌نمایش عکس محصول"
+        >
+
+      </div>
+
     </div>
 
     <div class="modalActions">
-      <button class="btn primary" id="saveProduct" type="button">ثبت</button>
-      <button class="btn secondary" data-close="productModal" type="button">انصراف</button>
+
+      <button
+        class="btn primary"
+        id="saveProduct"
+        type="button"
+      >
+        ثبت
+      </button>
+
+      <button
+        class="btn secondary"
+        data-close="productModal"
+        type="button"
+      >
+        انصراف
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
+<!-- رمز ویرایش -->
 <div class="modalBack" id="passwordModal">
+
   <div class="modal">
-    <button class="close" data-close="passwordModal" type="button">×</button>
-    <h2>رمز عبور ویرایش</h2>
+
+    <button
+      class="close"
+      data-close="passwordModal"
+      type="button"
+    >
+      ×
+    </button>
+
+    <h2>
+      رمز عبور ویرایش
+    </h2>
+
     <div class="field">
-      <label for="passwordInput">رمز فعلی</label>
-      <input id="passwordInput" type="password" inputmode="numeric" autocomplete="current-password">
+
+      <label for="passwordInput">
+        رمز فعلی
+      </label>
+
+      <input
+        id="passwordInput"
+        type="password"
+        inputmode="numeric"
+        autocomplete="current-password"
+      >
+
     </div>
+
     <div class="modalActions">
-      <button class="btn primary" id="passwordOk" type="button">تأیید</button>
-      <button class="btn secondary" data-close="passwordModal" type="button">انصراف</button>
+
+      <button
+        class="btn primary"
+        id="passwordOk"
+        type="button"
+      >
+        تأیید
+      </button>
+
+      <button
+        class="btn secondary"
+        data-close="passwordModal"
+        type="button"
+      >
+        انصراف
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
+<!-- حذف -->
 <div class="modalBack" id="deleteModal">
+
   <div class="modal">
-    <button class="close" data-close="deleteModal" type="button">×</button>
-    <h2>حذف محصول</h2>
-    <div id="deleteMessage" style="line-height:1.9"></div>
+
+    <button
+      class="close"
+      data-close="deleteModal"
+      type="button"
+    >
+      ×
+    </button>
+
+    <h2>
+      حذف محصول
+    </h2>
+
+    <div
+      id="deleteMessage"
+      style="line-height:1.9"
+    ></div>
+
     <div class="modalActions">
-      <button class="btn danger" id="deleteOk" type="button">حذف</button>
-      <button class="btn secondary" data-close="deleteModal" type="button">انصراف</button>
+
+      <button
+        class="btn danger"
+        id="deleteOk"
+        type="button"
+      >
+        حذف
+      </button>
+
+      <button
+        class="btn secondary"
+        data-close="deleteModal"
+        type="button"
+      >
+        انصراف
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
+<!-- تنظیم رمز -->
 <div class="modalBack" id="settingsModal">
+
   <div class="modal">
-    <button class="close" data-close="settingsModal" type="button">×</button>
-    <h2>تغییر رمز ویرایش</h2>
+
+    <button
+      class="close"
+      data-close="settingsModal"
+      type="button"
+    >
+      ×
+    </button>
+
+    <h2>
+      تغییر رمز ویرایش
+    </h2>
 
     <div class="field">
-      <label for="oldPass">رمز فعلی</label>
-      <input id="oldPass" type="password" inputmode="numeric" autocomplete="current-password">
+
+      <label for="oldPass">
+        رمز فعلی
+      </label>
+
+      <input
+        id="oldPass"
+        type="password"
+        inputmode="numeric"
+        autocomplete="current-password"
+      >
+
     </div>
 
     <div class="field">
-      <label for="newPass">رمز جدید</label>
-      <input id="newPass" type="password" inputmode="numeric" autocomplete="new-password">
+
+      <label for="newPass">
+        رمز جدید
+      </label>
+
+      <input
+        id="newPass"
+        type="password"
+        inputmode="numeric"
+        autocomplete="new-password"
+      >
+
     </div>
 
     <div class="field">
-      <label for="repeatPass">تکرار رمز جدید</label>
-      <input id="repeatPass" type="password" inputmode="numeric" autocomplete="new-password">
+
+      <label for="repeatPass">
+        تکرار رمز جدید
+      </label>
+
+      <input
+        id="repeatPass"
+        type="password"
+        inputmode="numeric"
+        autocomplete="new-password"
+      >
+
     </div>
 
     <div class="modalActions">
-      <button class="btn primary" id="changePass" type="button">ثبت رمز جدید</button>
-      <button class="btn secondary" data-close="settingsModal" type="button">انصراف</button>
+
+      <button
+        class="btn primary"
+        id="changePass"
+        type="button"
+      >
+        ثبت رمز جدید
+      </button>
+
+      <button
+        class="btn secondary"
+        data-close="settingsModal"
+        type="button"
+      >
+        انصراف
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
 <script>
@@ -489,6 +939,7 @@ const RATE_KEY = "obch_rate_v4";
 const PASS_KEY = "obch_edit_password_v4";
 const MONTH_KEY = "obch_price_month_v1";
 const YEAR_KEY = "obch_price_year_v1";
+
 const DEFAULT_RATE = 234000;
 const DEFAULT_PASS = "1234";
 
@@ -500,258 +951,787 @@ const defaultProducts = [
 ];
 
 let products = loadProducts();
+
 let editIndex = -1;
 let pendingEditIndex = -1;
 let deleteIndex = -1;
 let currentImageData = "";
 
+/* بارگذاری */
 function loadProducts(){
+
   try{
+
     const raw = localStorage.getItem(PRODUCTS_KEY);
+
     if(raw){
+
       const parsed = JSON.parse(raw);
+
       if(Array.isArray(parsed)){
+
         return parsed.map(p=>({
-          name:p.name||"",
-          usd:Number(p.usd)||0,
-          image:p.image||""
+
+          name:p.name || "",
+          usd:Number(p.usd) || 0,
+          image:p.image || ""
+
         }));
+
       }
+
     }
+
   }catch(e){}
-  return defaultProducts.map(x=>({name:x[0], usd:x[1], image:""}));
+
+  return defaultProducts.map(x=>({
+    name:x[0],
+    usd:x[1],
+    image:""
+  }));
+
 }
-function saveProducts(){ localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products)); }
-function getRate(){ return Number($("rate").value) || 0; }
-function formatNumber(n){ return Number(n).toLocaleString("fa-IR"); }
+
+function saveProducts(){
+
+  localStorage.setItem(
+    PRODUCTS_KEY,
+    JSON.stringify(products)
+  );
+
+}
+
+function getRate(){
+
+  return Number($("rate").value) || 0;
+
+}
+
+function formatNumber(n){
+
+  return Number(n).toLocaleString("fa-IR");
+
+}
+
+/* اعداد فارسی PDF با کامای استاندارد */
 function formatPdfNumber(n){
+
   const en = Number(n).toLocaleString("en-US");
+
   const faDigits = "۰۱۲۳۴۵۶۷۸۹";
-  return en.replace(/\d/g, d => faDigits[d]);
+
+  return en.replace(
+    /\d/g,
+    d => faDigits[d]
+  );
+
 }
+
 function toPersianDigits(value){
+
   const faDigits = "۰۱۲۳۴۵۶۷۸۹";
-  return String(value).replace(/\d/g, d => faDigits[d]);
+
+  return String(value).replace(
+    /\d/g,
+    d => faDigits[d]
+  );
+
 }
+
+/* ماه و سال */
 function getPriceMonth(){
+
   return $("priceMonth").value || "شهریور";
+
 }
+
 function getPriceYear(){
-  const y = $("priceYear").value.trim();
-  return y || "1405";
+
+  const year = $("priceYear").value.trim();
+
+  return year || "1405";
+
 }
+
 function getPdfPriceTitle(){
-  return "لیست قیمت " + getPriceMonth() + " ماه " + toPersianDigits(getPriceYear());
+
+  return (
+    "لیست قیمت " +
+    getPriceMonth() +
+    " ماه " +
+    toPersianDigits(getPriceYear())
+  );
+
 }
+
+/* جلوگیری از تزریق HTML */
 function esc(s){
-  return String(s).replace(/[&<>"']/g, ch => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[ch]));
+
+  return String(s).replace(
+    /[&<>"']/g,
+    ch=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    }[ch])
+  );
+
 }
+
+/* عکس */
 function updateImagePreview(src){
+
   const img = $("imagePreview");
+
   if(src){
+
     img.src = src;
     img.style.display = "block";
+
   }else{
+
     img.removeAttribute("src");
     img.style.display = "none";
-  }
-}
-function openModal(id){ $(id).classList.add("show"); }
-function closeModal(id){ $(id).classList.remove("show"); }
 
+  }
+
+}
+
+/* مودال */
+function openModal(id){
+
+  $(id).classList.add("show");
+
+}
+
+function closeModal(id){
+
+  $(id).classList.remove("show");
+
+}
+
+/* نمایش جدول */
 function render(){
+
   const body = $("tbody");
+
   body.innerHTML = "";
-  $("empty").style.display = products.length ? "none" : "block";
+
+  $("empty").style.display =
+    products.length
+      ? "none"
+      : "block";
 
   products.forEach((p,i)=>{
-    const price = Math.round(Number(p.usd) * getRate());
-    const tr = document.createElement("tr");
-    const imageCell = p.image
-      ? '<img class="productThumb" src="'+p.image+'" alt="عکس محصول">'
-      : '<span class="productThumbPlaceholder">—</span>';
+
+    const price =
+      Math.round(
+        Number(p.usd) * getRate()
+      );
+
+    const tr =
+      document.createElement("tr");
+
+    const imageCell =
+      p.image
+        ? '<img class="productThumb" src="' +
+          p.image +
+          '" alt="عکس محصول">'
+        : '<span class="productThumbPlaceholder">—</span>';
 
     tr.innerHTML =
-      "<td>"+formatNumber(i+1)+"</td>"+
-      "<td>"+imageCell+"</td>"+
-      '<td class="product">'+esc(p.name)+"</td>"+
-      "<td>"+formatNumber(p.usd)+"</td>"+
-      "<td>"+formatNumber(price)+"</td>"+
-      '<td class="ops">'+
-        '<button class="btn small editBtn" type="button" data-action="edit" data-i="'+i+'">ویرایش</button> '+
-        '<button class="btn small danger deleteBtn" type="button" data-action="delete" data-i="'+i+'">حذف</button>'+
+
+      "<td>" +
+      formatNumber(i+1) +
+      "</td>" +
+
+      "<td>" +
+      imageCell +
+      "</td>" +
+
+      '<td class="product">' +
+      esc(p.name) +
+      "</td>" +
+
+      "<td>" +
+      formatNumber(p.usd) +
+      "</td>" +
+
+      "<td>" +
+      formatNumber(price) +
+      "</td>" +
+
+      '<td>' +
+
+      '<button class="btn small editBtn" ' +
+      'type="button" ' +
+      'data-i="' + i + '">' +
+      'ویرایش' +
+      '</button> ' +
+
+      '<button class="btn small danger deleteBtn" ' +
+      'type="button" ' +
+      'data-i="' + i + '">' +
+      'حذف' +
+      '</button>' +
+
       "</td>";
 
     body.appendChild(tr);
+
   });
+
 }
 
+/* افزودن */
 function openAdd(){
+
   editIndex = -1;
+
   currentImageData = "";
-  $("productTitle").textContent = "افزودن محصول";
+
+  $("productTitle").textContent =
+    "افزودن محصول";
+
   $("nameInput").value = "";
   $("usdInput").value = "";
   $("imageInput").value = "";
+
   updateImagePreview("");
+
   openModal("productModal");
-  setTimeout(()=>$("nameInput").focus(),50);
+
+  setTimeout(
+    ()=>$("nameInput").focus(),
+    50
+  );
+
 }
 
+/* ویرایش */
 function openEdit(i){
+
   pendingEditIndex = i;
+
   $("passwordInput").value = "";
+
   openModal("passwordModal");
-  setTimeout(()=>$("passwordInput").focus(),50);
+
+  setTimeout(
+    ()=>$("passwordInput").focus(),
+    50
+  );
+
 }
 
 function showEditForm(i){
+
   editIndex = i;
-  currentImageData = products[i].image || "";
-  $("productTitle").textContent = "ویرایش محصول";
-  $("nameInput").value = products[i].name;
-  $("usdInput").value = products[i].usd;
+
+  currentImageData =
+    products[i].image || "";
+
+  $("productTitle").textContent =
+    "ویرایش محصول";
+
+  $("nameInput").value =
+    products[i].name;
+
+  $("usdInput").value =
+    products[i].usd;
+
   $("imageInput").value = "";
-  updateImagePreview(currentImageData);
+
+  updateImagePreview(
+    currentImageData
+  );
+
   openModal("productModal");
-  setTimeout(()=>$("nameInput").focus(),50);
+
+  setTimeout(
+    ()=>$("nameInput").focus(),
+    50
+  );
+
 }
 
-$("addBtn").addEventListener("click", openAdd);
+/* افزودن */
+$("addBtn")
+.addEventListener(
+  "click",
+  openAdd
+);
 
-$("imageInput").addEventListener("change", e=>{
-  const file = e.target.files && e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    currentImageData = String(ev.target.result || "");
-    updateImagePreview(currentImageData);
-  };
-  reader.readAsDataURL(file);
-});
+/* انتخاب عکس */
+$("imageInput")
+.addEventListener(
+  "change",
+  e=>{
 
-$("saveProduct").addEventListener("click", ()=>{
-  const name = $("nameInput").value.trim();
-  const usd = Number($("usdInput").value);
+    const file =
+      e.target.files &&
+      e.target.files[0];
 
-  if(!name){ alert("نام محصول را وارد کنید."); return; }
-  if(!Number.isFinite(usd) || usd < 0){ alert("قیمت دلار را درست وارد کنید."); return; }
+    if(!file) return;
 
-  if(editIndex === -1){
-    products.push({name, usd, image: currentImageData || ""});
-  }else{
-    products[editIndex] = {name, usd, image: currentImageData || ""};
+    const reader =
+      new FileReader();
+
+    reader.onload =
+      event=>{
+
+        currentImageData =
+          String(
+            event.target.result || ""
+          );
+
+        updateImagePreview(
+          currentImageData
+        );
+
+      };
+
+    reader.readAsDataURL(file);
+
   }
+);
 
-  saveProducts();
-  render();
-  closeModal("productModal");
-});
+/* ذخیره محصول */
+$("saveProduct")
+.addEventListener(
+  "click",
+  ()=>{
 
-$("tbody").addEventListener("click", e=>{
-  const edit = e.target.closest(".editBtn");
-  const del = e.target.closest(".deleteBtn");
+    const name =
+      $("nameInput")
+      .value
+      .trim();
 
-  if(edit) openEdit(Number(edit.dataset.i));
+    const usd =
+      Number(
+        $("usdInput").value
+      );
 
-  if(del){
-    deleteIndex = Number(del.dataset.i);
-    $("deleteMessage").textContent = "آیا محصول «"+products[deleteIndex].name+"» حذف شود؟";
-    openModal("deleteModal");
-  }
-});
+    if(!name){
 
-$("passwordOk").addEventListener("click", ()=>{
-  const saved = localStorage.getItem(PASS_KEY) || DEFAULT_PASS;
-  if($("passwordInput").value !== saved){
-    alert("رمز عبور اشتباه است.");
-    return;
-  }
-  closeModal("passwordModal");
-  showEditForm(pendingEditIndex);
-});
+      alert(
+        "نام محصول را وارد کنید."
+      );
 
-$("deleteOk").addEventListener("click", ()=>{
-  if(deleteIndex >= 0){
-    products.splice(deleteIndex,1);
+      return;
+
+    }
+
+    if(
+      !Number.isFinite(usd) ||
+      usd < 0
+    ){
+
+      alert(
+        "قیمت دلار را درست وارد کنید."
+      );
+
+      return;
+
+    }
+
+    if(editIndex === -1){
+
+      products.push({
+
+        name,
+        usd,
+        image:
+          currentImageData || ""
+
+      });
+
+    }else{
+
+      products[editIndex] = {
+
+        name,
+        usd,
+        image:
+          currentImageData || ""
+
+      };
+
+    }
+
     saveProducts();
+
     render();
+
+    closeModal(
+      "productModal"
+    );
+
   }
-  deleteIndex = -1;
-  closeModal("deleteModal");
-});
+);
 
-$("settingsBtn").addEventListener("click", ()=>{
-  $("oldPass").value = "";
-  $("newPass").value = "";
-  $("repeatPass").value = "";
-  openModal("settingsModal");
-  setTimeout(()=>$("oldPass").focus(),50);
-});
+/* دکمه ویرایش و حذف */
+$("tbody")
+.addEventListener(
+  "click",
+  e=>{
 
-$("changePass").addEventListener("click", ()=>{
-  const saved = localStorage.getItem(PASS_KEY) || DEFAULT_PASS;
-  const old = $("oldPass").value;
-  const np = $("newPass").value;
-  const rp = $("repeatPass").value;
+    const edit =
+      e.target.closest(
+        ".editBtn"
+      );
 
-  if(old !== saved){ alert("رمز فعلی اشتباه است."); return; }
-  if(!np){ alert("رمز جدید را وارد کنید."); return; }
-  if(np !== rp){ alert("تکرار رمز جدید یکسان نیست."); return; }
+    const del =
+      e.target.closest(
+        ".deleteBtn"
+      );
 
-  localStorage.setItem(PASS_KEY,np);
-  closeModal("settingsModal");
-  alert("رمز ویرایش با موفقیت تغییر کرد.");
-});
+    if(edit){
 
-$("rate").value = localStorage.getItem(RATE_KEY) || DEFAULT_RATE;
-$("rate").addEventListener("input", ()=>{
-  localStorage.setItem(RATE_KEY, String(getRate()));
-  render();
-});
+      openEdit(
+        Number(
+          edit.dataset.i
+        )
+      );
 
-$("priceMonth").value = localStorage.getItem(MONTH_KEY) || "شهریور";
-$("priceYear").value = localStorage.getItem(YEAR_KEY) || "1405";
+    }
 
-$("priceMonth").addEventListener("change", ()=>{
-  localStorage.setItem(MONTH_KEY, getPriceMonth());
-});
+    if(del){
 
-$("priceYear").addEventListener("input", ()=>{
-  localStorage.setItem(YEAR_KEY, getPriceYear());
-});
+      deleteIndex =
+        Number(
+          del.dataset.i
+        );
 
-$("pdfBtn").addEventListener("click", ()=>{
-  const popup = window.open("", "_blank");
-  if(!popup){
-    alert("باز شدن پنجره جدید توسط مرورگر مسدود شده است. اجازه Pop-up را برای سایت فعال کنید.");
-    return;
+      $("deleteMessage")
+      .textContent =
+
+        "آیا محصول «" +
+        products[
+          deleteIndex
+        ].name +
+        "» حذف شود؟";
+
+      openModal(
+        "deleteModal"
+      );
+
+    }
+
   }
+);
 
-  const rate = getRate();
-  const pdfTitle = getPdfPriceTitle();
-  const rows = products.map((p,i)=>{
-    const price = Math.round(Number(p.usd) * rate);
-    const imageCell = p.image
-      ? '<img class="pdfThumb" src="'+p.image+'" alt="عکس محصول">'
-      : '<span class="pdfThumbPlaceholder">—</span>';
-    return "<tr>"+
-      '<td class="colIndex">'+formatPdfNumber(i+1)+"</td>"+
-      '<td class="colImage">'+imageCell+"</td>"+
-      '<td class="colName productName">'+esc(p.name)+"</td>"+
-      '<td class="colPrice price">'+formatPdfNumber(price)+"</td>"+
-      "</tr>";
-  }).join("");
+/* بررسی رمز */
+$("passwordOk")
+.addEventListener(
+  "click",
+  ()=>{
 
-  popup.document.open();
-  popup.document.write(`<!doctype html>
+    const saved =
+      localStorage.getItem(
+        PASS_KEY
+      ) ||
+      DEFAULT_PASS;
+
+    if(
+      $("passwordInput")
+      .value !== saved
+    ){
+
+      alert(
+        "رمز عبور اشتباه است."
+      );
+
+      return;
+
+    }
+
+    closeModal(
+      "passwordModal"
+    );
+
+    showEditForm(
+      pendingEditIndex
+    );
+
+  }
+);
+
+/* حذف */
+$("deleteOk")
+.addEventListener(
+  "click",
+  ()=>{
+
+    if(
+      deleteIndex >= 0
+    ){
+
+      products.splice(
+        deleteIndex,
+        1
+      );
+
+      saveProducts();
+
+      render();
+
+    }
+
+    deleteIndex = -1;
+
+    closeModal(
+      "deleteModal"
+    );
+
+  }
+);
+
+/* تنظیمات */
+$("settingsBtn")
+.addEventListener(
+  "click",
+  ()=>{
+
+    $("oldPass").value = "";
+    $("newPass").value = "";
+    $("repeatPass").value = "";
+
+    openModal(
+      "settingsModal"
+    );
+
+    setTimeout(
+      ()=>$("oldPass").focus(),
+      50
+    );
+
+  }
+);
+
+/* تغییر رمز */
+$("changePass")
+.addEventListener(
+  "click",
+  ()=>{
+
+    const saved =
+      localStorage.getItem(
+        PASS_KEY
+      ) ||
+      DEFAULT_PASS;
+
+    const old =
+      $("oldPass").value;
+
+    const newPass =
+      $("newPass").value;
+
+    const repeat =
+      $("repeatPass").value;
+
+    if(old !== saved){
+
+      alert(
+        "رمز فعلی اشتباه است."
+      );
+
+      return;
+
+    }
+
+    if(!newPass){
+
+      alert(
+        "رمز جدید را وارد کنید."
+      );
+
+      return;
+
+    }
+
+    if(
+      newPass !== repeat
+    ){
+
+      alert(
+        "تکرار رمز جدید یکسان نیست."
+      );
+
+      return;
+
+    }
+
+    localStorage.setItem(
+      PASS_KEY,
+      newPass
+    );
+
+    closeModal(
+      "settingsModal"
+    );
+
+    alert(
+      "رمز ویرایش با موفقیت تغییر کرد."
+    );
+
+  }
+);
+
+/* نرخ دلار */
+$("rate").value =
+  localStorage.getItem(
+    RATE_KEY
+  ) ||
+  DEFAULT_RATE;
+
+$("rate")
+.addEventListener(
+  "input",
+  ()=>{
+
+    localStorage.setItem(
+      RATE_KEY,
+      String(getRate())
+    );
+
+    render();
+
+  }
+);
+
+/* ماه */
+$("priceMonth").value =
+  localStorage.getItem(
+    MONTH_KEY
+  ) ||
+  "شهریور";
+
+$("priceMonth")
+.addEventListener(
+  "change",
+  ()=>{
+
+    localStorage.setItem(
+      MONTH_KEY,
+      getPriceMonth()
+    );
+
+  }
+);
+
+/* سال */
+$("priceYear").value =
+  localStorage.getItem(
+    YEAR_KEY
+  ) ||
+  "1405";
+
+$("priceYear")
+.addEventListener(
+  "input",
+  ()=>{
+
+    localStorage.setItem(
+      YEAR_KEY,
+      getPriceYear()
+    );
+
+  }
+);
+
+/* ساخت PDF */
+$("pdfBtn")
+.addEventListener(
+  "click",
+  ()=>{
+
+    const popup =
+      window.open(
+        "",
+        "_blank"
+      );
+
+    if(!popup){
+
+      alert(
+        "باز شدن پنجره جدید توسط مرورگر مسدود شده است."
+      );
+
+      return;
+
+    }
+
+    const rate =
+      getRate();
+
+    const pdfTitle =
+      getPdfPriceTitle();
+
+    const rows =
+      products.map(
+        (p,i)=>{
+
+          const price =
+            Math.round(
+              Number(p.usd) *
+              rate
+            );
+
+          const imageCell =
+            p.image
+              ? '<img class="pdfThumb" src="' +
+                p.image +
+                '" alt="عکس محصول">'
+              : '<span class="pdfThumbPlaceholder">—</span>';
+
+          return (
+
+            "<tr>" +
+
+            '<td class="colIndex">' +
+            formatPdfNumber(i+1) +
+            "</td>" +
+
+            '<td class="colImage">' +
+            imageCell +
+            "</td>" +
+
+            '<td class="colName productName">' +
+            esc(p.name) +
+            "</td>" +
+
+            '<td class="colPrice price">' +
+            formatPdfNumber(price) +
+            "</td>" +
+
+            "</tr>"
+
+          );
+
+        }
+      )
+      .join("");
+
+    popup.document.open();
+
+    popup.document.write(
+`<!doctype html>
+
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<title>OBCH - ${pdfTitle}</title>
+
+<title>
+OBCH - ${pdfTitle}
+</title>
+
 <style>
+
 @font-face{
   font-family:'IRANSansX';
   src:url('IRANSansX-Black.ttf') format('truetype');
@@ -759,25 +1739,48 @@ $("pdfBtn").addEventListener("click", ()=>{
   font-style:normal;
   font-display:swap;
 }
-@page{size:A4 portrait;margin:8mm}
-html,body,.page,.topTitle,.brandRow,table,thead,tbody,tr,th,td{
+
+@page{
+  size:A4 portrait;
+  margin:0;
+}
+
+html,
+body,
+.page,
+.topTitle,
+.brandRow,
+table,
+thead,
+tbody,
+tr,
+th,
+td{
   -webkit-print-color-adjust:exact !important;
   print-color-adjust:exact !important;
   color-adjust:exact !important;
 }
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+}
+
 body{
   margin:0;
+  padding:8mm;
   background:#fff !important;
   color:#111;
   font-family:'IRANSansX',Tahoma,Arial,sans-serif;
 }
+
 .page{
   width:100%;
   margin:0 auto;
   border:2px solid #111;
   background:#fff;
 }
+
+/* عنوان ماه و سال */
 .topTitle{
   height:46px;
   display:flex;
@@ -789,6 +1792,8 @@ body{
   font-weight:900;
   border-bottom:2px solid #111;
 }
+
+/* لوگو */
 .brandRow{
   height:46px;
   display:flex;
@@ -797,6 +1802,7 @@ body{
   background:#fff !important;
   border-bottom:2px solid #111;
 }
+
 .brand{
   color:#D71920 !important;
   font-family:Arial,Helvetica,sans-serif;
@@ -806,11 +1812,14 @@ body{
   font-weight:900;
   letter-spacing:-2px;
 }
+
+/* جدول */
 table{
   width:100%;
   border-collapse:collapse;
   table-layout:fixed;
 }
+
 thead th{
   height:48px;
   background:#C55250 !important;
@@ -822,7 +1831,11 @@ thead th{
   border-bottom:1.5px solid #111;
   padding:7px 5px;
 }
-thead th:last-child{border-left:0}
+
+thead th:last-child{
+  border-left:0;
+}
+
 tbody td{
   height:69px;
   color:#111 !important;
@@ -835,24 +1848,46 @@ tbody td{
   border-bottom:1.5px solid #111;
   padding:5px 7px;
 }
-tbody tr:last-child td{border-bottom:0}
-tbody td:last-child{border-left:0}
-.colIndex{width:7%}
-.colImage{width:15%}
-.colName{width:57%}
-.colPrice{width:21%}
+
+tbody tr:last-child td{
+  border-bottom:0;
+}
+
+tbody td:last-child{
+  border-left:0;
+}
+
+.colIndex{
+  width:7%;
+}
+
+.colImage{
+  width:15%;
+}
+
+.colName{
+  width:57%;
+}
+
+.colPrice{
+  width:21%;
+}
+
 .productName{
   text-align:center !important;
   white-space:normal;
   line-height:1.75;
   direction:rtl;
 }
+
 .price{
   font-size:13px;
   direction:ltr;
   unicode-bidi:embed;
   color:#111 !important;
 }
+
+/* عکس */
 .pdfThumb{
   width:54px;
   height:54px;
@@ -861,6 +1896,7 @@ tbody td:last-child{border-left:0}
   margin:auto;
   background:#fff;
 }
+
 .pdfThumbPlaceholder{
   width:54px;
   height:54px;
@@ -871,12 +1907,15 @@ tbody td:last-child{border-left:0}
   color:#999;
   font-size:16px;
 }
+
+/* دکمه‌ها */
 .buttons{
   display:flex;
   justify-content:center;
   gap:10px;
   margin:18px 0;
 }
+
 button{
   border:0;
   border-radius:8px;
@@ -885,62 +1924,203 @@ button{
   font-weight:900;
   cursor:pointer;
 }
-.printBtn{background:#C55250;color:#fff}
-.backBtn{background:#ECECEF;color:#222;border:1px solid #CCC}
-@media print{
-  body{background:#fff !important}
-  .buttons{display:none !important}
-  .page{break-inside:avoid}
-}
-</style>
-</head>
-<body>
-  <div class="page">
-    <div class="topTitle">${pdfTitle}</div>
 
-    <div class="brandRow">
-      <div class="brand">OBCH</div>
+.printBtn{
+  background:#C55250;
+  color:#fff;
+}
+
+.backBtn{
+  background:#ECECEF;
+  color:#222;
+  border:1px solid #CCC;
+}
+
+@media print{
+
+  body{
+    background:#fff !important;
+    padding:8mm !important;
+    margin:0 !important;
+  }
+
+  .buttons{
+    display:none !important;
+  }
+
+  .page{
+    break-inside:avoid;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="topTitle">
+    ${pdfTitle}
+  </div>
+
+  <div class="brandRow">
+
+    <div class="brand">
+      OBCH
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th class="colIndex">ردیف</th>
-          <th class="colImage">تصویر محصول</th>
-          <th class="colName">نام محصول</th>
-          <th class="colPrice">قیمت (تومان)</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>
   </div>
 
-  <div class="buttons">
-    <button class="printBtn" onclick="window.print()">چاپ / ذخیره به PDF</button>
-    <button class="backBtn" onclick="if(window.opener){window.opener.focus();} window.close();">بازگشت</button>
-  </div>
+  <table>
+
+    <thead>
+
+      <tr>
+
+        <th class="colIndex">
+          ردیف
+        </th>
+
+        <th class="colImage">
+          تصویر محصول
+        </th>
+
+        <th class="colName">
+          نام محصول
+        </th>
+
+        <th class="colPrice">
+          قیمت (تومان)
+        </th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+      ${rows}
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="buttons">
+
+  <button
+    class="printBtn"
+    onclick="window.print()"
+  >
+    چاپ / ذخیره به PDF
+  </button>
+
+  <button
+    class="backBtn"
+    onclick="
+      if(window.opener){
+        window.opener.focus();
+      }
+      window.close();
+    "
+  >
+    بازگشت
+  </button>
+
+</div>
+
 </body>
-</html>`);
-  popup.document.close();
-});
 
-document.querySelectorAll("[data-close]").forEach(btn=>{
-  btn.addEventListener("click", ()=>closeModal(btn.dataset.close));
-});
+</html>`
+    );
 
-document.querySelectorAll(".modalBack").forEach(back=>{
-  back.addEventListener("click", e=>{
-    if(e.target === back) closeModal(back.id);
-  });
-});
+    popup.document.close();
 
-document.addEventListener("keydown", e=>{
-  if(e.key === "Escape"){
-    document.querySelectorAll(".modalBack.show").forEach(m=>closeModal(m.id));
   }
-});
+);
 
+/* بستن مودال */
+document
+.querySelectorAll(
+  "[data-close]"
+)
+.forEach(
+  btn=>{
+
+    btn.addEventListener(
+      "click",
+      ()=>{
+
+        closeModal(
+          btn.dataset.close
+        );
+
+      }
+    );
+
+  }
+);
+
+/* کلیک بیرون مودال */
+document
+.querySelectorAll(
+  ".modalBack"
+)
+.forEach(
+  back=>{
+
+    back.addEventListener(
+      "click",
+      e=>{
+
+        if(
+          e.target === back
+        ){
+
+          closeModal(
+            back.id
+          );
+
+        }
+
+      }
+    );
+
+  }
+);
+
+/* Escape */
+document
+.addEventListener(
+  "keydown",
+  e=>{
+
+    if(
+      e.key === "Escape"
+    ){
+
+      document
+      .querySelectorAll(
+        ".modalBack.show"
+      )
+      .forEach(
+        modal=>
+          closeModal(
+            modal.id
+          )
+      );
+
+    }
+
+  }
+);
+
+/* شروع */
 render();
+
 </script>
+
 </body>
 </html>
