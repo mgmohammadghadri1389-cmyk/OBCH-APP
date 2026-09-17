@@ -2,272 +2,3559 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#C91524">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#1c1f23">
+
+<meta
+  name="apple-mobile-web-app-capable"
+  content="yes"
+>
+
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+>
+
+<meta
+  name="apple-mobile-web-app-title"
+  content="OBCH"
+>
+
+<link
+  rel="manifest"
+  href="./manifest.json"
+>
+
+<link
+  rel="apple-touch-icon"
+  href="./icon.svg"
+>
+
+<link
+  rel="icon"
+  href="./icon.svg"
+  type="image/svg+xml"
+>
+
 <title>OBCH | مدیریت قیمت محصولات</title>
+
 <style>
-@font-face{
-font-family:'IRANSansX';
-src:url('IRANSansX-Black.ttf') format('truetype');
-font-weight:900;font-display:swap;
-}
+
 :root{
---red:#C91524;--red-dark:#8F0D18;--red-soft:#FCEBED;
---silver-1:#F8F8F8;--silver-2:#ECECEF;--silver-3:#DADAE0;
---silver-4:#B9BCC6;--ink:#21242B;--ink-soft:#5E6470;
---white:#fff;--green:#1F9D55;--green-soft:#EAF8F0;
---danger:#9E111D;--danger-soft:#FCEBED;
---shadow:0 18px 48px rgba(30,33,40,.12)
+  --black:#121416;
+  --carbon:#1d2024;
+  --carbon2:#292d32;
+
+  --silver:#e4e7ea;
+  --silver2:#bcc2c7;
+  --silver3:#80878d;
+
+  --red:#c62c34;
+  --red2:#e34850;
+  --redDark:#8d1f26;
+
+  --white:#ffffff;
+  --text:#f7f8f9;
+  --muted:#c7ccd0;
+
+  --shadow:
+    0 28px 75px
+    rgba(0,0,0,.46);
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;min-height:100%;font-family:'IRANSansX',Tahoma,Arial,sans-serif}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
 body{
-color:var(--ink);overflow-x:hidden;
-background:
-radial-gradient(circle at top right,rgba(201,21,36,.1),transparent 26%),
-radial-gradient(circle at bottom left,rgba(180,180,188,.26),transparent 28%),
-linear-gradient(145deg,#FCFCFD,#F2F3F6,#FBFBFC)
+  margin:0;
+  min-height:100%;
+
+  font-family:
+    Tahoma,
+    Arial,
+    sans-serif;
 }
-button,input{font:inherit;font-family:inherit}
-button{cursor:pointer}
-.wrap{max-width:1140px;margin:auto;padding:18px}
-.textSplash{
-position:fixed;inset:0;z-index:9999;display:flex;
-align-items:center;justify-content:center;
-background:
-radial-gradient(circle at 50% 35%,rgba(201,21,36,.17),transparent 32%),
-linear-gradient(140deg,#E9E9ED,#C9CBD2,#9DA3AE);
-animation:splashOut .65s ease 2.6s forwards
+
+body{
+  min-height:100dvh;
+
+  color:var(--text);
+
+  overflow-x:hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 8%,
+      rgba(255,255,255,.10),
+      transparent 23%
+    ),
+
+    radial-gradient(
+      circle at 89% 12%,
+      rgba(205,44,53,.18),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 77% 87%,
+      rgba(255,255,255,.06),
+      transparent 28%
+    ),
+
+    linear-gradient(
+      145deg,
+      #111315,
+      #1e2125 48%,
+      #32363b
+    );
 }
-.textSplashBox{text-align:center;color:var(--ink);padding:24px}
-.textSplashEn{
-font-size:34px;font-weight:900;letter-spacing:8px;color:var(--red);
-opacity:0;transform:translateY(14px);animation:introUp .6s ease .15s forwards
+
+body::before,
+body::after{
+  content:"";
+
+  position:fixed;
+
+  pointer-events:none;
+
+  z-index:0;
+
+  filter:blur(18px);
 }
-.textSplashLine{
-width:0;height:3px;margin:16px auto 0;border-radius:99px;
-background:linear-gradient(90deg,transparent,var(--red),transparent);
-box-shadow:0 0 14px rgba(201,21,36,.24);
-animation:introLine .6s ease .6s forwards
+
+body::before{
+  width:620px;
+  height:290px;
+
+  right:-170px;
+  bottom:-55px;
+
+  border-radius:
+    48% 52% 60% 40% /
+    60% 40% 60% 40%;
+
+  background:
+    radial-gradient(
+      ellipse at 28% 45%,
+      rgba(235,235,235,.15),
+      transparent 32%
+    ),
+
+    radial-gradient(
+      ellipse at 63% 48%,
+      rgba(202,45,53,.34),
+      transparent 42%
+    );
+
+  animation:
+    bgMoveOne
+    12s
+    ease-in-out
+    infinite alternate;
 }
-.textSplashWelcome{
-margin-top:15px;font-size:15px;font-weight:700;color:#5A5F69;
-opacity:0;animation:introFade .5s ease 1s forwards
+
+body::after{
+  width:560px;
+  height:250px;
+
+  left:-180px;
+  top:42%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      ellipse at 45% 42%,
+      rgba(255,255,255,.11),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      ellipse at 68% 58%,
+      rgba(135,142,150,.17),
+      transparent 43%
+    );
+
+  animation:
+    bgMoveTwo
+    15s
+    ease-in-out
+    infinite alternate;
 }
-@keyframes introUp{to{opacity:1;transform:translateY(0)}}
-@keyframes introLine{to{width:210px}}
-@keyframes introFade{to{opacity:1}}
-@keyframes splashOut{
-0%{opacity:1;visibility:visible;pointer-events:auto}
-99%{opacity:0;visibility:visible;pointer-events:none}
-100%{opacity:0;visibility:hidden;pointer-events:none}
+
+@keyframes bgMoveOne{
+  to{
+    transform:
+      translate(-27px,-15px)
+      rotate(5deg);
+  }
 }
-.header{
-position:relative;overflow:hidden;border-radius:28px;padding:26px 24px;
-margin-bottom:16px;color:var(--white);
-background:linear-gradient(135deg,rgba(34,37,44,.92),rgba(95,101,112,.84));
-border:1px solid rgba(255,255,255,.48);
-box-shadow:0 22px 60px rgba(33,36,43,.18)
+
+@keyframes bgMoveTwo{
+  to{
+    transform:
+      translate(28px,18px)
+      rotate(-5deg);
+  }
 }
-.header:before{
-content:"";position:absolute;inset:auto -40px -70px auto;width:220px;height:220px;
-border-radius:50%;
-background:radial-gradient(circle,rgba(201,21,36,.92),rgba(201,21,36,.34) 42%,transparent 72%);
-filter:blur(8px);opacity:.72
+
+button,
+input,
+select{
+  font:inherit;
+  font-family:inherit;
 }
-.header:after{
-content:"";position:absolute;inset:-40px auto auto -40px;width:180px;height:180px;
-border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%)
+
+button{
+  cursor:pointer;
 }
-.brand,.subtitle,.brandTag{position:relative;z-index:1}
-.brand{font-size:33px;font-weight:900;letter-spacing:3px}
-.subtitle{margin-top:8px;font-size:14px;opacity:.96}
-.brandTag{
-display:inline-flex;gap:8px;align-items:center;margin-top:14px;padding:8px 14px;
-border-radius:999px;background:rgba(255,255,255,.1);
-border:1px solid rgba(255,255,255,.22);font-size:12px
+
+svg{
+  display:block;
 }
-.card{
-background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(248,248,249,.92));
-border:1px solid var(--silver-3);border-radius:24px;padding:18px;
-margin-bottom:15px;box-shadow:var(--shadow)
+
+.app{
+  position:relative;
+
+  z-index:1;
+
+  max-width:1180px;
+
+  margin:auto;
+
+  padding:16px;
 }
-label{display:block;font-size:14px;font-weight:700;margin-bottom:8px;color:#383D46}
-input,select{
-width:100%;border:1px solid var(--silver-4);border-radius:16px;padding:13px 14px;
-background:#fff;color:var(--ink);outline:none
+
+/* =========================
+   لوگوموشن شروع
+========================= */
+
+.splash{
+  position:fixed;
+
+  inset:0;
+
+  z-index:9999;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 38%,
+      rgba(255,255,255,.13),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      circle at 52% 53%,
+      rgba(205,42,51,.22),
+      transparent 31%
+    ),
+
+    linear-gradient(
+      145deg,
+      #101214,
+      #202327 52%,
+      #34383d
+    );
+
+  animation:
+    splashExit
+    .75s
+    ease
+    4.2s forwards;
 }
-input:focus,select:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(201,21,36,.1)}
-.rateRow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}
-.dateRow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.btn{
-border:0;border-radius:15px;padding:11px 16px;font-weight:700;
-transition:transform .15s ease,box-shadow .2s ease
+
+.splash::before{
+  content:"";
+
+  position:absolute;
+
+  width:740px;
+  height:320px;
+
+  left:50%;
+  bottom:-160px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius:
+    46% 54% 62% 38% /
+    58% 42% 58% 42%;
+
+  background:
+    radial-gradient(
+      ellipse at 30% 35%,
+      rgba(255,255,255,.20),
+      transparent 32%
+    ),
+
+    radial-gradient(
+      ellipse at 65% 45%,
+      rgba(206,44,52,.43),
+      transparent 42%
+    );
+
+  filter:
+    blur(11px);
+
+  animation:
+    splashWave
+    3.6s
+    ease-in-out
+    infinite alternate;
 }
-.btn:hover{transform:translateY(-1px)}
-.btn:active{transform:scale(.98)}
-.primary{color:#fff;background:linear-gradient(135deg,var(--red),var(--red-dark));box-shadow:0 10px 22px rgba(201,21,36,.22)}
-.secondary{color:#2D323B;background:linear-gradient(135deg,#fff,#ECECEF);border:1px solid var(--silver-3)}
-.danger{color:var(--danger);background:var(--danger-soft);border:1px solid rgba(201,31,55,.2)}
-.small{padding:8px 12px;font-size:13px}
-.editBtn{background:var(--green-soft);color:var(--green);border:1px solid rgba(31,157,85,.22)}
-.note{font-size:12px;color:var(--ink-soft);margin-top:7px}
-.tableWrap{overflow:auto;border:1px solid var(--silver-3);border-radius:18px;background:#fff}
-table{width:100%;border-collapse:collapse;min-width:920px}
-th,td{padding:13px 10px;border-bottom:1px solid #ECECF0;white-space:nowrap}
-th{background:linear-gradient(180deg,#FAFAFB,#ECECEF);color:#3A3F48;font-size:14px;text-align:center}
-td{text-align:center;background:#fff}
-tbody tr:hover td{background:#FAF7FC}
-td.product{text-align:right;white-space:normal}
-tr:last-child td{border-bottom:0}
-.empty{text-align:center;color:#737986;padding:30px}
-.productThumb{
-width:52px;height:52px;object-fit:cover;border-radius:12px;
-border:1px solid #DDDDE3;background:#fff;display:block;margin:auto
+
+.splash::after{
+  content:"";
+
+  position:absolute;
+
+  width:350px;
+  height:350px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.12),
+      rgba(194,43,51,.10) 42%,
+      transparent 70%
+    );
+
+  filter:
+    blur(12px);
+
+  animation:
+    splashGlow
+    2.6s
+    ease-in-out
+    infinite alternate;
 }
-.productThumbPlaceholder{
-display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;
-border-radius:12px;background:#F4F4F6;color:#8A909D;border:1px solid #E0E0E5;
-margin:auto;font-size:12px
+
+.splashInner{
+  position:relative;
+
+  z-index:2;
+
+  text-align:center;
 }
-.imagePreviewWrap{margin-top:10px;display:flex;justify-content:flex-start}
-.imagePreview{
-width:94px;height:94px;object-fit:cover;border-radius:16px;
-border:1px solid #DDDDE3;background:#fff;display:none
+
+.splashLogo{
+  font:
+    900 46px
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  letter-spacing:10px;
+
+  color:#fff;
+
+  opacity:0;
+
+  transform:
+    scale(.72)
+    translateY(14px);
+
+  text-shadow:
+    0 0 8px
+    rgba(255,255,255,.34),
+
+    0 0 20px
+    rgba(255,255,255,.16),
+
+    0 0 40px
+    rgba(209,43,51,.55);
+
+  animation:
+    logoReveal
+    1.2s
+    cubic-bezier(.2,.8,.2,1)
+    .35s forwards;
 }
-.imageHint{font-size:12px;color:#717783;margin-top:6px}
-.modalBack{
-position:fixed;inset:0;display:none;align-items:center;justify-content:center;
-padding:18px;z-index:20;background:rgba(36,40,48,.4);backdrop-filter:blur(8px)
+
+.splashLine{
+  width:0;
+
+  height:3px;
+
+  margin:
+    17px auto 0;
+
+  border-radius:100px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #bcc3c8,
+      #fff,
+      #d73139,
+      transparent
+    );
+
+  box-shadow:
+    0 0 16px
+    rgba(255,255,255,.35),
+
+    0 0 25px
+    rgba(207,43,51,.36);
+
+  animation:
+    lineReveal
+    .85s
+    ease
+    1.25s forwards;
 }
-.modalBack.show{display:flex}
+
+.splashText{
+  margin-top:15px;
+
+  color:#e8eaec;
+
+  font-size:13px;
+
+  letter-spacing:2px;
+
+  opacity:0;
+
+  transform:
+    translateY(9px);
+
+  animation:
+    welcomeReveal
+    .65s
+    ease
+    1.8s forwards;
+}
+
+.splashShine{
+  position:absolute;
+
+  width:75px;
+  height:120px;
+
+  top:-26px;
+  left:-95px;
+
+  transform:
+    rotate(18deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.68),
+      transparent
+    );
+
+  filter:
+    blur(5px);
+
+  animation:
+    shineMove
+    1.15s
+    ease
+    2.2s forwards;
+}
+
+@keyframes logoReveal{
+
+  0%{
+    opacity:0;
+
+    transform:
+      scale(.72)
+      translateY(14px);
+  }
+
+  60%{
+    opacity:1;
+
+    transform:
+      scale(1.07)
+      translateY(0);
+  }
+
+  100%{
+    opacity:1;
+
+    transform:
+      scale(1)
+      translateY(0);
+  }
+}
+
+@keyframes lineReveal{
+  to{
+    width:230px;
+  }
+}
+
+@keyframes welcomeReveal{
+  to{
+    opacity:1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes shineMove{
+  from{
+    left:-95px;
+  }
+
+  to{
+    left:280px;
+  }
+}
+
+@keyframes splashGlow{
+
+  from{
+    transform:scale(.92);
+    opacity:.6;
+  }
+
+  to{
+    transform:scale(1.14);
+    opacity:1;
+  }
+}
+
+@keyframes splashWave{
+
+  from{
+    transform:
+      translateX(-50%)
+      rotate(-4deg);
+  }
+
+  to{
+    transform:
+      translateX(-50%)
+      translateY(-22px)
+      rotate(4deg);
+  }
+}
+
+@keyframes splashExit{
+
+  to{
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transform:
+      scale(1.03);
+  }
+}
+
+/* =========================
+   گلس
+========================= */
+
+.hero,
+.glass,
 .modal{
-width:min(480px,100%);position:relative;background:linear-gradient(180deg,#fff,#F6F6F8);
-border:1px solid #E3E3E8;border-radius:26px;padding:22px;
-box-shadow:0 24px 70px rgba(26,30,38,.18)
+
+  border:
+    1px solid
+    rgba(225,230,235,.32);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(83,87,93,.42),
+      rgba(34,37,41,.55)
+    );
+
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0
+    rgba(255,255,255,.15);
+
+  backdrop-filter:
+    blur(25px)
+    saturate(140%);
+
+  -webkit-backdrop-filter:
+    blur(25px)
+    saturate(140%);
 }
-.modal h2{margin:0 0 16px;color:#343942;font-size:20px}
-.close{position:absolute;left:14px;top:10px;border:0;background:transparent;font-size:28px;color:#7D8390}
-.field{margin-bottom:13px}
-.modalActions{display:flex;gap:8px;justify-content:flex-start;margin-top:16px}
-.footer{text-align:center;color:#737986;font-size:12px;padding:4px 0 15px}
+
+.hero{
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:30px;
+
+  padding:
+    26px 22px;
+
+  margin-bottom:15px;
+}
+
+.hero::before{
+  content:"";
+
+  position:absolute;
+
+  width:320px;
+  height:320px;
+
+  right:-110px;
+  top:-160px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.13),
+      rgba(206,44,52,.11) 48%,
+      transparent 72%
+    );
+}
+
+.brand{
+  position:relative;
+
+  z-index:1;
+
+  font:
+    900 34px
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  letter-spacing:6px;
+
+  color:#f0f2f4;
+
+  text-shadow:
+    0 0 22px
+    rgba(255,255,255,.12);
+}
+
+.brandRed{
+  color:var(--red2);
+}
+
+.subtitle{
+  position:relative;
+
+  z-index:1;
+
+  margin-top:8px;
+
+  color:#d7dadd;
+
+  font-size:14px;
+}
+
+.glass{
+  border-radius:27px;
+
+  padding:18px;
+
+  margin-bottom:15px;
+}
+
+.row{
+  display:grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  gap:12px;
+
+  align-items:end;
+}
+
+.dateRow{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:12px;
+
+  margin-top:12px;
+}
+
+label{
+  display:block;
+
+  margin-bottom:8px;
+
+  color:#fff;
+
+  font-size:14px;
+}
+
+input,
+select{
+  width:100%;
+
+  border:
+    1px solid
+    rgba(220,225,229,.50);
+
+  outline:none;
+
+  border-radius:18px;
+
+  padding:
+    13px 14px;
+
+  color:#202428;
+
+  background:
+    linear-gradient(
+      #fff,
+      #eceff1
+    );
+
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 6px 16px
+    rgba(0,0,0,.10);
+}
+
+input:focus,
+select:focus{
+
+  border-color:
+    #dc545b;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(210,46,55,.11),
+
+    0 0 22px
+    rgba(210,46,55,.15);
+}
+
+/* =========================
+   دکمه‌ها
+========================= */
+
+.btn{
+  border:
+    1px solid
+    rgba(225,230,235,.28);
+
+  border-radius:17px;
+
+  min-height:46px;
+
+  padding:
+    10px 15px;
+
+  font-weight:700;
+
+  color:#fff;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:8px;
+}
+
+.btnIcon{
+  width:20px;
+  height:20px;
+
+  flex:
+    0 0 auto;
+}
+
+.primary{
+  background:
+    linear-gradient(
+      135deg,
+      #e1474f,
+      #c72d35 56%,
+      #8f2027
+    );
+
+  box-shadow:
+    0 10px 24px
+    rgba(153,25,32,.30),
+
+    inset 0 1px 0
+    rgba(255,255,255,.18);
+}
+
+.secondary{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(150,156,162,.45),
+      rgba(72,77,83,.58)
+    );
+}
+
+.editBtn{
+  background:
+    linear-gradient(
+      135deg,
+      #31a76e,
+      #217748
+    );
+}
+
+.danger{
+  background:
+    linear-gradient(
+      135deg,
+      #e1474f,
+      #9e2730
+    );
+}
+
+.small{
+  min-height:35px;
+
+  padding:
+    7px 10px;
+
+  font-size:12px;
+}
+
+.note{
+  font-size:12px;
+
+  color:var(--muted);
+
+  margin-top:8px;
+}
+
+.actions{
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:15px;
+}
+
+/* =========================
+   جدول حرفه‌ای
+========================= */
+
+.tableShell{
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:23px;
+
+  border:
+    1px solid
+    rgba(215,220,224,.30);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(28,31,35,.78),
+      rgba(14,16,18,.64)
+    );
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255,255,255,.07);
+}
+
+.tableWrap{
+  overflow:auto;
+
+  -webkit-overflow-scrolling:
+    touch;
+}
+
+table{
+  width:100%;
+
+  min-width:980px;
+
+  border-collapse:separate;
+
+  border-spacing:0;
+
+  table-layout:fixed;
+}
+
+thead th{
+  position:sticky;
+
+  top:0;
+
+  z-index:3;
+
+  height:54px;
+
+  padding:
+    12px 8px;
+
+  text-align:center;
+
+  white-space:nowrap;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      180deg,
+      #cb3b43,
+      #a5232a
+    );
+
+  border-bottom:
+    1px solid
+    #8f1f26;
+
+  border-left:
+    1px solid
+    rgba(255,255,255,.13);
+
+  font-size:13px;
+}
+
+tbody td{
+  min-height:70px;
+
+  padding:
+    10px 8px;
+
+  text-align:center;
+
+  vertical-align:middle;
+
+  border-bottom:
+    1px solid
+    #d8dcdf;
+
+  border-left:
+    1px solid
+    #eceff1;
+
+  background:
+    #fbfcfc;
+
+  color:#1c2024;
+}
+
+tbody tr:nth-child(even) td{
+  background:#f1f3f4;
+}
+
+tbody tr:hover td{
+  background:#fff7f7;
+}
+
+tbody tr:last-child td{
+  border-bottom:0;
+}
+
+td.product{
+  text-align:right;
+
+  white-space:normal;
+
+  line-height:1.8;
+
+  font-weight:700;
+}
+
+.colIndex{
+  width:7%;
+}
+
+.colImage{
+  width:11%;
+}
+
+.colName{
+  width:34%;
+}
+
+.colDollar{
+  width:12%;
+}
+
+.colPrice{
+  width:18%;
+}
+
+.colActions{
+  width:18%;
+}
+
+.rowNo{
+  display:inline-grid;
+
+  place-items:center;
+
+  min-width:34px;
+
+  height:34px;
+
+  padding:
+    0 8px;
+
+  border-radius:12px;
+
+  color:#8f2027;
+
+  background:#f7e6e7;
+
+  border:
+    1px solid
+    #ebc5c8;
+
+  font-weight:700;
+}
+
+.thumb,
+.placeholder{
+  width:54px;
+  height:54px;
+
+  border-radius:14px;
+
+  margin:auto;
+}
+
+.thumb{
+  display:block;
+
+  object-fit:cover;
+
+  background:#fff;
+
+  border:
+    1px solid
+    #d9dde0;
+}
+
+.placeholder{
+  display:grid;
+
+  place-items:center;
+
+  background:#e9ecef;
+
+  color:#7a8187;
+
+  font-size:18px;
+}
+
+.usdBadge{
+  display:inline-block;
+
+  min-width:72px;
+
+  padding:
+    7px 9px;
+
+  border-radius:12px;
+
+  background:#eef0f2;
+
+  border:
+    1px solid
+    #d8dcdf;
+
+  color:#3f474d;
+}
+
+.priceBadge{
+  display:inline-block;
+
+  min-width:116px;
+
+  padding:
+    8px 10px;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff1f2,
+      #f7e5e7
+    );
+
+  border:
+    1px solid
+    #edc2c6;
+
+  color:#8e2027;
+
+  font-weight:700;
+}
+
+.actionGroup{
+  display:flex;
+
+  gap:7px;
+
+  justify-content:center;
+
+  align-items:center;
+}
+
+.empty{
+  text-align:center;
+
+  padding:28px;
+
+  color:#d7dade;
+}
+
+.footer{
+  text-align:center;
+
+  color:#c8ccd0;
+
+  font-size:12px;
+
+  padding:
+    4px 0 12px;
+}
+
+/* =========================
+   مودال
+========================= */
+
+.modalBack{
+  position:fixed;
+
+  inset:0;
+
+  z-index:50;
+
+  display:none;
+
+  padding:8px;
+
+  background:
+    rgba(8,9,10,.74);
+
+  backdrop-filter:
+    blur(13px);
+
+  -webkit-backdrop-filter:
+    blur(13px);
+
+  overflow-y:auto;
+
+  overflow-x:hidden;
+
+  -webkit-overflow-scrolling:
+    touch;
+
+  touch-action:
+    pan-y;
+
+  overscroll-behavior:
+    contain;
+
+  align-items:flex-start;
+
+  justify-content:center;
+}
+
+.modalBack.show{
+  display:flex;
+}
+
+.modal{
+  position:relative;
+
+  width:
+    min(560px,100%);
+
+  margin:
+    auto 0;
+
+  max-height:
+    calc(100dvh - 16px);
+
+  overflow-y:auto;
+
+  overflow-x:hidden;
+
+  -webkit-overflow-scrolling:
+    touch;
+
+  touch-action:
+    pan-y;
+
+  overscroll-behavior:
+    contain;
+
+  border-radius:31px;
+
+  padding:
+    22px 18px;
+}
+
+.modal::-webkit-scrollbar{
+  width:7px;
+}
+
+.modal::-webkit-scrollbar-thumb{
+  background:
+    linear-gradient(
+      #d5dade,
+      #c72d35
+    );
+
+  border-radius:100px;
+}
+
+.modal h2{
+  text-align:center;
+
+  margin:
+    5px 46px 5px;
+
+  font-size:22px;
+}
+
+.modalSub{
+  text-align:center;
+
+  color:#d1d5d8;
+
+  font-size:13px;
+
+  margin-bottom:18px;
+}
+
+.close{
+  position:absolute;
+
+  left:14px;
+
+  top:12px;
+
+  width:44px;
+
+  height:44px;
+
+  border-radius:50%;
+
+  border:
+    1px solid
+    rgba(220,225,229,.26);
+
+  color:#fff;
+
+  background:
+    rgba(70,74,79,.62);
+
+  font-size:28px;
+}
+
+/* آیکون افزودن محصول */
+
+.modalHeroIcon{
+  width:72px;
+  height:72px;
+
+  border-radius:23px;
+
+  margin:
+    0 auto 12px;
+
+  display:grid;
+
+  place-items:center;
+
+  color:#fff;
+
+  background:
+    radial-gradient(
+      circle at 28% 22%,
+      rgba(255,255,255,.25),
+      transparent 26%
+    ),
+
+    linear-gradient(
+      145deg,
+      #d3444c,
+      #7f1c22
+    );
+
+  border:
+    1px solid
+    rgba(225,230,235,.42);
+
+  box-shadow:
+    0 0 24px
+    rgba(198,43,51,.30),
+
+    inset 0 1px 0
+    rgba(255,255,255,.18);
+}
+
+.modalHeroIcon svg{
+  width:36px;
+  height:36px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.modal input{
+  min-height:58px;
+}
+
+.fileBox{
+  position:relative;
+
+  display:block;
+
+  border:
+    2px dashed
+    rgba(223,227,230,.44);
+
+  border-radius:21px;
+
+  padding:
+    20px 14px;
+
+  text-align:center;
+
+  background:
+    rgba(75,79,84,.28);
+}
+
+.fileBox input{
+  position:absolute;
+
+  inset:0;
+
+  opacity:0;
+}
+
+.uploadIcon{
+  width:44px;
+
+  height:44px;
+
+  margin:
+    0 auto 8px;
+
+  color:#f1f3f5;
+}
+
+.preview{
+  width:100px;
+
+  height:82px;
+
+  object-fit:cover;
+
+  border-radius:15px;
+
+  display:none;
+
+  margin-top:10px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.28);
+}
+
+.modalActions{
+  position:sticky;
+
+  bottom:-1px;
+
+  z-index:3;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1.2fr;
+
+  gap:10px;
+
+  margin:
+    18px -2px -2px;
+
+  padding:
+    12px 2px 2px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(33,35,39,.92) 38%,
+      rgba(33,35,39,.99)
+    );
+}
+
+.scrollHint{
+  text-align:center;
+
+  color:#d7dade;
+
+  font-size:11px;
+
+  margin-top:5px;
+}
+
 @media(max-width:700px){
-.wrap{padding:10px}.header{padding:21px 18px;border-radius:22px}
-.brand{font-size:28px}.rateRow{grid-template-columns:1fr}
-.actions .btn{flex:1}.card{border-radius:20px}.dateRow{grid-template-columns:1fr}
+
+  .app{
+    padding:9px;
+  }
+
+  .hero{
+    padding:
+      21px 17px;
+
+    border-radius:24px;
+  }
+
+  .brand{
+    font-size:28px;
+  }
+
+  .row,
+  .dateRow{
+    grid-template-columns:1fr;
+  }
+
+  .actions .btn{
+    flex:1;
+  }
+
+  .glass{
+    padding:14px;
+  }
+
+  .modal{
+    width:100%;
+
+    border-radius:26px;
+
+    padding:
+      19px 15px;
+  }
+
 }
-@media print{
-body{background:#fff;color:#111}
-.textSplash,.rateCard,.actions,.footer,.noPrint,.ops{display:none!important}
-th:nth-child(2),td:nth-child(2){display:none!important}
-.wrap{max-width:none;padding:0}.header{background:#fff;color:#111;box-shadow:none;border:0;padding:0 0 10px}
-.header:before,.header:after{display:none}.brand{color:var(--red)}.subtitle{color:#555}
-.card{border:0;box-shadow:none;padding:0;background:#fff}
-.tableWrap{overflow:visible;border:1px solid #bbb;background:#fff}
-table{min-width:0;width:100%}th{background:#eee!important;color:#111}
-td{background:#fff!important}th,td{border-color:#bbb;color:#111}
-}
+
 </style>
 </head>
+
 <body>
 
-<div class="textSplash">
-<div class="textSplashBox">
-<div class="textSplashEn">OBCH</div>
-<div class="textSplashLine"></div>
-<div class="textSplashWelcome">خوش آمدید</div>
-</div>
+<!-- لوگوموشن -->
+
+<div class="splash">
+
+  <div class="splashInner">
+
+    <div class="splashShine"></div>
+
+    <div class="splashLogo">
+      OBCH
+    </div>
+
+    <div class="splashLine"></div>
+
+    <div class="splashText">
+      SMART PROTECTION
+    </div>
+
+  </div>
+
 </div>
 
-<div class="wrap">
-<header class="header">
-<div class="brand">OBCH</div>
-<div class="subtitle">مدیریت و محاسبه قیمت محصولات</div>
+<main class="app">
+
+<header class="hero">
+
+  <div class="brand">
+    O<span class="brandRed">B</span>CH
+  </div>
+
+  <div class="subtitle">
+    سامانه مدیریت و محاسبه قیمت محصولات حفاظتی
+  </div>
+
 </header>
 
-<section class="card rateCard">
-<div class="rateRow">
-<div>
-<label for="rate">قیمت دلار به تومان</label>
-<input id="rate" type="number" inputmode="numeric" min="0" step="1" value="234000">
-</div>
-<button class="btn secondary" id="settingsBtn" type="button">⚙ تنظیمات رمز</button>
-</div>
+<section class="glass">
 
-<div class="dateRow">
-<div>
-<label for="priceMonth">ماه لیست قیمت</label>
-<select id="priceMonth">
-<option>فروردین</option><option>اردیبهشت</option><option>خرداد</option>
-<option>تیر</option><option>مرداد</option><option>شهریور</option>
-<option>مهر</option><option>آبان</option><option>آذر</option>
-<option>دی</option><option>بهمن</option><option>اسفند</option>
-</select>
-</div>
-<div>
-<label for="priceYear">سال لیست قیمت</label>
-<input id="priceYear" type="number" inputmode="numeric" min="1300" max="1600" value="1405">
-</div>
-</div>
-<div class="note">عنوان PDF به‌صورت خودکار از ماه و سال انتخاب‌شده ساخته می‌شود.</div>
-<div class="note">قیمت محصول = قیمت دلاری × نرخ دلار</div>
+  <div class="row">
+
+    <div>
+
+      <label for="rate">
+        قیمت دلار به تومان
+      </label>
+
+      <input
+        id="rate"
+        type="number"
+        inputmode="numeric"
+        min="0"
+        step="1"
+        value="234000"
+      >
+
+    </div>
+
+    <button
+      class="btn secondary"
+      id="settingsBtn"
+      type="button"
+    >
+
+      <svg
+        class="btnIcon"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+
+        <path
+          d="M7.5 10V7.8A4.5 4.5 0 0 1 12 3.3a4.5 4.5 0 0 1 4.5 4.5V10"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+
+        <rect
+          x="5.2"
+          y="10"
+          width="13.6"
+          height="10.2"
+          rx="2.6"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+
+      </svg>
+
+      تنظیمات رمز
+
+    </button>
+
+  </div>
+
+  <div class="dateRow">
+
+    <div>
+
+      <label for="priceMonth">
+        ماه لیست قیمت
+      </label>
+
+      <select id="priceMonth">
+
+        <option>فروردین</option>
+        <option>اردیبهشت</option>
+        <option>خرداد</option>
+        <option>تیر</option>
+        <option>مرداد</option>
+        <option selected>شهریور</option>
+        <option>مهر</option>
+        <option>آبان</option>
+        <option>آذر</option>
+        <option>دی</option>
+        <option>بهمن</option>
+        <option>اسفند</option>
+
+      </select>
+
+    </div>
+
+    <div>
+
+      <label for="priceYear">
+        سال لیست قیمت
+      </label>
+
+      <input
+        id="priceYear"
+        type="number"
+        inputmode="numeric"
+        value="1405"
+      >
+
+    </div>
+
+  </div>
+
+  <div class="note">
+    عنوان PDF از ماه و سال انتخاب‌شده ساخته می‌شود.
+  </div>
+
 </section>
 
-<section class="card">
-<div class="actions">
-<button class="btn primary" id="addBtn" type="button">＋ افزودن محصول</button>
-<button class="btn secondary" id="pdfBtn" type="button">↓ خروجی PDF لیست</button>
-</div>
-<div class="tableWrap">
-<table>
-<thead><tr>
-<th>ردیف</th><th>تصویر</th><th>محصول</th><th>دلار</th>
-<th>قیمت به تومان</th><th class="ops">عملیات</th>
-</tr></thead>
-<tbody id="tbody"></tbody>
-</table>
-<div id="empty" class="empty" style="display:none">محصولی ثبت نشده است.</div>
-</div>
+<section class="glass">
+
+  <div class="actions">
+
+    <button
+      class="btn primary"
+      id="addBtn"
+      type="button"
+    >
+
+      <svg
+        class="btnIcon"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+
+        <rect
+          x="3.5"
+          y="3.5"
+          width="17"
+          height="17"
+          rx="5"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+
+        <path
+          d="M12 7.5v9M7.5 12h9"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+
+      </svg>
+
+      افزودن محصول
+
+    </button>
+
+    <button
+      class="btn secondary"
+      id="pdfBtn"
+      type="button"
+    >
+
+      <svg
+        class="btnIcon"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+
+        <path
+          d="M7 3.8h7l3 3V20H7z"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linejoin="round"
+        />
+
+        <path
+          d="M14 3.8V7h3"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+
+        <path
+          d="M9.2 14.5h5.6M12 11.5v6"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+
+      </svg>
+
+      خروجی PDF
+
+    </button>
+
+  </div>
+
+  <div class="tableShell">
+
+    <div class="tableWrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th class="colIndex">
+              ردیف
+            </th>
+
+            <th class="colImage">
+              تصویر
+            </th>
+
+            <th class="colName">
+              نام محصول
+            </th>
+
+            <th class="colDollar">
+              قیمت دلار
+            </th>
+
+            <th class="colPrice">
+              قیمت مصرف‌کننده
+            </th>
+
+            <th class="colActions">
+              عملیات
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="tbody"></tbody>
+
+      </table>
+
+      <div
+        id="empty"
+        class="empty"
+        style="display:none"
+      >
+        محصولی ثبت نشده است.
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
-<div class="footer">اطلاعات، رمز و عکس‌ها در همین مرورگر ذخیره می‌شوند.</div>
+
+<div class="footer">
+  اطلاعات محصولات روی همین دستگاه ذخیره می‌شوند.
 </div>
 
-<div class="modalBack" id="productModal">
-<div class="modal">
-<button class="close" data-close="productModal">×</button>
-<h2 id="productTitle">افزودن محصول</h2>
-<div class="field"><label for="nameInput">نام محصول</label><input id="nameInput"></div>
-<div class="field"><label for="usdInput">قیمت به دلار</label><input id="usdInput" type="number" min="0" step=".001"></div>
-<div class="field">
-<label for="imageInput">عکس محصول</label>
-<input id="imageInput" type="file" accept="image/*">
-<div class="imageHint">عکس در همین مرورگر ذخیره می‌شود.</div>
-<div class="imagePreviewWrap"><img id="imagePreview" class="imagePreview"></div>
-</div>
-<div class="modalActions">
-<button class="btn primary" id="saveProduct">ثبت</button>
-<button class="btn secondary" data-close="productModal">انصراف</button>
-</div>
-</div>
-</div>
+</main>
 
-<div class="modalBack" id="passwordModal">
-<div class="modal">
-<button class="close" data-close="passwordModal">×</button>
-<h2>رمز عبور ویرایش</h2>
-<div class="field"><label for="passwordInput">رمز فعلی</label><input id="passwordInput" type="password"></div>
-<div class="modalActions">
-<button class="btn primary" id="passwordOk">تأیید</button>
-<button class="btn secondary" data-close="passwordModal">انصراف</button>
-</div>
-</div>
-</div>
+<!-- افزودن محصول -->
 
-<div class="modalBack" id="deleteModal">
-<div class="modal">
-<button class="close" data-close="deleteModal">×</button>
-<h2>حذف محصول</h2>
-<div id="deleteMessage" style="line-height:1.9"></div>
-<div class="modalActions">
+<div
+  class="modalBack"
+  id="productModal"
+>
+
+<section class="modal">
+
 <button
+  class="close"
+  data-close="productModal"
+  type="button"
+>
+×
+</button>
+
+<div class="modalHeroIcon">
+
+<svg
+  viewBox="0 0 24 24"
+  fill="none"
+>
+
+<path
+  d="M6 8.5 12 5l6 3.5v7L12 19l-6-3.5z"
+  stroke="currentColor"
+  stroke-width="1.7"
+  stroke-linejoin="round"
+/>
+
+<path
+  d="M12 12v7M6.3 8.6 12 12l5.7-3.4"
+  stroke="currentColor"
+  stroke-width="1.7"
+  stroke-linejoin="round"
+/>
+
+<circle
+  cx="18.2"
+  cy="5.8"
+  r="3.1"
+  fill="#8f1f26"
+  stroke="currentColor"
+  stroke-width="1.3"
+/>
+
+<path
+  d="M18.2 4.3v3M16.7 5.8h3"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+/>
+
+</svg>
+
+</div>
+
+<h2 id="productTitle">
+افزودن محصول
+</h2>
+
+<div class="modalSub">
+مشخصات محصول را وارد کنید.
+</div>
+
+<div class="field">
+
+<label for="nameInput">
+نام محصول
+</label>
+
+<input
+  id="nameInput"
+  type="text"
+  placeholder="نام محصول"
+>
+
+</div>
+
+<div class="field">
+
+<label for="usdInput">
+قیمت به دلار
+</label>
+
+<input
+  id="usdInput"
+  type="number"
+  inputmode="decimal"
+  min="0"
+  step="0.001"
+  placeholder="مثال: 8.50"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+عکس محصول
+</label>
+
+<label class="fileBox">
+
+<svg
+  class="uploadIcon"
+  viewBox="0 0 24 24"
+  fill="none"
+>
+
+<path
+  d="M7.5 17.5H6.8a4.3 4.3 0 0 1-.5-8.56A5.9 5.9 0 0 1 17.6 7.2a3.8 3.8 0 0 1 .3 7.58H16"
+  stroke="currentColor"
+  stroke-width="1.7"
+  stroke-linecap="round"
+/>
+
+<path
+  d="M12 9.5v9M8.8 12.7 12 9.5l3.2 3.2"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+/>
+
+</svg>
+
+<strong>
+انتخاب عکس محصول
+</strong>
+
+<input
+  id="imageInput"
+  type="file"
+  accept="image/*"
+>
+
+</label>
+
+<img
+  id="imagePreview"
+  class="preview"
+  alt="پیش نمایش"
+>
+
+</div>
+
+<div class="scrollHint">
+برای دیدن همه قسمت‌ها صفحه را بالا و پایین بکشید.
+</div>
+
+<div class="modalActions">
+
+<button
+  class="btn secondary"
+  data-close="productModal"
+>
+انصراف
+</button>
+
+<button
+  class="btn primary"
+  id="saveProduct"
+>
+ثبت محصول
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- رمز ویرایش -->
+
+<div
+  class="modalBack"
+  id="passwordModal"
+>
+
+<section class="modal">
+
+<button
+  class="close"
+  data-close="passwordModal"
+>
+×
+</button>
+
+<div class="modalHeroIcon">
+
+<svg
+  viewBox="0 0 24 24"
+  fill="none"
+>
+
+<path
+  d="M7.5 10V7.8A4.5 4.5 0 0 1 12 3.3a4.5 4.5 0 0 1 4.5 4.5V10"
+  stroke="currentColor"
+  stroke-width="1.7"
+/>
+
+<rect
+  x="5"
+  y="10"
+  width="14"
+  height="10"
+  rx="3"
+  stroke="currentColor"
+  stroke-width="1.7"
+/>
+
+</svg>
+
+</div>
+
+<h2>
+رمز عبور ویرایش
+</h2>
+
+<div class="field">
+
+<label>
+رمز فعلی
+</label>
+
+<input
+  id="passwordInput"
+  type="password"
+  inputmode="numeric"
+>
+
+</div>
+
+<div class="modalActions">
+
+<button
+  class="btn secondary"
+  data-close="passwordModal"
+>
+انصراف
+</button>
+
+<button
+  class="btn primary"
+  id="passwordOk"
+>
+تأیید
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- حذف -->
+
+<div
+  class="modalBack"
+  id="deleteModal"
+>
+
+<section class="modal">
+
+<button
+  class="close"
+  data-close="deleteModal"
+>
+×
+</button>
+
+<h2>
+حذف محصول
+</h2>
+
+<div
+  id="deleteMessage"
+  class="modalSub"
+></div>
+
+<div class="modalActions">
+
+<button
+  class="btn secondary"
+  data-close="deleteModal"
+>
+انصراف
+</button>
+
+<button
+  class="btn danger"
+  id="deleteOk"
+>
+حذف
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- تغییر رمز -->
+
+<div
+  class="modalBack"
+  id="settingsModal"
+>
+
+<section class="modal">
+
+<button
+  class="close"
+  data-close="settingsModal"
+>
+×
+</button>
+
+<h2>
+تغییر رمز ویرایش
+</h2>
+
+<div class="field">
+
+<label>
+رمز فعلی
+</label>
+
+<input
+  id="oldPass"
+  type="password"
+  inputmode="numeric"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+رمز جدید
+</label>
+
+<input
+  id="newPass"
+  type="password"
+  inputmode="numeric"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+تکرار رمز جدید
+</label>
+
+<input
+  id="repeatPass"
+  type="password"
+  inputmode="numeric"
+>
+
+</div>
+
+<div class="modalActions">
+
+<button
+  class="btn secondary"
+  data-close="settingsModal"
+>
+انصراف
+</button>
+
+<button
+  class="btn primary"
+  id="changePass"
+>
+ثبت رمز جدید
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+<script>
+
+"use strict";
+
+const $ =
+  id =>
+  document.getElementById(id);
+
+/*
+این سه کلید عمداً همان کلیدهای قبلی OBCH هستند
+تا اطلاعات قبلی شما در مرورگر حذف نشوند.
+*/
+
+const PRODUCTS_KEY =
+  "obch_products_v1";
+
+const RATE_KEY =
+  "obch_rate_v1";
+
+const PASS_KEY =
+  "obch_edit_password_v1";
+
+const MONTH_KEY =
+  "obch_month_v1";
+
+const YEAR_KEY =
+  "obch_year_v1";
+
+const DEFAULT_PASS =
+  "1234";
+
+const DEFAULT_RATE =
+  234000;
+
+const defaultProducts = [
+
+{
+  name:
+  "محافظ ولتاژ/جریان تک‌فاز + نول 63 آمپر",
+  usd:0,
+  image:""
+},
+
+{
+  name:
+  "محافظ ولتاژ/جریان تک‌فاز + نول 80 آمپر",
+  usd:0,
+  image:""
+},
+
+{
+  name:
+  "محافظ ولتاژ/جریان سه‌فاز + نول 80 آمپر",
+  usd:0,
+  image:""
+},
+
+{
+  name:
+  "محافظ ولتاژ/جریان سه‌فاز + نول 100 آمپر",
+  usd:0,
+  image:""
+}
+
+];
+
+let products =
+  loadProducts();
+
+let editIndex =
+  -1;
+
+let pendingEditIndex =
+  -1;
+
+let deleteIndex =
+  -1;
+
+let currentImage =
+  "";
+
+function loadProducts(){
+
+  try{
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(
+          PRODUCTS_KEY
+        ) ||
+        "null"
+      );
+
+    if(
+      Array.isArray(data)
+    ){
+
+      return data;
+
+    }
+
+  }catch(error){}
+
+  return defaultProducts;
+
+}
+
+function saveProducts(){
+
+  localStorage.setItem(
+    PRODUCTS_KEY,
+    JSON.stringify(products)
+  );
+
+}
+
+function getRate(){
+
+  return Number(
+    $("rate").value
+  ) || 0;
+
+}
+
+function faNum(value){
+
+  return Number(value)
+  .toLocaleString(
+    "fa-IR"
+  );
+
+}
+
+function pdfNum(value){
+
+  const fa =
+    "۰۱۲۳۴۵۶۷۸۹";
+
+  return Number(value)
+  .toLocaleString(
+    "en-US"
+  )
+  .replace(
+    /\d/g,
+    digit =>
+    fa[digit]
+  );
+
+}
+
+function faDigits(value){
+
+  const fa =
+    "۰۱۲۳۴۵۶۷۸۹";
+
+  return String(value)
+  .replace(
+    /\d/g,
+    digit =>
+    fa[digit]
+  );
+
+}
+
+function escapeHtml(value){
+
+  return String(value)
+  .replace(
+    /[&<>"']/g,
+    character =>
+    ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    }[character])
+  );
+
+}
+
+function openModal(id){
+
+  const wrapper =
+    $(id);
+
+  wrapper
+  .classList
+  .add(
+    "show"
+  );
+
+  wrapper.scrollTop =
+    0;
+
+  const modal =
+    wrapper
+    .querySelector(
+      ".modal"
+    );
+
+  if(modal){
+
+    modal.scrollTop =
+      0;
+
+  }
+
+}
+
+function closeModal(id){
+
+  $(id)
+  .classList
+  .remove(
+    "show"
+  );
+
+}
+
+function showPreview(src){
+
+  const image =
+    $("imagePreview");
+
+  if(src){
+
+    image.src =
+      src;
+
+    image.style.display =
+      "block";
+
+  }else{
+
+    image
+    .removeAttribute(
+      "src"
+    );
+
+    image.style.display =
+      "none";
+
+  }
+
+}
+
+function getPdfTitle(){
+
+  return (
+    "لیست قیمت " +
+    $("priceMonth").value +
+    " ماه " +
+    faDigits(
+      $("priceYear").value ||
+      "1405"
+    )
+  );
+
+}
+
+function render(){
+
+  const tbody =
+    $("tbody");
+
+  tbody.innerHTML =
+    "";
+
+  $("empty")
+  .style
+  .display =
+    products.length
+    ? "none"
+    : "block";
+
+  products.forEach(
+    (product,index)=>{
+
+      const price =
+        Math.round(
+          Number(
+            product.usd
+          ) *
+          getRate()
+        );
+
+      const row =
+        document
+        .createElement(
+          "tr"
+        );
+
+      const image =
+
+        product.image
+
+        ?
+
+        '<img class="thumb" src="' +
+        product.image +
+        '" alt="عکس محصول">'
+
+        :
+
+        '<span class="placeholder">—</span>';
+
+      row.innerHTML =
+
+        '<td>' +
+        '<span class="rowNo">' +
+        faNum(index+1) +
+        '</span>' +
+        '</td>' +
+
+        '<td>' +
+        image +
+        '</td>' +
+
+        '<td class="product">' +
+        escapeHtml(
+          product.name
+        ) +
+        '</td>' +
+
+        '<td>' +
+        '<span class="usdBadge">' +
+        faNum(
+          product.usd
+        ) +
+        '</span>' +
+        '</td>' +
+
+        '<td>' +
+        '<span class="priceBadge">' +
+        faNum(
+          price
+        ) +
+        '</span>' +
+        '</td>' +
+
+        '<td>' +
+
+        '<div class="actionGroup">' +
+
+        '<button ' +
+        'class="btn small editBtn" ' +
+        'data-i="' +
+        index +
+        '">' +
+        'ویرایش' +
+        '</button>' +
+
+        '<button ' +
+        'class="btn small danger deleteBtn" ' +
+        'data-i="' +
+        index +
+        '">' +
+        'حذف' +
+        '</button>' +
+
+        '</div>' +
+
+        '</td>';
+
+      tbody
+      .appendChild(
+        row
+      );
+
+    }
+  );
+
+}
+
+/* افزودن */
+
+$("addBtn")
+.addEventListener(
+  "click",
+  ()=>{
+
+    editIndex =
+      -1;
+
+    currentImage =
+      "";
+
+    $("productTitle")
+    .textContent =
+      "افزودن محصول";
+
+    $("nameInput")
+    .value =
+      "";
+
+    $("usdInput")
+    .value =
+      "";
+
+    $("imageInput")
+    .value =
+      "";
+
+    showPreview("");
+
+    openModal(
+      "productModal"
+    );
+
+  }
+);
+
+/* عکس */
+
+$("imageInput")
+.addEventListener(
+  "change",
+  event=>{
+
+    const file =
+      event.target.files &&
+      event.target.files[0];
+
+    if(!file){
+      return;
+    }
+
+    const reader =
+      new FileReader();
+
+    reader.onload =
+      e=>{
+
+        currentImage =
+          String(
+            e.target.result ||
+            ""
+          );
+
+        showPreview(
+          currentImage
+        );
+
+      };
+
+    reader.readAsDataURL(
+      file
+    );
+
+  }
+);
+
+/* ثبت محصول */
+
+$("saveProduct")
+.addEventListener(
+  "click",
+  ()=>{
+
+    const name =
+      $("nameInput")
+      .value
+      .trim();
+
+    const usd =
+      Number(
+        $("usdInput").value
+      );
+
+    if(!name){
+
+      alert(
+        "نام محصول را وارد کنید."
+      );
+
+      return;
+
+    }
+
+    if(
+      !Number.isFinite(usd) ||
+      usd < 0
+    ){
+
+      alert(
+        "قیمت دلار را درست وارد کنید."
+      );
+
+      return;
+
+    }
+
+    const item = {
+
+      name:name,
+
+      usd:usd,
+
+      image:
+        currentImage ||
+        ""
+
+    };
+
+    if(
+      editIndex < 0
+    ){
+
+      products.push(
+        item
+      );
+
+    }else{
+
+      products[
+        editIndex
+      ] =
+        item;
+
+    }
+
+    saveProducts();
+
+    render();
+
+    closeModal(
+      "productModal"
+    );
+
+  }
+);
+
+/* ویرایش / حذف */
+
+$("tbody")
+.addEventListener(
+  "click",
+  event=>{
+
+    const edit =
+      event.target.closest(
+        ".editBtn"
+      );
+
+    const del =
+      event.target.closest(
+        ".deleteBtn"
+      );
+
+    if(edit){
+
+      pendingEditIndex =
+        Number(
+          edit.dataset.i
+        );
+
+      $("passwordInput")
+      .value =
+        "";
+
+      openModal(
+        "passwordModal"
+      );
+
+    }
+
+    if(del){
+
+      deleteIndex =
+        Number(
+          del.dataset.i
+        );
+
+      $("deleteMessage")
+      .textContent =
+
+        "آیا محصول «" +
+
+        products[
+          deleteIndex
+        ].name +
+
+        "» حذف شود؟";
+
+      openModal(
+        "deleteModal"
+      );
+
+    }
+
+  }
+);
+
+/* تأیید رمز */
+
+$("passwordOk")
+.addEventListener(
+  "click",
+  ()=>{
+
+    const saved =
+      localStorage
+      .getItem(
+        PASS_KEY
+      ) ||
+      DEFAULT_PASS;
+
+    if(
+      $("passwordInput")
+      .value !==
+      saved
+    ){
+
+      alert(
+        "رمز عبور اشتباه است."
+      );
+
+      return;
+
+    }
+
+    closeModal(
+      "passwordModal"
+    );
+
+    editIndex =
+      pendingEditIndex;
+
+    currentImage =
+      products[
+        editIndex
+      ].image ||
+      "";
+
+    $("productTitle")
+    .textContent =
+      "ویرایش محصول";
+
+    $("nameInput")
+    .value =
+      products[
+        editIndex
+      ].name;
+
+    $("usdInput")
+    .value =
+      products[
+        editIndex
+      ].usd;
+
+    $("imageInput")
+    .value =
+      "";
+
+    showPreview(
+      currentImage
+    );
+
+    openModal(
+      "productModal"
+    );
+
+  }
+);
+
+/* حذف */
+
+$("deleteOk")
+.addEventListener(
+  "click",
+  ()=>{
+
+    if(
+      deleteIndex >= 0
+    ){
+
+      products.splice(
+        deleteIndex,
+        1
+      );
+
+      saveProducts();
+
+      render();
+
+    }
+
+    deleteIndex =
+      -1;
+
+    closeModal(
+      "deleteModal"
+    );
+
+  }
+);
+
+/* تنظیمات */
+
+$("settingsBtn")
+.addEventListener(
+  "click",
+  ()=>{
+
+    $("oldPass")
+    .value =
+      "";
+
+    $("newPass")
+    .value =
+      "";
+
+    $("repeatPass")
+    .value =
+      "";
+
+    openModal(
+      "settingsModal"
+    );
+
+  }
+);
+
+/* تغییر رمز */
+
+$("changePass")
+.addEventListener(
+  "click",
+  ()=>{
+
+    const saved =
+      localStorage
+      .getItem(
+        PASS_KEY
+      ) ||
+      DEFAULT_PASS;
+
+    const oldPassword =
+      $("oldPass").value;
+
+    const newPassword =
+      $("newPass").value;
+
+    const repeatPassword =
+      $("repeatPass").value;
+
+    if(
+      oldPassword !==
+      saved
+    ){
+
+      alert(
+        "رمز فعلی اشتباه است."
+      );
+
+      return;
+
+    }
+
+    if(
+      !newPassword
+    ){
+
+      alert(
+        "رمز جدید را وارد کنید."
+      );
+
+      return;
+
+    }
+
+    if(
+      newPassword !==
+      repeatPassword
+    ){
+
+      alert(
+        "تکرار رمز جدید یکسان نیست."
+      );
+
+      return;
+
+    }
+
+    localStorage
+    .setItem(
+      PASS_KEY,
+      newPassword
+    );
+
+    closeModal(
+      "settingsModal"
+    );
+
+    alert(
+      "رمز با موفقیت تغییر کرد."
+    );
+
+  }
+);
+
+/* نرخ دلار */
+
+$("rate")
+.value =
+
+  localStorage
+  .getItem(
+    RATE_KEY
+  ) ||
+
+  DEFAULT_RATE;
+
+$("rate")
+.addEventListener(
+  "input",
+  ()=>{
+
+    localStorage
+    .setItem(
+      RATE_KEY,
+      String(
+        getRate()
+      )
+    );
+
+    render();
+
+  }
+);
+
+/* ماه */
+
+$("priceMonth")
+.value =
+
+  localStorage
+  .getItem(
+    MONTH_KEY
+  ) ||
+
+  "شهریور";
+
+$("priceMonth")
+.addEventListener(
+  "change",
+  ()=>{
+
+    localStorage
+    .setItem(
+      MONTH_KEY,
+      $("priceMonth").value
+    );
+
+  }
+);
+
+/* سال */
+
+$("priceYear")
+.value =
+
+  localStorage
+  .getItem(
+    YEAR_KEY
+  ) ||
+
+  "1405";
+
+$("priceYear")
+.addEventListener(
+  "input",
+  ()=>{
+
+    localStorage
+    .setItem(
+      YEAR_KEY,
+      $("priceYear").value ||
+      "1405"
+    );
+
+  }
+);
+
+/* =========================
+   PDF قرمز نقره‌ای
+========================= */
+
+$("pdfBtn")
+.addEventListener(
+  "click",
+  ()=>{
+
+    const pdfWindow =
+      window.open(
+        "",
+        "_blank"
+      );
+
+    if(!pdfWindow){
+
+      alert(
+        "باز شدن صفحه PDF توسط مرورگر مسدود شده است."
+      );
+
+      return;
+
+    }
+
+    const title =
+      getPdfTitle();
+
+    const rows =
+      products
+      .map(
+        (product,index)=>{
+
+          const price =
+            Math.round(
+              Number(
+                product.usd
+              ) *
+              getRate()
+            );
+
+          const image =
+
+            product.image
+
+            ?
+
+            '<img class="pic" src="' +
+            product.image +
+            '">'
+
+            :
+
+            '—';
+
+          return (
+
+            "<tr>" +
+
+            "<td>" +
+            pdfNum(
+              index+1
+            ) +
+            "</td>" +
+
+            "<td>" +
+            image +
+            "</td>" +
+
+            "<td>" +
+            escapeHtml(
+              product.name
+            ) +
+            "</td>" +
+
+            "<td>" +
+            pdfNum(
+              price
+            ) +
+            "</td>" +
+
+            "</tr>"
+
+          );
+
+        }
+      )
+      .join("");
+
+    pdfWindow
+    .document
+    .open();
+
+    pdfWindow
+    .document
+    .write(
+`<!doctype html>
+
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+OBCH - ${title}
+</title>
+
+<style>
+
+@page{
+  size:A4 portrait;
+  margin:0;
+}
+
+*{
+  box-sizing:border-box;
+
+  -webkit-print-color-adjust:
+  exact !important;
+
+  print-color-adjust:
+  exact !important;
+}
+
+body{
+  margin:0;
+
+  padding:8mm;
+
+  background:#fff;
+
+  color:#111;
+
+  font-family:
+  Tahoma,
+  Arial,
+  sans-serif;
+}
+
+.page{
+  border:
+  2px solid #202326;
+
+  background:#fff;
+}
+
+.top{
+  height:48px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:
+  #c83a42 !important;
+
+  color:
+  #fff !important;
+
+  font-size:20px;
+
+  font-weight:700;
+
+  border-bottom:
+  2px solid #202326;
+}
+
+.pdfBrand{
+  height:52px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:
+  #c3262f !important;
+
+  font:
+  900 32px Arial;
+
+  letter-spacing:2px;
+
+  background:
+  #f4f5f6 !important;
+
+  border-bottom:
+  2px solid #202326;
+}
+
+table{
+  width:100%;
+
+  border-collapse:
+  collapse;
+
+  table-layout:
+  fixed;
+}
+
+th{
+  height:48px;
+
+  background:
+  #c83a42 !important;
+
+  color:
+  #fff !important;
+
+  border-left:
+  1.5px solid #202326;
+
+  border-bottom:
+  1.5px solid #202326;
+
+  padding:7px;
+}
+
+td{
+  height:68px;
+
+  background:
+  #fff !important;
+
+  color:
+  #111 !important;
+
+  text-align:center;
+
+  border-left:
+  1.5px solid #202326;
+
+  border-bottom:
+  1.5px solid #202326;
+
+  padding:6px;
+
+  font-weight:700;
+}
+
+tr:nth-child(even) td{
+  background:
+  #f4f5f6 !important;
+}
+
+th:nth-child(1),
+td:nth-child(1){
+  width:7%;
+}
+
+th:nth-child(2),
+td:nth-child(2){
+  width:15%;
+}
+
+th:nth-child(3),
+td:nth-child(3){
+  width:57%;
+}
+
+th:nth-child(4),
+td:nth-child(4){
+  width:21%;
+}
+
+.pic{
+  width:54px;
+
+  height:54px;
+
+  object-fit:
+  contain;
+}
+
+.buttons{
+  text-align:center;
+
+  margin:18px;
+}
+
+.buttons button{
+  border:0;
+
+  border-radius:8px;
+
+  padding:
+  10px 16px;
+
+  margin:4px;
+
+  font-weight:700;
+}
+
+.print{
+  background:#c83a42;
+
+  color:#fff;
+}
+
+.back{
+  background:#e6e8ea;
+
+  color:#222;
+
+  border:
+  1px solid #c8ccd0;
+}
+
+@media print{
+
+  body{
+    padding:
+    8mm !important;
+  }
+
+  .buttons{
+    display:none !important;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="top">
+${title}
+</div>
+
+<div class="pdfBrand">
+OBCH
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+ردیف
+</th>
+
+<th>
+تصویر محصول
+</th>
+
+<th>
+نام محصول
+</th>
+
+<th>
+قیمت (تومان)
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+${rows}
+</tbody>
+
+</table>
+
+</div>
+
+<div class="buttons">
+
+<button
+class="print"
+onclick="window.print()"
+>
+چاپ / ذخیره PDF
+</button>
+
+<button
+class="back"
+onclick="window.close()"
+>
+بازگشت
+</button>
+
+</div>
+
+</body>
+
+</html>`
+    );
+
+    pdfWindow
+    .document
+    .close();
+
+  }
+);
+
+/* بستن پنجره‌ها */
+
+document
+.querySelectorAll(
+  "[data-close]"
+)
+.forEach(
+  button=>{
+
+    button
+    .addEventListener(
+      "click",
+      ()=>{
+
+        closeModal(
+          button.dataset.close
+        );
+
+      }
+    );
+
+  }
+);
+
+document
+.querySelectorAll(
+  ".modalBack"
+)
+.forEach(
+  modal=>{
+
+    modal
+    .addEventListener(
+      "click",
+      event=>{
+
+        if(
+          event.target ===
+          modal
+        ){
+
+          closeModal(
+            modal.id
+          );
+
+        }
+
+      }
+    );
+
+  }
+);
+
+document
+.addEventListener(
+  "keydown",
+  event=>{
+
+    if(
+      event.key ===
+      "Escape"
+    ){
+
+      document
+      .querySelectorAll(
+        ".modalBack.show"
+      )
+      .forEach(
+        modal=>{
+
+          closeModal(
+            modal.id
+          );
+
+        }
+      );
+
+    }
+
+  }
+);
+
+/* PWA */
+
+if(
+  "serviceWorker"
+  in navigator
+){
+
+  window
+  .addEventListener(
+    "load",
+    ()=>{
+
+      navigator
+      .serviceWorker
+      .register(
+        "./service-worker.js",
+        {
+          scope:"./"
+        }
+      )
+      .catch(()=>{});
+
+    }
+  );
+
+}
+
+render();
+
+</script>
+
+</body>
+  </html>
