@@ -1,219 +1,128 @@
 <!doctype html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="dark">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1,viewport-fit=cover"
->
+<meta id="themeColor" name="theme-color" content="#101317">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="OBCH">
 
-<meta name="theme-color" content="#1c1f23">
-
-<meta
-  name="apple-mobile-web-app-capable"
-  content="yes"
->
-
-<meta
-  name="apple-mobile-web-app-status-bar-style"
-  content="black-translucent"
->
-
-<meta
-  name="apple-mobile-web-app-title"
-  content="OBCH"
->
-
-<link
-  rel="manifest"
-  href="./manifest.json"
->
-
-<link
-  rel="apple-touch-icon"
-  href="./icon.svg"
->
-
-<link
-  rel="icon"
-  href="./icon.svg"
-  type="image/svg+xml"
->
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./obch-icon.png">
+<link rel="icon" type="image/png" href="./obch-icon.png">
 
 <title>OBCH | مدیریت قیمت محصولات</title>
 
 <style>
-
 :root{
-  --black:#121416;
-  --carbon:#1d2024;
-  --carbon2:#292d32;
+  --red:#d72d37;
+  --red2:#ff505a;
+  --green:#229b62;
+  --radius:28px;
+}
 
-  --silver:#e4e7ea;
-  --silver2:#bcc2c7;
-  --silver3:#80878d;
+html[data-theme="dark"]{
+  --bg:#0c0f12;
+  --bg2:#181c21;
+  --bg3:#2a3036;
 
-  --red:#c62c34;
-  --red2:#e34850;
-  --redDark:#8d1f26;
+  --glass:rgba(37,42,48,.56);
+  --glass2:rgba(57,63,69,.74);
+  --soft:rgba(255,255,255,.065);
 
-  --white:#ffffff;
+  --line:rgba(230,235,239,.18);
+
   --text:#f7f8f9;
-  --muted:#c7ccd0;
+  --muted:#aeb6bd;
 
-  --shadow:
-    0 28px 75px
-    rgba(0,0,0,.46);
+  --field:#f6f7f8;
+  --fieldText:#20252a;
+
+  --table:#fff;
+  --table2:#f3f5f6;
+  --tableText:#202428;
+
+  --shadow:0 28px 80px rgba(0,0,0,.43);
+}
+
+html[data-theme="light"]{
+  --bg:#e8ecef;
+  --bg2:#f8f9fa;
+  --bg3:#dbe1e5;
+
+  --glass:rgba(255,255,255,.62);
+  --glass2:rgba(255,255,255,.86);
+  --soft:rgba(255,255,255,.58);
+
+  --line:rgba(80,90,100,.18);
+
+  --text:#24292e;
+  --muted:#68727a;
+
+  --field:#fff;
+  --fieldText:#20252a;
+
+  --table:#fff;
+  --table2:#f5f7f8;
+  --tableText:#202428;
+
+  --shadow:0 25px 65px rgba(65,75,85,.15);
 }
 
 *{
   box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent!important;
 }
 
-html,
-body{
+html,body{
   margin:0;
   min-height:100%;
-
-  font-family:
-    Tahoma,
-    Arial,
-    sans-serif;
+  font-family:Tahoma,Arial,sans-serif;
 }
 
 body{
   min-height:100dvh;
-
   color:var(--text);
-
   overflow-x:hidden;
 
   background:
-    radial-gradient(
-      circle at 10% 8%,
-      rgba(255,255,255,.10),
-      transparent 23%
-    ),
-
-    radial-gradient(
-      circle at 89% 12%,
-      rgba(205,44,53,.18),
-      transparent 25%
-    ),
-
-    radial-gradient(
-      circle at 77% 87%,
-      rgba(255,255,255,.06),
-      transparent 28%
-    ),
-
-    linear-gradient(
-      145deg,
-      #111315,
-      #1e2125 48%,
-      #32363b
-    );
-}
-
-body::before,
-body::after{
-  content:"";
-
-  position:fixed;
-
-  pointer-events:none;
-
-  z-index:0;
-
-  filter:blur(18px);
+    radial-gradient(circle at 90% 8%,rgba(215,45,55,.22),transparent 24%),
+    radial-gradient(circle at 10% 10%,rgba(255,255,255,.10),transparent 22%),
+    linear-gradient(145deg,var(--bg),var(--bg2) 50%,var(--bg3));
 }
 
 body::before{
+  content:"";
+  position:fixed;
   width:620px;
-  height:290px;
-
-  right:-170px;
-  bottom:-55px;
-
-  border-radius:
-    48% 52% 60% 40% /
-    60% 40% 60% 40%;
-
-  background:
-    radial-gradient(
-      ellipse at 28% 45%,
-      rgba(235,235,235,.15),
-      transparent 32%
-    ),
-
-    radial-gradient(
-      ellipse at 63% 48%,
-      rgba(202,45,53,.34),
-      transparent 42%
-    );
-
-  animation:
-    bgMoveOne
-    12s
-    ease-in-out
-    infinite alternate;
-}
-
-body::after{
-  width:560px;
-  height:250px;
-
-  left:-180px;
-  top:42%;
-
+  height:300px;
+  right:-180px;
+  bottom:-80px;
   border-radius:50%;
+  pointer-events:none;
+  filter:blur(28px);
 
   background:
-    radial-gradient(
-      ellipse at 45% 42%,
-      rgba(255,255,255,.11),
-      transparent 35%
-    ),
-
-    radial-gradient(
-      ellipse at 68% 58%,
-      rgba(135,142,150,.17),
-      transparent 43%
-    );
-
-  animation:
-    bgMoveTwo
-    15s
-    ease-in-out
-    infinite alternate;
+    radial-gradient(ellipse at 30% 40%,rgba(255,255,255,.14),transparent 32%),
+    radial-gradient(ellipse at 68% 50%,rgba(215,45,55,.31),transparent 45%);
 }
 
-@keyframes bgMoveOne{
-  to{
-    transform:
-      translate(-27px,-15px)
-      rotate(5deg);
-  }
-}
-
-@keyframes bgMoveTwo{
-  to{
-    transform:
-      translate(28px,18px)
-      rotate(-5deg);
-  }
-}
-
-button,
-input,
-select{
+button,input,select{
   font:inherit;
-  font-family:inherit;
 }
 
 button{
   cursor:pointer;
+  outline:none!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
+
+button:focus,
+button:active,
+button:focus-visible{
+  outline:none!important;
 }
 
 svg{
@@ -222,972 +131,639 @@ svg{
 
 .app{
   position:relative;
-
-  z-index:1;
-
-  max-width:1180px;
-
+  z-index:2;
+  width:min(1180px,100%);
   margin:auto;
-
-  padding:16px;
+  padding:8px;
 }
 
-/* =========================
-   لوگوموشن شروع
-========================= */
-
-.splash{
-  position:fixed;
-
-  inset:0;
-
-  z-index:9999;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
+.glass{
+  position:relative;
   overflow:hidden;
 
-  background:
-    radial-gradient(
-      circle at 50% 38%,
-      rgba(255,255,255,.13),
-      transparent 22%
-    ),
-
-    radial-gradient(
-      circle at 52% 53%,
-      rgba(205,42,51,.22),
-      transparent 31%
-    ),
-
-    linear-gradient(
-      145deg,
-      #101214,
-      #202327 52%,
-      #34383d
-    );
-
-  animation:
-    splashExit
-    .75s
-    ease
-    4.2s forwards;
-}
-
-.splash::before{
-  content:"";
-
-  position:absolute;
-
-  width:740px;
-  height:320px;
-
-  left:50%;
-  bottom:-160px;
-
-  transform:
-    translateX(-50%);
-
-  border-radius:
-    46% 54% 62% 38% /
-    58% 42% 58% 42%;
-
-  background:
-    radial-gradient(
-      ellipse at 30% 35%,
-      rgba(255,255,255,.20),
-      transparent 32%
-    ),
-
-    radial-gradient(
-      ellipse at 65% 45%,
-      rgba(206,44,52,.43),
-      transparent 42%
-    );
-
-  filter:
-    blur(11px);
-
-  animation:
-    splashWave
-    3.6s
-    ease-in-out
-    infinite alternate;
-}
-
-.splash::after{
-  content:"";
-
-  position:absolute;
-
-  width:350px;
-  height:350px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,255,255,.12),
-      rgba(194,43,51,.10) 42%,
-      transparent 70%
-    );
-
-  filter:
-    blur(12px);
-
-  animation:
-    splashGlow
-    2.6s
-    ease-in-out
-    infinite alternate;
-}
-
-.splashInner{
-  position:relative;
-
-  z-index:2;
-
-  text-align:center;
-}
-
-.splashLogo{
-  font:
-    900 46px
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  letter-spacing:10px;
-
-  color:#fff;
-
-  opacity:0;
-
-  transform:
-    scale(.72)
-    translateY(14px);
-
-  text-shadow:
-    0 0 8px
-    rgba(255,255,255,.34),
-
-    0 0 20px
-    rgba(255,255,255,.16),
-
-    0 0 40px
-    rgba(209,43,51,.55);
-
-  animation:
-    logoReveal
-    1.2s
-    cubic-bezier(.2,.8,.2,1)
-    .35s forwards;
-}
-
-.splashLine{
-  width:0;
-
-  height:3px;
-
-  margin:
-    17px auto 0;
-
-  border-radius:100px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      #bcc3c8,
-      #fff,
-      #d73139,
-      transparent
-    );
-
-  box-shadow:
-    0 0 16px
-    rgba(255,255,255,.35),
-
-    0 0 25px
-    rgba(207,43,51,.36);
-
-  animation:
-    lineReveal
-    .85s
-    ease
-    1.25s forwards;
-}
-
-.splashText{
-  margin-top:15px;
-
-  color:#e8eaec;
-
-  font-size:13px;
-
-  letter-spacing:2px;
-
-  opacity:0;
-
-  transform:
-    translateY(9px);
-
-  animation:
-    welcomeReveal
-    .65s
-    ease
-    1.8s forwards;
-}
-
-.splashShine{
-  position:absolute;
-
-  width:75px;
-  height:120px;
-
-  top:-26px;
-  left:-95px;
-
-  transform:
-    rotate(18deg);
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.68),
-      transparent
-    );
-
-  filter:
-    blur(5px);
-
-  animation:
-    shineMove
-    1.15s
-    ease
-    2.2s forwards;
-}
-
-@keyframes logoReveal{
-
-  0%{
-    opacity:0;
-
-    transform:
-      scale(.72)
-      translateY(14px);
-  }
-
-  60%{
-    opacity:1;
-
-    transform:
-      scale(1.07)
-      translateY(0);
-  }
-
-  100%{
-    opacity:1;
-
-    transform:
-      scale(1)
-      translateY(0);
-  }
-}
-
-@keyframes lineReveal{
-  to{
-    width:230px;
-  }
-}
-
-@keyframes welcomeReveal{
-  to{
-    opacity:1;
-
-    transform:
-      translateY(0);
-  }
-}
-
-@keyframes shineMove{
-  from{
-    left:-95px;
-  }
-
-  to{
-    left:280px;
-  }
-}
-
-@keyframes splashGlow{
-
-  from{
-    transform:scale(.92);
-    opacity:.6;
-  }
-
-  to{
-    transform:scale(1.14);
-    opacity:1;
-  }
-}
-
-@keyframes splashWave{
-
-  from{
-    transform:
-      translateX(-50%)
-      rotate(-4deg);
-  }
-
-  to{
-    transform:
-      translateX(-50%)
-      translateY(-22px)
-      rotate(4deg);
-  }
-}
-
-@keyframes splashExit{
-
-  to{
-    opacity:0;
-
-    visibility:hidden;
-
-    pointer-events:none;
-
-    transform:
-      scale(1.03);
-  }
-}
-
-/* =========================
-   گلس
-========================= */
-
-.hero,
-.glass,
-.modal{
-
-  border:
-    1px solid
-    rgba(225,230,235,.32);
+  border:1px solid var(--line);
 
   background:
     linear-gradient(
       135deg,
-      rgba(83,87,93,.42),
-      rgba(34,37,41,.55)
+      var(--glass2),
+      var(--glass)
     );
+
+  backdrop-filter:blur(26px) saturate(145%);
+  -webkit-backdrop-filter:blur(26px) saturate(145%);
 
   box-shadow:
     var(--shadow),
-    inset 0 1px 0
-    rgba(255,255,255,.15);
-
-  backdrop-filter:
-    blur(25px)
-    saturate(140%);
-
-  -webkit-backdrop-filter:
-    blur(25px)
-    saturate(140%);
+    inset 0 1px 0 rgba(255,255,255,.17);
 }
 
-.hero{
-  position:relative;
-
-  overflow:hidden;
-
-  border-radius:30px;
-
-  padding:
-    26px 22px;
-
-  margin-bottom:15px;
-}
-
-.hero::before{
+.glass::before{
   content:"";
-
   position:absolute;
-
-  width:320px;
-  height:320px;
-
-  right:-110px;
-  top:-160px;
-
-  border-radius:50%;
+  left:24px;
+  right:24px;
+  top:0;
+  height:1px;
+  pointer-events:none;
 
   background:
-    radial-gradient(
-      circle,
-      rgba(255,255,255,.13),
-      rgba(206,44,52,.11) 48%,
-      transparent 72%
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.55),
+      transparent
     );
 }
 
-.brand{
-  position:relative;
+/* شروع برنامه */
 
-  z-index:1;
+.splash{
+  position:fixed;
+  inset:0;
+  z-index:9999;
 
-  font:
-    900 34px
-    Arial,
-    Helvetica,
-    sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-  letter-spacing:6px;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(255,255,255,.12),transparent 23%),
+    radial-gradient(circle at 50% 55%,rgba(215,45,55,.25),transparent 30%),
+    linear-gradient(145deg,#0b0e11,#1d2228,#343a40);
 
-  color:#f0f2f4;
-
-  text-shadow:
-    0 0 22px
-    rgba(255,255,255,.12);
+  animation:splashOut .7s ease 3.7s forwards;
 }
 
-.brandRed{
+.splashLogo{
+  font:900 44px Arial,sans-serif;
+  letter-spacing:9px;
+  color:#e9edf0;
+  text-align:center;
+
+  opacity:0;
+  transform:scale(.75);
+
+  text-shadow:
+    0 0 12px rgba(255,255,255,.2),
+    0 0 28px rgba(215,45,55,.36);
+
+  animation:logoIn 1s ease .2s forwards;
+}
+
+.splashLogo span{
   color:var(--red2);
 }
 
-.subtitle{
-  position:relative;
+.splashLine{
+  width:0;
+  height:3px;
+  margin:15px auto 0;
+  border-radius:99px;
 
-  z-index:1;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      silver,
+      white,
+      var(--red),
+      transparent
+    );
 
-  margin-top:8px;
-
-  color:#d7dadd;
-
-  font-size:14px;
+  animation:lineIn .7s ease 1.3s forwards;
 }
 
-.glass{
-  border-radius:27px;
+.splashText{
+  margin-top:12px;
+  text-align:center;
+  font-size:12px;
+  letter-spacing:2px;
+  color:#dbe0e3;
 
-  padding:18px;
+  opacity:0;
+  animation:textIn .5s ease 1.8s forwards;
+}
 
+@keyframes logoIn{
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+@keyframes lineIn{
+  to{
+    width:220px;
+  }
+}
+
+@keyframes textIn{
+  to{
+    opacity:1;
+  }
+}
+
+@keyframes splashOut{
+  to{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+}
+
+/* Header */
+
+.header{
+  border-radius:30px;
+  padding:14px 16px;
+  margin-bottom:11px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.brand{
+  font:900 33px Arial,sans-serif;
+  letter-spacing:6px;
+}
+
+.brand .h{
+  color:var(--red2);
+  text-shadow:0 0 16px rgba(255,80,90,.33);
+}
+
+.brandSub{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.headerRight{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.ready{
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  padding:8px 10px;
+
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  background:var(--soft);
+
+  color:var(--muted);
+  font-size:10px;
+}
+
+.readyDot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#26bd78;
+  box-shadow:0 0 12px rgba(38,189,120,.8);
+}
+
+.themeBtn{
+  width:46px;
+  height:46px;
+
+  border:1px solid var(--line);
+  border-radius:16px;
+
+  display:grid;
+  place-items:center;
+
+  color:var(--text);
+  background:var(--soft);
+}
+
+.themeBtn:active{
+  transform:scale(.95);
+  background:var(--soft);
+}
+
+.themeBtn svg{
+  width:23px;
+  height:23px;
+}
+
+.sunIcon,
+.moonIcon{
+  display:none;
+}
+
+html[data-theme="dark"] .moonIcon{
+  display:block;
+}
+
+html[data-theme="light"] .sunIcon{
+  display:block;
+}
+
+/* Sections */
+
+.section{
+  border-radius:30px;
+  padding:15px;
+  margin-bottom:11px;
+}
+
+.sectionHead{
+  display:flex;
+  align-items:center;
+  gap:9px;
   margin-bottom:15px;
 }
 
-.row{
-  display:grid;
-
-  grid-template-columns:
-    1fr auto;
-
-  gap:12px;
-
-  align-items:end;
+.sectionHeadIcon{
+  width:29px;
+  height:29px;
+  color:var(--red2);
 }
 
-.dateRow{
-  display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:12px;
-
-  margin-top:12px;
+.sectionHeadIcon.silver{
+  color:var(--text);
 }
 
-label{
-  display:block;
+.sectionTitle{
+  font-size:15px;
+  font-weight:800;
+}
 
+.sectionSub{
+  margin-top:3px;
+  font-size:11px;
+  color:var(--muted);
+}
+
+/* Rate */
+
+.rateGrid{
+  display:grid;
+  grid-template-columns:1.45fr 1fr;
+  gap:11px;
+}
+
+.periodGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.fieldCard{
+  padding:12px;
+  border:1px solid rgba(150,160,170,.10);
+  border-radius:22px;
+  background:var(--soft);
+}
+
+.fieldTitle{
+  display:flex;
+  align-items:center;
+  gap:7px;
   margin-bottom:8px;
+  font-size:11px;
+  color:var(--muted);
+}
 
-  color:#fff;
-
-  font-size:14px;
+.fieldTitle svg{
+  width:18px;
+  height:18px;
+  color:var(--red2);
 }
 
 input,
 select{
   width:100%;
+  min-height:48px;
 
-  border:
-    1px solid
-    rgba(220,225,229,.50);
+  border:1px solid var(--line);
+  border-radius:16px;
 
   outline:none;
 
-  border-radius:18px;
+  padding:10px 13px;
 
-  padding:
-    13px 14px;
-
-  color:#202428;
-
-  background:
-    linear-gradient(
-      #fff,
-      #eceff1
-    );
+  color:var(--fieldText);
+  background:var(--field);
 
   box-shadow:
-    inset 0 1px 0 #fff,
-    0 6px 16px
-    rgba(0,0,0,.10);
+    inset 0 1px 0 rgba(255,255,255,.7),
+    0 5px 14px rgba(0,0,0,.055);
 }
 
 input:focus,
 select:focus{
-
-  border-color:
-    #dc545b;
-
-  box-shadow:
-    0 0 0 4px
-    rgba(210,46,55,.11),
-
-    0 0 22px
-    rgba(210,46,55,.15);
+  outline:none;
+  border-color:rgba(215,45,55,.45);
+  box-shadow:0 0 0 3px rgba(215,45,55,.08);
 }
 
-/* =========================
-   دکمه‌ها
-========================= */
+/* Tools */
 
-.btn{
-  border:
-    1px solid
-    rgba(225,230,235,.28);
+.tools{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
 
-  border-radius:17px;
+.toolBtn{
+  min-height:90px;
 
-  min-height:46px;
+  border:1px solid var(--line);
+  border-radius:21px;
 
-  padding:
-    10px 15px;
+  color:var(--text);
+  background:var(--soft);
 
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
+  transition:transform .12s ease;
+}
+
+.toolBtn:active{
+  transform:scale(.975);
+  color:var(--text);
+  background:var(--soft);
+}
+
+.toolIcon{
+  width:30px;
+  height:30px;
+  color:var(--red2);
+}
+
+.toolIcon.silver{
+  color:var(--text);
+}
+
+.toolText{
+  font-size:11px;
   font-weight:700;
+}
+
+/* Products */
+
+.productTitleIcon{
+  width:43px;
+  height:43px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:15px;
 
   color:#fff;
 
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:8px;
-}
-
-.btnIcon{
-  width:20px;
-  height:20px;
-
-  flex:
-    0 0 auto;
-}
-
-.primary{
   background:
     linear-gradient(
-      135deg,
-      #e1474f,
-      #c72d35 56%,
-      #8f2027
+      145deg,
+      #e84a54,
+      #a31f28
     );
 
   box-shadow:
-    0 10px 24px
-    rgba(153,25,32,.30),
-
-    inset 0 1px 0
-    rgba(255,255,255,.18);
+    0 8px 22px rgba(163,31,40,.25);
 }
 
-.secondary{
+.productTitleIcon svg{
+  width:23px;
+  height:23px;
+}
+
+.tableShell{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:23px;
+}
+
+.tableScroll{
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+table{
+  width:100%;
+  min-width:970px;
+  table-layout:fixed;
+  border-collapse:separate;
+  border-spacing:0;
+}
+
+thead th{
+  position:sticky;
+  top:0;
+  z-index:3;
+
+  height:54px;
+  padding:10px 8px;
+
+  color:#fff;
+
   background:
     linear-gradient(
-      135deg,
-      rgba(150,156,162,.45),
-      rgba(72,77,83,.58)
+      180deg,
+      #da3c46,
+      #a8232c
     );
+
+  border-left:1px solid rgba(255,255,255,.12);
+
+  font-size:12px;
+}
+
+tbody td{
+  height:72px;
+  padding:9px 8px;
+
+  text-align:center;
+
+  color:var(--tableText);
+  background:var(--table);
+
+  border-left:1px solid #edf0f2;
+  border-bottom:1px solid #dde1e4;
+}
+
+tbody tr:nth-child(even) td{
+  background:var(--table2);
+}
+
+td.productName{
+  text-align:right;
+  line-height:1.8;
+  font-weight:700;
+}
+
+.colNo{width:7%}
+.colImage{width:11%}
+.colName{width:34%}
+.colDollar{width:12%}
+.colPrice{width:18%}
+.colActions{width:18%}
+
+.rowNo{
+  width:34px;
+  height:34px;
+
+  margin:auto;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:11px;
+
+  color:#98212a;
+  background:#f8e6e7;
+  border:1px solid #ecc8cb;
+
+  font-family:Arial,sans-serif;
+  font-weight:700;
+}
+
+.productImage,
+.noImage{
+  width:54px;
+  height:54px;
+  margin:auto;
+  border-radius:14px;
+}
+
+.productImage{
+  display:block;
+  object-fit:cover;
+  background:#fff;
+  border:1px solid #d8dde0;
+}
+
+.noImage{
+  display:grid;
+  place-items:center;
+  background:#e9ecef;
+  color:#7f878e;
+}
+
+/* اعداد بدون مشکل صفر فارسی */
+
+.dollarValue,
+.priceValue{
+  direction:ltr;
+  unicode-bidi:isolate;
+  display:inline-block;
+
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.dollarValue{
+  color:#3b4248;
+  font-size:14px;
+  font-weight:700;
+}
+
+.priceValue{
+  color:#a2222c;
+  font-size:15px;
+  font-weight:800;
+}
+
+.tableBtns{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+}
+
+.smallBtn{
+  min-width:65px;
+  min-height:38px;
+
+  border:0;
+  border-radius:12px;
+
+  padding:7px 10px;
+
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+}
+
+.smallBtn:active{
+  transform:scale(.96);
 }
 
 .editBtn{
   background:
     linear-gradient(
-      135deg,
-      #31a76e,
-      #217748
+      145deg,
+      #29aa6c,
+      #187e4d
     );
 }
 
-.danger{
+.editBtn:active,
+.editBtn:focus{
   background:
     linear-gradient(
-      135deg,
-      #e1474f,
-      #9e2730
+      145deg,
+      #29aa6c,
+      #187e4d
     );
 }
 
-.small{
-  min-height:35px;
-
-  padding:
-    7px 10px;
-
-  font-size:12px;
-}
-
-.note{
-  font-size:12px;
-
-  color:var(--muted);
-
-  margin-top:8px;
-}
-
-.actions{
-  display:flex;
-
-  gap:10px;
-
-  flex-wrap:wrap;
-
-  margin-bottom:15px;
-}
-
-/* =========================
-   جدول حرفه‌ای
-========================= */
-
-.tableShell{
-  position:relative;
-
-  overflow:hidden;
-
-  border-radius:23px;
-
-  border:
-    1px solid
-    rgba(215,220,224,.30);
-
+.deleteBtn{
   background:
     linear-gradient(
-      180deg,
-      rgba(28,31,35,.78),
-      rgba(14,16,18,.64)
+      145deg,
+      #dc4055,
+      #a72238
     );
-
-  box-shadow:
-    inset 0 1px 0
-    rgba(255,255,255,.07);
 }
 
-.tableWrap{
-  overflow:auto;
-
-  -webkit-overflow-scrolling:
-    touch;
-}
-
-table{
-  width:100%;
-
-  min-width:980px;
-
-  border-collapse:separate;
-
-  border-spacing:0;
-
-  table-layout:fixed;
-}
-
-thead th{
-  position:sticky;
-
-  top:0;
-
-  z-index:3;
-
-  height:54px;
-
-  padding:
-    12px 8px;
-
-  text-align:center;
-
-  white-space:nowrap;
-
-  color:#fff;
-
+.deleteBtn:active,
+.deleteBtn:focus{
   background:
     linear-gradient(
-      180deg,
-      #cb3b43,
-      #a5232a
+      145deg,
+      #dc4055,
+      #a72238
     );
-
-  border-bottom:
-    1px solid
-    #8f1f26;
-
-  border-left:
-    1px solid
-    rgba(255,255,255,.13);
-
-  font-size:13px;
 }
 
-tbody td{
-  min-height:70px;
-
-  padding:
-    10px 8px;
-
-  text-align:center;
-
-  vertical-align:middle;
-
-  border-bottom:
-    1px solid
-    #d8dcdf;
-
-  border-left:
-    1px solid
-    #eceff1;
-
-  background:
-    #fbfcfc;
-
-  color:#1c2024;
-}
-
-tbody tr:nth-child(even) td{
-  background:#f1f3f4;
-}
-
-tbody tr:hover td{
-  background:#fff7f7;
-}
-
-tbody tr:last-child td{
-  border-bottom:0;
-}
-
-td.product{
-  text-align:right;
-
-  white-space:normal;
-
-  line-height:1.8;
-
-  font-weight:700;
-}
-
-.colIndex{
-  width:7%;
-}
-
-.colImage{
-  width:11%;
-}
-
-.colName{
-  width:34%;
-}
-
-.colDollar{
-  width:12%;
-}
-
-.colPrice{
-  width:18%;
-}
-
-.colActions{
-  width:18%;
-}
-
-.rowNo{
-  display:inline-grid;
-
-  place-items:center;
-
-  min-width:34px;
-
-  height:34px;
-
-  padding:
-    0 8px;
-
-  border-radius:12px;
-
-  color:#8f2027;
-
-  background:#f7e6e7;
-
-  border:
-    1px solid
-    #ebc5c8;
-
-  font-weight:700;
-}
-
-.thumb,
-.placeholder{
-  width:54px;
-  height:54px;
-
-  border-radius:14px;
-
-  margin:auto;
-}
-
-.thumb{
-  display:block;
-
-  object-fit:cover;
-
-  background:#fff;
-
-  border:
-    1px solid
-    #d9dde0;
-}
-
-.placeholder{
-  display:grid;
-
-  place-items:center;
-
-  background:#e9ecef;
-
-  color:#7a8187;
-
-  font-size:18px;
-}
-
-.usdBadge{
-  display:inline-block;
-
-  min-width:72px;
-
-  padding:
-    7px 9px;
-
-  border-radius:12px;
-
-  background:#eef0f2;
-
-  border:
-    1px solid
-    #d8dcdf;
-
-  color:#3f474d;
-}
-
-.priceBadge{
-  display:inline-block;
-
-  min-width:116px;
-
-  padding:
-    8px 10px;
-
-  border-radius:12px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #fff1f2,
-      #f7e5e7
-    );
-
-  border:
-    1px solid
-    #edc2c6;
-
-  color:#8e2027;
-
-  font-weight:700;
-}
-
-.actionGroup{
-  display:flex;
-
-  gap:7px;
-
-  justify-content:center;
-
-  align-items:center;
-}
-
-.empty{
-  text-align:center;
-
-  padding:28px;
-
-  color:#d7dade;
-}
-
-.footer{
-  text-align:center;
-
-  color:#c8ccd0;
-
-  font-size:12px;
-
-  padding:
-    4px 0 12px;
-}
-
-/* =========================
-   مودال
-========================= */
+/* Modal */
 
 .modalBack{
   position:fixed;
-
   inset:0;
-
-  z-index:50;
+  z-index:100;
 
   display:none;
 
-  padding:8px;
+  padding:9px;
 
-  background:
-    rgba(8,9,10,.74);
+  background:rgba(5,7,9,.67);
 
-  backdrop-filter:
-    blur(13px);
-
-  -webkit-backdrop-filter:
-    blur(13px);
+  backdrop-filter:blur(13px);
+  -webkit-backdrop-filter:blur(13px);
 
   overflow-y:auto;
-
   overflow-x:hidden;
 
-  -webkit-overflow-scrolling:
-    touch;
-
-  touch-action:
-    pan-y;
-
-  overscroll-behavior:
-    contain;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
 
   align-items:flex-start;
-
   justify-content:center;
 }
 
@@ -1198,547 +774,770 @@ td.product{
 .modal{
   position:relative;
 
-  width:
-    min(560px,100%);
+  width:min(560px,100%);
 
-  margin:
-    auto 0;
+  margin:auto 0;
 
-  max-height:
-    calc(100dvh - 16px);
+  max-height:calc(100dvh - 18px);
 
   overflow-y:auto;
-
   overflow-x:hidden;
 
-  -webkit-overflow-scrolling:
-    touch;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
 
-  touch-action:
-    pan-y;
+  border-radius:29px;
 
-  overscroll-behavior:
-    contain;
-
-  border-radius:31px;
-
-  padding:
-    22px 18px;
+  padding:19px 16px 18px;
 }
 
-.modal::-webkit-scrollbar{
-  width:7px;
+.closeBtn{
+  position:absolute;
+  left:13px;
+  top:12px;
+
+  width:42px;
+  height:42px;
+
+  border:1px solid var(--line);
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  color:var(--text);
+  background:var(--soft);
+
+  font-size:24px;
 }
 
-.modal::-webkit-scrollbar-thumb{
+.closeBtn:active,
+.closeBtn:focus{
+  color:var(--text);
+  background:var(--soft);
+}
+
+.modalIcon{
+  width:63px;
+  height:63px;
+
+  margin:3px auto 12px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:21px;
+
+  color:#fff;
+
   background:
     linear-gradient(
-      #d5dade,
-      #c72d35
+      145deg,
+      #e84953,
+      #a21f27
     );
 
-  border-radius:100px;
+  box-shadow:
+    0 11px 27px rgba(165,33,42,.27);
+}
+
+.modalIcon svg{
+  width:31px;
+  height:31px;
 }
 
 .modal h2{
+  margin:0 42px 5px;
   text-align:center;
-
-  margin:
-    5px 46px 5px;
-
-  font-size:22px;
+  font-size:20px;
 }
 
 .modalSub{
-  text-align:center;
-
-  color:#d1d5d8;
-
-  font-size:13px;
-
   margin-bottom:18px;
+  text-align:center;
+  color:var(--muted);
+  font-size:11px;
 }
 
-.close{
-  position:absolute;
-
-  left:14px;
-
-  top:12px;
-
-  width:44px;
-
-  height:44px;
-
-  border-radius:50%;
-
-  border:
-    1px solid
-    rgba(220,225,229,.26);
-
-  color:#fff;
-
-  background:
-    rgba(70,74,79,.62);
-
-  font-size:28px;
-}
-
-/* آیکون افزودن محصول */
-
-.modalHeroIcon{
-  width:72px;
-  height:72px;
-
-  border-radius:23px;
-
-  margin:
-    0 auto 12px;
-
-  display:grid;
-
-  place-items:center;
-
-  color:#fff;
-
-  background:
-    radial-gradient(
-      circle at 28% 22%,
-      rgba(255,255,255,.25),
-      transparent 26%
-    ),
-
-    linear-gradient(
-      145deg,
-      #d3444c,
-      #7f1c22
-    );
-
-  border:
-    1px solid
-    rgba(225,230,235,.42);
-
-  box-shadow:
-    0 0 24px
-    rgba(198,43,51,.30),
-
-    inset 0 1px 0
-    rgba(255,255,255,.18);
-}
-
-.modalHeroIcon svg{
-  width:36px;
-  height:36px;
-}
-
-.field{
+.formField{
   margin-bottom:15px;
+}
+
+.formLabel{
+  margin-bottom:7px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.formLabelRow{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.formLabelRow svg{
+  width:18px;
+  height:18px;
+  color:var(--red2);
 }
 
 .modal input{
   min-height:58px;
+  border-radius:18px;
+  font-size:16px;
 }
 
-.fileBox{
+.uploadBox{
   position:relative;
 
-  display:block;
+  width:100%;
+  min-height:125px;
 
-  border:
-    2px dashed
-    rgba(223,227,230,.44);
+  border:1.5px dashed rgba(145,155,165,.42);
+  border-radius:20px;
 
-  border-radius:21px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 
-  padding:
-    20px 14px;
+  gap:8px;
 
-  text-align:center;
+  background:var(--soft);
 
-  background:
-    rgba(75,79,84,.28);
+  overflow:hidden;
 }
 
-.fileBox input{
+.uploadBox input{
   position:absolute;
-
   inset:0;
-
+  width:100%;
+  height:100%;
   opacity:0;
 }
 
 .uploadIcon{
-  width:44px;
+  width:36px;
+  height:36px;
+  color:var(--red2);
+}
 
-  height:44px;
+.uploadTitle{
+  font-size:13px;
+  font-weight:700;
+}
 
-  margin:
-    0 auto 8px;
-
-  color:#f1f3f5;
+.uploadHint{
+  font-size:10px;
+  color:var(--muted);
 }
 
 .preview{
-  width:100px;
-
-  height:82px;
-
-  object-fit:cover;
-
-  border-radius:15px;
-
   display:none;
 
-  margin-top:10px;
+  width:100%;
+  max-width:190px;
+  height:120px;
 
-  border:
-    1px solid
-    rgba(255,255,255,.28);
+  object-fit:contain;
+
+  margin:10px auto 0;
+
+  border-radius:16px;
 }
 
+/* بدون نوار سفید */
+
 .modalActions{
-  position:sticky;
-
-  bottom:-1px;
-
-  z-index:3;
-
   display:grid;
-
-  grid-template-columns:
-    1fr 1.2fr;
-
+  grid-template-columns:1fr 1.15fr;
   gap:10px;
 
-  margin:
-    18px -2px -2px;
+  margin-top:18px;
 
-  padding:
-    12px 2px 2px;
+  padding:0;
+
+  position:static;
+
+  background:none!important;
+}
+
+.modalBtn{
+  min-height:54px;
+
+  border:1px solid var(--line);
+  border-radius:17px;
+
+  padding:10px 14px;
+
+  font-size:14px;
+  font-weight:800;
+}
+
+.modalBtn:active{
+  transform:scale(.975);
+}
+
+.cancelBtn{
+  color:var(--text);
+  background:var(--soft);
+}
+
+.cancelBtn:active,
+.cancelBtn:focus{
+  color:var(--text);
+  background:var(--soft);
+}
+
+.saveBtn{
+  color:#fff;
 
   background:
     linear-gradient(
-      transparent,
-      rgba(33,35,39,.92) 38%,
-      rgba(33,35,39,.99)
+      145deg,
+      #ef4e58,
+      #c72b35
+    );
+
+  box-shadow:
+    0 8px 20px rgba(180,40,48,.18);
+}
+
+.saveBtn:active,
+.saveBtn:focus{
+  color:#fff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ef4e58,
+      #c72b35
     );
 }
 
-.scrollHint{
+.empty{
+  padding:27px;
   text-align:center;
+  color:var(--muted);
+}
 
-  color:#d7dade;
-
-  font-size:11px;
-
-  margin-top:5px;
+.footer{
+  padding:4px 0 14px;
+  text-align:center;
+  color:var(--muted);
+  font-size:10px;
 }
 
 @media(max-width:700px){
 
   .app{
-    padding:9px;
+    padding:7px;
   }
 
-  .hero{
-    padding:
-      21px 17px;
-
+  .header{
+    padding:12px;
     border-radius:24px;
   }
 
   .brand{
-    font-size:28px;
+    font-size:24px;
   }
 
-  .row,
-  .dateRow{
+  .brandSub{
+    font-size:9.5px;
+  }
+
+  .ready{
+    display:none;
+  }
+
+  .themeBtn{
+    width:43px;
+    height:43px;
+  }
+
+  .section{
+    padding:13px;
+    border-radius:24px;
+  }
+
+  .rateGrid{
     grid-template-columns:1fr;
   }
 
-  .actions .btn{
-    flex:1;
+  .periodGrid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .glass{
-    padding:14px;
+  .tools{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .toolBtn{
+    min-height:86px;
+  }
+
+  .toolText{
+    font-size:10.5px;
   }
 
   .modal{
-    width:100%;
-
     border-radius:26px;
-
-    padding:
-      19px 15px;
+    padding:18px 14px;
   }
 
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- لوگوموشن -->
-
 <div class="splash">
-
-  <div class="splashInner">
-
-    <div class="splashShine"></div>
-
+  <div>
     <div class="splashLogo">
-      OBCH
+      OBC<span>H</span>
     </div>
 
     <div class="splashLine"></div>
 
     <div class="splashText">
-      SMART PROTECTION
+      ELECTRICAL TECHNOLOGY
     </div>
-
   </div>
-
 </div>
+
 
 <main class="app">
 
-<header class="hero">
+<header class="header glass">
 
-  <div class="brand">
-    O<span class="brandRed">B</span>CH
+  <div>
+    <div class="brand">
+      OBC<span class="h">H</span>
+    </div>
+
+    <div class="brandSub">
+      سامانه مدیریت و محاسبه قیمت محصولات
+    </div>
   </div>
 
-  <div class="subtitle">
-    سامانه مدیریت و محاسبه قیمت محصولات حفاظتی
-  </div>
 
-</header>
+  <div class="headerRight">
 
-<section class="glass">
-
-  <div class="row">
-
-    <div>
-
-      <label for="rate">
-        قیمت دلار به تومان
-      </label>
-
-      <input
-        id="rate"
-        type="number"
-        inputmode="numeric"
-        min="0"
-        step="1"
-        value="234000"
-      >
-
+    <div class="ready">
+      <span class="readyDot"></span>
+      آماده
     </div>
 
     <button
-      class="btn secondary"
-      id="settingsBtn"
+      id="themeBtn"
+      class="themeBtn"
       type="button"
+      aria-label="حالت شب و روز"
     >
 
       <svg
-        class="btnIcon"
+        class="moonIcon"
         viewBox="0 0 24 24"
         fill="none"
       >
+        <path
+          d="M20 15.3A8 8 0 0 1 8.7 4a8.2 8.2 0 1 0 11.3 11.3Z"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+      </svg>
+
+      <svg
+        class="sunIcon"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="4"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
 
         <path
-          d="M7.5 10V7.8A4.5 4.5 0 0 1 12 3.3a4.5 4.5 0 0 1 4.5 4.5V10"
+          d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
           stroke="currentColor"
           stroke-width="1.8"
           stroke-linecap="round"
         />
-
-        <rect
-          x="5.2"
-          y="10"
-          width="13.6"
-          height="10.2"
-          rx="2.6"
-          stroke="currentColor"
-          stroke-width="1.8"
-        />
-
       </svg>
-
-      تنظیمات رمز
 
     </button>
 
   </div>
 
-  <div class="dateRow">
+</header>
+
+
+<section class="section glass">
+
+  <div class="sectionHead">
+
+    <svg
+      class="sectionHeadIcon"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="8.5"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+
+      <path
+        d="M9.5 9.5h4a2 2 0 1 1 0 4h-3a2 2 0 0 0 0 4h4M12 7v10"
+        stroke="currentColor"
+        stroke-width="1.6"
+      />
+    </svg>
 
     <div>
+      <div class="sectionTitle">
+        محاسبه قیمت
+      </div>
 
-      <label for="priceMonth">
-        ماه لیست قیمت
-      </label>
-
-      <select id="priceMonth">
-
-        <option>فروردین</option>
-        <option>اردیبهشت</option>
-        <option>خرداد</option>
-        <option>تیر</option>
-        <option>مرداد</option>
-        <option selected>شهریور</option>
-        <option>مهر</option>
-        <option>آبان</option>
-        <option>آذر</option>
-        <option>دی</option>
-        <option>بهمن</option>
-        <option>اسفند</option>
-
-      </select>
-
-    </div>
-
-    <div>
-
-      <label for="priceYear">
-        سال لیست قیمت
-      </label>
-
-      <input
-        id="priceYear"
-        type="number"
-        inputmode="numeric"
-        value="1405"
-      >
-
+      <div class="sectionSub">
+        نرخ ارز و دوره لیست قیمت
+      </div>
     </div>
 
   </div>
 
-  <div class="note">
-    عنوان PDF از ماه و سال انتخاب‌شده ساخته می‌شود.
+
+  <div class="rateGrid">
+
+    <div class="fieldCard">
+
+      <div class="fieldTitle">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M4 12h16M12 5v14"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+        </svg>
+
+        قیمت دلار به تومان
+
+      </div>
+
+      <input
+        id="rate"
+        type="number"
+        inputmode="numeric"
+        value="234000"
+      >
+
+    </div>
+
+
+    <div class="periodGrid">
+
+      <div class="fieldCard">
+
+        <div class="fieldTitle">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <rect
+              x="4"
+              y="5"
+              width="16"
+              height="15"
+              rx="3"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+
+            <path
+              d="M8 3v4M16 3v4M4 9h16"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+          </svg>
+
+          ماه
+
+        </div>
+
+        <select id="month">
+          <option>فروردین</option>
+          <option>اردیبهشت</option>
+          <option>خرداد</option>
+          <option>تیر</option>
+          <option>مرداد</option>
+          <option selected>شهریور</option>
+          <option>مهر</option>
+          <option>آبان</option>
+          <option>آذر</option>
+          <option>دی</option>
+          <option>بهمن</option>
+          <option>اسفند</option>
+        </select>
+
+      </div>
+
+
+      <div class="fieldCard">
+
+        <div class="fieldTitle">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M6 5h12v14H6z"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+
+            <path
+              d="M9 9h6M9 13h6"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+          </svg>
+
+          سال
+
+        </div>
+
+        <input
+          id="year"
+          type="number"
+          value="1405"
+        >
+
+      </div>
+
+    </div>
+
   </div>
 
 </section>
 
-<section class="glass">
 
-  <div class="actions">
+<section class="section glass">
+
+  <div class="sectionHead">
+
+    <svg
+      class="sectionHeadIcon silver"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <rect
+        x="4"
+        y="5"
+        width="16"
+        height="15"
+        rx="4"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+
+      <path
+        d="M7 4v4M17 4v4M4 10h16"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+    </svg>
+
+    <div>
+      <div class="sectionTitle">
+        ابزارهای مدیریت
+      </div>
+
+      <div class="sectionSub">
+        عملیات سریع برنامه
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="tools">
 
     <button
-      class="btn primary"
       id="addBtn"
+      class="toolBtn"
       type="button"
     >
 
       <svg
-        class="btnIcon"
+        class="toolIcon"
         viewBox="0 0 24 24"
         fill="none"
       >
-
         <rect
-          x="3.5"
-          y="3.5"
-          width="17"
-          height="17"
+          x="4"
+          y="4"
+          width="16"
+          height="16"
           rx="5"
           stroke="currentColor"
           stroke-width="1.8"
         />
 
         <path
-          d="M12 7.5v9M7.5 12h9"
+          d="M12 8v8M8 12h8"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
+          stroke-width="1.9"
         />
-
       </svg>
 
-      افزودن محصول
+      <span class="toolText">
+        افزودن محصول
+      </span>
 
     </button>
 
+
     <button
-      class="btn secondary"
       id="pdfBtn"
+      class="toolBtn"
       type="button"
     >
 
       <svg
-        class="btnIcon"
+        class="toolIcon silver"
         viewBox="0 0 24 24"
         fill="none"
       >
-
         <path
-          d="M7 3.8h7l3 3V20H7z"
+          d="M7 3h7l4 4v14H7z"
           stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linejoin="round"
+          stroke-width="1.7"
         />
 
         <path
-          d="M14 3.8V7h3"
+          d="M14 3v5h4M9 15h6"
           stroke="currentColor"
-          stroke-width="1.8"
+          stroke-width="1.7"
         />
-
-        <path
-          d="M9.2 14.5h5.6M12 11.5v6"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-        />
-
       </svg>
 
-      خروجی PDF
+      <span class="toolText">
+        خروجی PDF
+      </span>
+
+    </button>
+
+
+    <button
+      id="settingsBtn"
+      class="toolBtn"
+      type="button"
+    >
+
+      <svg
+        class="toolIcon silver"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M7.5 10V8a4.5 4.5 0 0 1 9 0v2"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+
+        <rect
+          x="5"
+          y="10"
+          width="14"
+          height="10"
+          rx="3"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+      </svg>
+
+      <span class="toolText">
+        تنظیمات رمز
+      </span>
 
     </button>
 
   </div>
 
+</section>
+
+
+<section class="section glass">
+
+  <div class="sectionHead">
+
+    <div class="productTitleIcon">
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M4 7 12 3l8 4-8 4z"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
+
+        <path
+          d="M4 7v10l8 4 8-4V7"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
+
+        <path
+          d="M12 11v10"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
+      </svg>
+
+    </div>
+
+    <div>
+      <div class="sectionTitle">
+        محصولات OBCH
+      </div>
+
+      <div class="sectionSub">
+        مدیریت قیمت، تصویر و اطلاعات محصولات
+      </div>
+    </div>
+
+  </div>
+
+
   <div class="tableShell">
 
-    <div class="tableWrap">
+    <div class="tableScroll">
 
       <table>
 
         <thead>
-
           <tr>
-
-            <th class="colIndex">
-              ردیف
-            </th>
-
-            <th class="colImage">
-              تصویر
-            </th>
-
-            <th class="colName">
-              نام محصول
-            </th>
-
-            <th class="colDollar">
-              قیمت دلار
-            </th>
-
-            <th class="colPrice">
-              قیمت مصرف‌کننده
-            </th>
-
-            <th class="colActions">
-              عملیات
-            </th>
-
+            <th class="colNo">ردیف</th>
+            <th class="colImage">تصویر</th>
+            <th class="colName">نام محصول</th>
+            <th class="colDollar">دلار</th>
+            <th class="colPrice">قیمت مصرف‌کننده</th>
+            <th class="colActions">عملیات</th>
           </tr>
-
         </thead>
 
         <tbody id="tbody"></tbody>
@@ -1759,803 +1558,863 @@ td.product{
 
 </section>
 
+
 <div class="footer">
-  اطلاعات محصولات روی همین دستگاه ذخیره می‌شوند.
+  OBCH • ELECTRICAL TECHNOLOGY
 </div>
 
 </main>
 
-<!-- افزودن محصول -->
+
+<!-- ADD / EDIT -->
 
 <div
-  class="modalBack"
   id="productModal"
+  class="modalBack"
 >
 
-<section class="modal">
+  <section class="modal glass">
 
-<button
-  class="close"
-  data-close="productModal"
-  type="button"
->
-×
-</button>
+    <button
+      class="closeBtn"
+      data-close="productModal"
+      type="button"
+    >
+      ×
+    </button>
 
-<div class="modalHeroIcon">
 
-<svg
-  viewBox="0 0 24 24"
-  fill="none"
->
+    <div class="modalIcon">
 
-<path
-  d="M6 8.5 12 5l6 3.5v7L12 19l-6-3.5z"
-  stroke="currentColor"
-  stroke-width="1.7"
-  stroke-linejoin="round"
-/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M5 8 12 4l7 4-7 4z"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
 
-<path
-  d="M12 12v7M6.3 8.6 12 12l5.7-3.4"
-  stroke="currentColor"
-  stroke-width="1.7"
-  stroke-linejoin="round"
-/>
+        <path
+          d="M5 8v8l7 4 7-4V8"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
 
-<circle
-  cx="18.2"
-  cy="5.8"
-  r="3.1"
-  fill="#8f1f26"
-  stroke="currentColor"
-  stroke-width="1.3"
-/>
+        <path
+          d="M18 4v5M15.5 6.5h5"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+      </svg>
 
-<path
-  d="M18.2 4.3v3M16.7 5.8h3"
-  stroke="currentColor"
-  stroke-width="1.5"
-  stroke-linecap="round"
-/>
+    </div>
 
-</svg>
+
+    <h2 id="productModalTitle">
+      افزودن محصول
+    </h2>
+
+
+    <div class="modalSub">
+      مشخصات محصول را وارد کنید
+    </div>
+
+
+    <div class="formField">
+
+      <div class="formLabel">
+
+        <div class="formLabelRow">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M5 7h14v10H5z"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+          </svg>
+
+          نام محصول
+
+        </div>
+
+      </div>
+
+      <input
+        id="productName"
+        type="text"
+        placeholder="نام محصول"
+      >
+
+    </div>
+
+
+    <div class="formField">
+
+      <div class="formLabel">
+
+        <div class="formLabelRow">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="8"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+
+            <path
+              d="M9 10h5a2 2 0 0 1 0 4h-4a2 2 0 0 0 0 4h5"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+          </svg>
+
+          قیمت دلاری
+
+        </div>
+
+      </div>
+
+      <input
+        id="productUSD"
+        type="number"
+        inputmode="decimal"
+        step="0.001"
+        placeholder="مثال: 1.25"
+      >
+
+    </div>
+
+
+    <div class="formField">
+
+      <div class="formLabel">
+
+        <div class="formLabelRow">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <rect
+              x="4"
+              y="5"
+              width="16"
+              height="14"
+              rx="3"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+
+            <circle
+              cx="9"
+              cy="10"
+              r="1.5"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+          </svg>
+
+          تصویر محصول
+
+        </div>
+
+      </div>
+
+
+      <label class="uploadBox">
+
+        <svg
+          class="uploadIcon"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M7 17h-1a4 4 0 0 1 0-8 6 6 0 0 1 11.5-1.5A4 4 0 0 1 18 15h-2"
+            stroke="currentColor"
+            stroke-width="1.7"
+          />
+
+          <path
+            d="M12 9v9M9 12l3-3 3 3"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+        </svg>
+
+
+        <div class="uploadTitle">
+          انتخاب تصویر محصول
+        </div>
+
+        <div class="uploadHint">
+          برای انتخاب عکس این قسمت را لمس کنید
+        </div>
+
+
+        <input
+          id="productImage"
+          type="file"
+          accept="image/*"
+        >
+
+      </label>
+
+
+      <img
+        id="preview"
+        class="preview"
+        alt="پیش نمایش"
+      >
+
+    </div>
+
+
+    <div class="modalActions">
+
+      <button
+        class="modalBtn cancelBtn"
+        data-close="productModal"
+        type="button"
+      >
+        انصراف
+      </button>
+
+      <button
+        id="saveProduct"
+        class="modalBtn saveBtn"
+        type="button"
+      >
+        ثبت محصول
+      </button>
+
+    </div>
+
+  </section>
 
 </div>
 
-<h2 id="productTitle">
-افزودن محصول
-</h2>
 
-<div class="modalSub">
-مشخصات محصول را وارد کنید.
-</div>
-
-<div class="field">
-
-<label for="nameInput">
-نام محصول
-</label>
-
-<input
-  id="nameInput"
-  type="text"
-  placeholder="نام محصول"
->
-
-</div>
-
-<div class="field">
-
-<label for="usdInput">
-قیمت به دلار
-</label>
-
-<input
-  id="usdInput"
-  type="number"
-  inputmode="decimal"
-  min="0"
-  step="0.001"
-  placeholder="مثال: 8.50"
->
-
-</div>
-
-<div class="field">
-
-<label>
-عکس محصول
-</label>
-
-<label class="fileBox">
-
-<svg
-  class="uploadIcon"
-  viewBox="0 0 24 24"
-  fill="none"
->
-
-<path
-  d="M7.5 17.5H6.8a4.3 4.3 0 0 1-.5-8.56A5.9 5.9 0 0 1 17.6 7.2a3.8 3.8 0 0 1 .3 7.58H16"
-  stroke="currentColor"
-  stroke-width="1.7"
-  stroke-linecap="round"
-/>
-
-<path
-  d="M12 9.5v9M8.8 12.7 12 9.5l3.2 3.2"
-  stroke="currentColor"
-  stroke-width="1.8"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-/>
-
-</svg>
-
-<strong>
-انتخاب عکس محصول
-</strong>
-
-<input
-  id="imageInput"
-  type="file"
-  accept="image/*"
->
-
-</label>
-
-<img
-  id="imagePreview"
-  class="preview"
-  alt="پیش نمایش"
->
-
-</div>
-
-<div class="scrollHint">
-برای دیدن همه قسمت‌ها صفحه را بالا و پایین بکشید.
-</div>
-
-<div class="modalActions">
-
-<button
-  class="btn secondary"
-  data-close="productModal"
->
-انصراف
-</button>
-
-<button
-  class="btn primary"
-  id="saveProduct"
->
-ثبت محصول
-</button>
-
-</div>
-
-</section>
-
-</div>
-
-<!-- رمز ویرایش -->
+<!-- PASSWORD -->
 
 <div
-  class="modalBack"
   id="passwordModal"
+  class="modalBack"
 >
 
-<section class="modal">
+  <section class="modal glass">
 
-<button
-  class="close"
-  data-close="passwordModal"
->
-×
-</button>
+    <button
+      class="closeBtn"
+      data-close="passwordModal"
+      type="button"
+    >
+      ×
+    </button>
 
-<div class="modalHeroIcon">
 
-<svg
-  viewBox="0 0 24 24"
-  fill="none"
->
+    <div class="modalIcon">
 
-<path
-  d="M7.5 10V7.8A4.5 4.5 0 0 1 12 3.3a4.5 4.5 0 0 1 4.5 4.5V10"
-  stroke="currentColor"
-  stroke-width="1.7"
-/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M7.5 10V8a4.5 4.5 0 0 1 9 0v2"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
 
-<rect
-  x="5"
-  y="10"
-  width="14"
-  height="10"
-  rx="3"
-  stroke="currentColor"
-  stroke-width="1.7"
-/>
+        <rect
+          x="5"
+          y="10"
+          width="14"
+          height="10"
+          rx="3"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+      </svg>
 
-</svg>
+    </div>
+
+
+    <h2>
+      رمز ویرایش
+    </h2>
+
+
+    <div class="modalSub">
+      رمز عبور را وارد کنید
+    </div>
+
+
+    <div class="formField">
+
+      <div class="formLabel">
+        رمز عبور
+      </div>
+
+      <input
+        id="editPassword"
+        type="password"
+        inputmode="numeric"
+      >
+
+    </div>
+
+
+    <div class="modalActions">
+
+      <button
+        class="modalBtn cancelBtn"
+        data-close="passwordModal"
+        type="button"
+      >
+        انصراف
+      </button>
+
+      <button
+        id="passwordOK"
+        class="modalBtn saveBtn"
+        type="button"
+      >
+        تأیید
+      </button>
+
+    </div>
+
+  </section>
 
 </div>
 
-<h2>
-رمز عبور ویرایش
-</h2>
 
-<div class="field">
-
-<label>
-رمز فعلی
-</label>
-
-<input
-  id="passwordInput"
-  type="password"
-  inputmode="numeric"
->
-
-</div>
-
-<div class="modalActions">
-
-<button
-  class="btn secondary"
-  data-close="passwordModal"
->
-انصراف
-</button>
-
-<button
-  class="btn primary"
-  id="passwordOk"
->
-تأیید
-</button>
-
-</div>
-
-</section>
-
-</div>
-
-<!-- حذف -->
+<!-- DELETE -->
 
 <div
-  class="modalBack"
   id="deleteModal"
->
-
-<section class="modal">
-
-<button
-  class="close"
-  data-close="deleteModal"
->
-×
-</button>
-
-<h2>
-حذف محصول
-</h2>
-
-<div
-  id="deleteMessage"
-  class="modalSub"
-></div>
-
-<div class="modalActions">
-
-<button
-  class="btn secondary"
-  data-close="deleteModal"
->
-انصراف
-</button>
-
-<button
-  class="btn danger"
-  id="deleteOk"
->
-حذف
-</button>
-
-</div>
-
-</section>
-
-</div>
-
-<!-- تغییر رمز -->
-
-<div
   class="modalBack"
+>
+
+  <section class="modal glass">
+
+    <button
+      class="closeBtn"
+      data-close="deleteModal"
+      type="button"
+    >
+      ×
+    </button>
+
+
+    <div class="modalIcon">
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M7 7h10l-1 12H8z"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
+
+        <path
+          d="M9 7V5h6v2M5 7h14"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
+      </svg>
+
+    </div>
+
+
+    <h2>
+      حذف محصول
+    </h2>
+
+
+    <div
+      id="deleteText"
+      class="modalSub"
+    ></div>
+
+
+    <div class="modalActions">
+
+      <button
+        class="modalBtn cancelBtn"
+        data-close="deleteModal"
+        type="button"
+      >
+        انصراف
+      </button>
+
+      <button
+        id="deleteOK"
+        class="modalBtn saveBtn"
+        type="button"
+      >
+        حذف
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- SETTINGS -->
+
+<div
   id="settingsModal"
+  class="modalBack"
 >
 
-<section class="modal">
+  <section class="modal glass">
 
-<button
-  class="close"
-  data-close="settingsModal"
->
-×
-</button>
+    <button
+      class="closeBtn"
+      data-close="settingsModal"
+      type="button"
+    >
+      ×
+    </button>
 
-<h2>
-تغییر رمز ویرایش
-</h2>
 
-<div class="field">
+    <div class="modalIcon">
 
-<label>
-رمز فعلی
-</label>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M7.5 10V8a4.5 4.5 0 0 1 9 0v2"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
 
-<input
-  id="oldPass"
-  type="password"
-  inputmode="numeric"
->
+        <rect
+          x="5"
+          y="10"
+          width="14"
+          height="10"
+          rx="3"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+      </svg>
+
+    </div>
+
+
+    <h2>
+      تنظیمات امنیتی
+    </h2>
+
+
+    <div class="modalSub">
+      تغییر رمز ویرایش محصولات
+    </div>
+
+
+    <div class="formField">
+      <div class="formLabel">
+        رمز فعلی
+      </div>
+
+      <input
+        id="oldPassword"
+        type="password"
+      >
+    </div>
+
+
+    <div class="formField">
+      <div class="formLabel">
+        رمز جدید
+      </div>
+
+      <input
+        id="newPassword"
+        type="password"
+      >
+    </div>
+
+
+    <div class="formField">
+      <div class="formLabel">
+        تکرار رمز جدید
+      </div>
+
+      <input
+        id="repeatPassword"
+        type="password"
+      >
+    </div>
+
+
+    <div class="modalActions">
+
+      <button
+        class="modalBtn cancelBtn"
+        data-close="settingsModal"
+        type="button"
+      >
+        انصراف
+      </button>
+
+      <button
+        id="savePassword"
+        class="modalBtn saveBtn"
+        type="button"
+      >
+        ذخیره رمز
+      </button>
+
+    </div>
+
+  </section>
 
 </div>
 
-<div class="field">
-
-<label>
-رمز جدید
-</label>
-
-<input
-  id="newPass"
-  type="password"
-  inputmode="numeric"
->
-
-</div>
-
-<div class="field">
-
-<label>
-تکرار رمز جدید
-</label>
-
-<input
-  id="repeatPass"
-  type="password"
-  inputmode="numeric"
->
-
-</div>
-
-<div class="modalActions">
-
-<button
-  class="btn secondary"
-  data-close="settingsModal"
->
-انصراف
-</button>
-
-<button
-  class="btn primary"
-  id="changePass"
->
-ثبت رمز جدید
-</button>
-
-</div>
-
-</section>
-
-</div>
 
 <script>
-
 "use strict";
 
-const $ =
-  id =>
-  document.getElementById(id);
+const $ = id => document.getElementById(id);
 
-/*
-این سه کلید عمداً همان کلیدهای قبلی OBCH هستند
-تا اطلاعات قبلی شما در مرورگر حذف نشوند.
-*/
+const PRODUCTS_KEY = "obch_products_v3";
+const RATE_KEY = "obch_rate_v3";
+const PASS_KEY = "obch_pass_v3";
+const MONTH_KEY = "obch_month_v3";
+const YEAR_KEY = "obch_year_v3";
+const THEME_KEY = "obch_theme_v3";
 
-const PRODUCTS_KEY =
-  "obch_products_v1";
-
-const RATE_KEY =
-  "obch_rate_v1";
-
-const PASS_KEY =
-  "obch_edit_password_v1";
-
-const MONTH_KEY =
-  "obch_month_v1";
-
-const YEAR_KEY =
-  "obch_year_v1";
-
-const DEFAULT_PASS =
-  "1234";
-
-const DEFAULT_RATE =
-  234000;
+const DEFAULT_PASS = "1234";
 
 const defaultProducts = [
-
-{
-  name:
-  "محافظ ولتاژ/جریان تک‌فاز + نول 63 آمپر",
-  usd:0,
-  image:""
-},
-
-{
-  name:
-  "محافظ ولتاژ/جریان تک‌فاز + نول 80 آمپر",
-  usd:0,
-  image:""
-},
-
-{
-  name:
-  "محافظ ولتاژ/جریان سه‌فاز + نول 80 آمپر",
-  usd:0,
-  image:""
-},
-
-{
-  name:
-  "محافظ ولتاژ/جریان سه‌فاز + نول 100 آمپر",
-  usd:0,
-  image:""
-}
-
+  {
+    name:"محافظ ولتاژ/جریان تک فاز + نول 63 آمپر",
+    usd:0,
+    image:""
+  },
+  {
+    name:"محافظ ولتاژ/جریان تک فاز + نول 80 آمپر",
+    usd:0,
+    image:""
+  },
+  {
+    name:"محافظ ولتاژ/جریان سه فاز + نول 80 آمپر",
+    usd:0,
+    image:""
+  },
+  {
+    name:"محافظ ولتاژ/جریان سه فاز + نول 100 آمپر",
+    usd:0,
+    image:""
+  }
 ];
 
-let products =
-  loadProducts();
-
-let editIndex =
-  -1;
-
-let pendingEditIndex =
-  -1;
-
-let deleteIndex =
-  -1;
-
-let currentImage =
-  "";
+let products = loadProducts();
+let editIndex = -1;
+let pendingEdit = -1;
+let pendingDelete = -1;
+let currentImage = "";
 
 function loadProducts(){
 
-  try{
+  const keys = [
+    PRODUCTS_KEY,
+    "obch_products_v2",
+    "obch_products_v1"
+  ];
 
-    const data =
-      JSON.parse(
-        localStorage.getItem(
-          PRODUCTS_KEY
-        ) ||
-        "null"
-      );
+  for(const key of keys){
 
-    if(
-      Array.isArray(data)
-    ){
+    try{
 
-      return data;
+      const value =
+        JSON.parse(
+          localStorage.getItem(key) ||
+          "null"
+        );
 
-    }
+      if(Array.isArray(value)){
+        return value;
+      }
 
-  }catch(error){}
+    }catch(e){}
+
+  }
 
   return defaultProducts;
-
 }
 
 function saveProducts(){
-
   localStorage.setItem(
     PRODUCTS_KEY,
     JSON.stringify(products)
   );
-
 }
 
-function getRate(){
-
-  return Number(
-    $("rate").value
-  ) || 0;
-
+function rate(){
+  return Number($("rate").value) || 0;
 }
 
-function faNum(value){
+function formatPrice(value){
 
-  return Number(value)
-  .toLocaleString(
-    "fa-IR"
+  const number = Number(value);
+
+  if(!Number.isFinite(number)){
+    return "0";
+  }
+
+  return number.toLocaleString(
+    "en-US",
+    {
+      minimumFractionDigits:0,
+      maximumFractionDigits:0
+    }
   );
-
 }
 
-function pdfNum(value){
+function formatUSD(value){
 
-  const fa =
-    "۰۱۲۳۴۵۶۷۸۹";
+  const number = Number(value);
 
-  return Number(value)
-  .toLocaleString(
-    "en-US"
-  )
-  .replace(
-    /\d/g,
-    digit =>
-    fa[digit]
+  if(!Number.isFinite(number)){
+    return "0";
+  }
+
+  return number.toLocaleString(
+    "en-US",
+    {
+      minimumFractionDigits:0,
+      maximumFractionDigits:3
+    }
   );
-
 }
 
-function faDigits(value){
-
-  const fa =
-    "۰۱۲۳۴۵۶۷۸۹";
+function escapeHTML(value){
 
   return String(value)
-  .replace(
-    /\d/g,
-    digit =>
-    fa[digit]
-  );
-
-}
-
-function escapeHtml(value){
-
-  return String(value)
-  .replace(
-    /[&<>"']/g,
-    character =>
-    ({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-    }[character])
-  );
-
+    .replace(
+      /[&<>"']/g,
+      ch => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[ch])
+    );
 }
 
 function openModal(id){
 
-  const wrapper =
-    $(id);
+  const bg = $(id);
 
-  wrapper
-  .classList
-  .add(
-    "show"
-  );
+  bg.classList.add("show");
 
-  wrapper.scrollTop =
-    0;
+  bg.scrollTop = 0;
 
   const modal =
-    wrapper
-    .querySelector(
-      ".modal"
-    );
+    bg.querySelector(".modal");
 
   if(modal){
-
-    modal.scrollTop =
-      0;
-
+    modal.scrollTop = 0;
   }
-
 }
 
 function closeModal(id){
-
-  $(id)
-  .classList
-  .remove(
-    "show"
-  );
-
+  $(id).classList.remove("show");
 }
 
 function showPreview(src){
 
-  const image =
-    $("imagePreview");
+  const img = $("preview");
 
   if(src){
 
-    image.src =
-      src;
-
-    image.style.display =
-      "block";
+    img.src = src;
+    img.style.display = "block";
 
   }else{
 
-    image
-    .removeAttribute(
-      "src"
-    );
-
-    image.style.display =
-      "none";
+    img.removeAttribute("src");
+    img.style.display = "none";
 
   }
-
 }
 
-function getPdfTitle(){
+function setTheme(theme){
 
-  return (
-    "لیست قیمت " +
-    $("priceMonth").value +
-    " ماه " +
-    faDigits(
-      $("priceYear").value ||
-      "1405"
-    )
+  const value =
+    theme === "light"
+      ? "light"
+      : "dark";
+
+  document.documentElement.dataset.theme = value;
+
+  localStorage.setItem(
+    THEME_KEY,
+    value
   );
 
+  $("themeColor").content =
+    value === "light"
+      ? "#edf0f2"
+      : "#101317";
 }
+
+function initTheme(){
+
+  const saved =
+    localStorage.getItem(
+      THEME_KEY
+    );
+
+  if(saved){
+
+    setTheme(saved);
+
+    return;
+  }
+
+  const isLight =
+    window.matchMedia &&
+    window.matchMedia(
+      "(prefers-color-scheme: light)"
+    ).matches;
+
+  setTheme(
+    isLight
+      ? "light"
+      : "dark"
+  );
+}
+
+$("themeBtn").addEventListener(
+  "click",
+  ()=>{
+
+    setTheme(
+      document.documentElement.dataset.theme === "dark"
+        ? "light"
+        : "dark"
+    );
+
+  }
+);
 
 function render(){
 
-  const tbody =
-    $("tbody");
+  const tbody = $("tbody");
 
-  tbody.innerHTML =
-    "";
+  tbody.innerHTML = "";
 
-  $("empty")
-  .style
-  .display =
+  $("empty").style.display =
     products.length
-    ? "none"
-    : "block";
+      ? "none"
+      : "block";
 
   products.forEach(
     (product,index)=>{
 
       const price =
         Math.round(
-          Number(
-            product.usd
-          ) *
-          getRate()
-        );
-
-      const row =
-        document
-        .createElement(
-          "tr"
+          Number(product.usd) *
+          rate()
         );
 
       const image =
-
         product.image
+          ? `<img class="productImage" src="${product.image}" alt="">`
+          : `<div class="noImage">—</div>`;
 
-        ?
+      const tr =
+        document.createElement(
+          "tr"
+        );
 
-        '<img class="thumb" src="' +
-        product.image +
-        '" alt="عکس محصول">'
+      tr.innerHTML = `
+        <td>
+          <div class="rowNo">${index + 1}</div>
+        </td>
 
-        :
+        <td>
+          ${image}
+        </td>
 
-        '<span class="placeholder">—</span>';
+        <td class="productName">
+          ${escapeHTML(product.name)}
+        </td>
 
-      row.innerHTML =
+        <td>
+          <span class="dollarValue">
+            ${formatUSD(product.usd)}
+          </span>
+        </td>
 
-        '<td>' +
-        '<span class="rowNo">' +
-        faNum(index+1) +
-        '</span>' +
-        '</td>' +
+        <td>
+          <span class="priceValue">
+            ${formatPrice(price)}
+          </span>
+        </td>
 
-        '<td>' +
-        image +
-        '</td>' +
+        <td>
+          <div class="tableBtns">
 
-        '<td class="product">' +
-        escapeHtml(
-          product.name
-        ) +
-        '</td>' +
+            <button
+              class="smallBtn editBtn"
+              data-edit="${index}"
+              type="button"
+            >
+              ویرایش
+            </button>
 
-        '<td>' +
-        '<span class="usdBadge">' +
-        faNum(
-          product.usd
-        ) +
-        '</span>' +
-        '</td>' +
+            <button
+              class="smallBtn deleteBtn"
+              data-delete="${index}"
+              type="button"
+            >
+              حذف
+            </button>
 
-        '<td>' +
-        '<span class="priceBadge">' +
-        faNum(
-          price
-        ) +
-        '</span>' +
-        '</td>' +
+          </div>
+        </td>
+      `;
 
-        '<td>' +
-
-        '<div class="actionGroup">' +
-
-        '<button ' +
-        'class="btn small editBtn" ' +
-        'data-i="' +
-        index +
-        '">' +
-        'ویرایش' +
-        '</button>' +
-
-        '<button ' +
-        'class="btn small danger deleteBtn" ' +
-        'data-i="' +
-        index +
-        '">' +
-        'حذف' +
-        '</button>' +
-
-        '</div>' +
-
-        '</td>';
-
-      tbody
-      .appendChild(
-        row
-      );
-
+      tbody.appendChild(tr);
     }
   );
-
 }
 
-/* افزودن */
-
-$("addBtn")
-.addEventListener(
+$("addBtn").addEventListener(
   "click",
   ()=>{
 
-    editIndex =
-      -1;
+    editIndex = -1;
+    currentImage = "";
 
-    currentImage =
-      "";
-
-    $("productTitle")
-    .textContent =
+    $("productModalTitle").textContent =
       "افزودن محصول";
 
-    $("nameInput")
-    .value =
-      "";
-
-    $("usdInput")
-    .value =
-      "";
-
-    $("imageInput")
-    .value =
-      "";
+    $("productName").value = "";
+    $("productUSD").value = "";
+    $("productImage").value = "";
 
     showPreview("");
 
@@ -2566,10 +2425,7 @@ $("addBtn")
   }
 );
 
-/* عکس */
-
-$("imageInput")
-.addEventListener(
+$("productImage").addEventListener(
   "change",
   event=>{
 
@@ -2585,7 +2441,7 @@ $("imageInput")
       new FileReader();
 
     reader.onload =
-      e=>{
+      e => {
 
         currentImage =
           String(
@@ -2596,31 +2452,26 @@ $("imageInput")
         showPreview(
           currentImage
         );
-
       };
 
     reader.readAsDataURL(
       file
     );
-
   }
 );
 
-/* ثبت محصول */
-
-$("saveProduct")
-.addEventListener(
+$("saveProduct").addEventListener(
   "click",
   ()=>{
 
     const name =
-      $("nameInput")
-      .value
-      .trim();
+      $("productName")
+        .value
+        .trim();
 
     const usd =
       Number(
-        $("usdInput").value
+        $("productUSD").value
       );
 
     if(!name){
@@ -2630,7 +2481,6 @@ $("saveProduct")
       );
 
       return;
-
     }
 
     if(
@@ -2639,40 +2489,26 @@ $("saveProduct")
     ){
 
       alert(
-        "قیمت دلار را درست وارد کنید."
+        "قیمت دلاری را درست وارد کنید."
       );
 
       return;
-
     }
 
     const item = {
-
-      name:name,
-
-      usd:usd,
-
-      image:
-        currentImage ||
-        ""
-
+      name,
+      usd,
+      image:currentImage || ""
     };
 
-    if(
-      editIndex < 0
-    ){
+    if(editIndex < 0){
 
-      products.push(
-        item
-      );
+      products.push(item);
 
     }else{
 
-      products[
-        editIndex
-      ] =
+      products[editIndex] =
         item;
-
     }
 
     saveProducts();
@@ -2682,89 +2518,65 @@ $("saveProduct")
     closeModal(
       "productModal"
     );
-
   }
 );
 
-/* ویرایش / حذف */
-
-$("tbody")
-.addEventListener(
+$("tbody").addEventListener(
   "click",
   event=>{
 
     const edit =
       event.target.closest(
-        ".editBtn"
+        "[data-edit]"
       );
 
     const del =
       event.target.closest(
-        ".deleteBtn"
+        "[data-delete]"
       );
 
     if(edit){
 
-      pendingEditIndex =
+      pendingEdit =
         Number(
-          edit.dataset.i
+          edit.dataset.edit
         );
 
-      $("passwordInput")
-      .value =
-        "";
+      $("editPassword").value = "";
 
       openModal(
         "passwordModal"
       );
-
     }
 
     if(del){
 
-      deleteIndex =
+      pendingDelete =
         Number(
-          del.dataset.i
+          del.dataset.delete
         );
 
-      $("deleteMessage")
-      .textContent =
-
-        "آیا محصول «" +
-
-        products[
-          deleteIndex
-        ].name +
-
-        "» حذف شود؟";
+      $("deleteText").textContent =
+        `آیا محصول «${products[pendingDelete].name}» حذف شود؟`;
 
       openModal(
         "deleteModal"
       );
-
     }
-
   }
 );
 
-/* تأیید رمز */
-
-$("passwordOk")
-.addEventListener(
+$("passwordOK").addEventListener(
   "click",
   ()=>{
 
-    const saved =
-      localStorage
-      .getItem(
-        PASS_KEY
-      ) ||
-      DEFAULT_PASS;
+    const pass =
+      localStorage.getItem(PASS_KEY)
+      || DEFAULT_PASS;
 
     if(
-      $("passwordInput")
-      .value !==
-      saved
+      $("editPassword").value !==
+      pass
     ){
 
       alert(
@@ -2772,7 +2584,6 @@ $("passwordOk")
       );
 
       return;
-
     }
 
     closeModal(
@@ -2780,33 +2591,24 @@ $("passwordOk")
     );
 
     editIndex =
-      pendingEditIndex;
+      pendingEdit;
+
+    const product =
+      products[editIndex];
 
     currentImage =
-      products[
-        editIndex
-      ].image ||
-      "";
+      product.image || "";
 
-    $("productTitle")
-    .textContent =
+    $("productModalTitle").textContent =
       "ویرایش محصول";
 
-    $("nameInput")
-    .value =
-      products[
-        editIndex
-      ].name;
+    $("productName").value =
+      product.name;
 
-    $("usdInput")
-    .value =
-      products[
-        editIndex
-      ].usd;
+    $("productUSD").value =
+      product.usd;
 
-    $("imageInput")
-    .value =
-      "";
+    $("productImage").value = "";
 
     showPreview(
       currentImage
@@ -2815,94 +2617,58 @@ $("passwordOk")
     openModal(
       "productModal"
     );
-
   }
 );
 
-/* حذف */
-
-$("deleteOk")
-.addEventListener(
+$("deleteOK").addEventListener(
   "click",
   ()=>{
 
-    if(
-      deleteIndex >= 0
-    ){
+    if(pendingDelete >= 0){
 
       products.splice(
-        deleteIndex,
+        pendingDelete,
         1
       );
 
       saveProducts();
 
       render();
-
     }
 
-    deleteIndex =
-      -1;
+    pendingDelete = -1;
 
     closeModal(
       "deleteModal"
     );
-
   }
 );
 
-/* تنظیمات */
-
-$("settingsBtn")
-.addEventListener(
+$("settingsBtn").addEventListener(
   "click",
   ()=>{
 
-    $("oldPass")
-    .value =
-      "";
-
-    $("newPass")
-    .value =
-      "";
-
-    $("repeatPass")
-    .value =
-      "";
+    $("oldPassword").value = "";
+    $("newPassword").value = "";
+    $("repeatPassword").value = "";
 
     openModal(
       "settingsModal"
     );
-
   }
 );
 
-/* تغییر رمز */
-
-$("changePass")
-.addEventListener(
+$("savePassword").addEventListener(
   "click",
   ()=>{
 
-    const saved =
-      localStorage
-      .getItem(
-        PASS_KEY
-      ) ||
-      DEFAULT_PASS;
-
-    const oldPassword =
-      $("oldPass").value;
-
-    const newPassword =
-      $("newPass").value;
-
-    const repeatPassword =
-      $("repeatPass").value;
+    const oldPass =
+      localStorage.getItem(PASS_KEY)
+      || DEFAULT_PASS;
 
     if(
-      oldPassword !==
-      saved
+      $("oldPassword").value !==
+      oldPass
     ){
 
       alert(
@@ -2910,38 +2676,35 @@ $("changePass")
       );
 
       return;
-
     }
 
-    if(
-      !newPassword
-    ){
+    const newPass =
+      $("newPassword").value;
+
+    const repeat =
+      $("repeatPassword").value;
+
+    if(!newPass){
 
       alert(
         "رمز جدید را وارد کنید."
       );
 
       return;
-
     }
 
-    if(
-      newPassword !==
-      repeatPassword
-    ){
+    if(newPass !== repeat){
 
       alert(
         "تکرار رمز جدید یکسان نیست."
       );
 
       return;
-
     }
 
-    localStorage
-    .setItem(
+    localStorage.setItem(
       PASS_KEY,
-      newPassword
+      newPass
     );
 
     closeModal(
@@ -2949,342 +2712,247 @@ $("changePass")
     );
 
     alert(
-      "رمز با موفقیت تغییر کرد."
+      "رمز جدید ذخیره شد."
     );
-
   }
 );
 
-/* نرخ دلار */
+$("rate").value =
+  localStorage.getItem(RATE_KEY)
+  || "234000";
 
-$("rate")
-.value =
-
-  localStorage
-  .getItem(
-    RATE_KEY
-  ) ||
-
-  DEFAULT_RATE;
-
-$("rate")
-.addEventListener(
+$("rate").addEventListener(
   "input",
   ()=>{
 
-    localStorage
-    .setItem(
+    localStorage.setItem(
       RATE_KEY,
-      String(
-        getRate()
-      )
+      String(rate())
     );
 
     render();
-
   }
 );
 
-/* ماه */
+$("month").value =
+  localStorage.getItem(MONTH_KEY)
+  || "شهریور";
 
-$("priceMonth")
-.value =
-
-  localStorage
-  .getItem(
-    MONTH_KEY
-  ) ||
-
-  "شهریور";
-
-$("priceMonth")
-.addEventListener(
+$("month").addEventListener(
   "change",
   ()=>{
 
-    localStorage
-    .setItem(
+    localStorage.setItem(
       MONTH_KEY,
-      $("priceMonth").value
+      $("month").value
     );
-
   }
 );
 
-/* سال */
+$("year").value =
+  localStorage.getItem(YEAR_KEY)
+  || "1405";
 
-$("priceYear")
-.value =
-
-  localStorage
-  .getItem(
-    YEAR_KEY
-  ) ||
-
-  "1405";
-
-$("priceYear")
-.addEventListener(
+$("year").addEventListener(
   "input",
   ()=>{
 
-    localStorage
-    .setItem(
+    localStorage.setItem(
       YEAR_KEY,
-      $("priceYear").value ||
-      "1405"
+      $("year").value || "1405"
     );
-
   }
 );
 
-/* =========================
-   PDF قرمز نقره‌ای
-========================= */
 
-$("pdfBtn")
-.addEventListener(
+/* PDF */
+
+$("pdfBtn").addEventListener(
   "click",
   ()=>{
 
-    const pdfWindow =
+    const win =
       window.open(
         "",
         "_blank"
       );
 
-    if(!pdfWindow){
+    if(!win){
 
       alert(
-        "باز شدن صفحه PDF توسط مرورگر مسدود شده است."
+        "مرورگر اجازه باز شدن صفحه PDF را نداده است."
       );
 
       return;
-
     }
 
     const title =
-      getPdfTitle();
+      `لیست قیمت ${$("month").value} ماه ${$("year").value}`;
 
     const rows =
-      products
-      .map(
-        (product,index)=>{
+      products.map(
+        (p,i)=>{
 
           const price =
             Math.round(
-              Number(
-                product.usd
-              ) *
-              getRate()
+              Number(p.usd) *
+              rate()
             );
 
           const image =
+            p.image
+              ? `<img class="pic" src="${p.image}" alt="">`
+              : "—";
 
-            product.image
-
-            ?
-
-            '<img class="pic" src="' +
-            product.image +
-            '">'
-
-            :
-
-            '—';
-
-          return (
-
-            "<tr>" +
-
-            "<td>" +
-            pdfNum(
-              index+1
-            ) +
-            "</td>" +
-
-            "<td>" +
-            image +
-            "</td>" +
-
-            "<td>" +
-            escapeHtml(
-              product.name
-            ) +
-            "</td>" +
-
-            "<td>" +
-            pdfNum(
-              price
-            ) +
-            "</td>" +
-
-            "</tr>"
-
-          );
-
+          return `
+            <tr>
+              <td>${i + 1}</td>
+              <td>${image}</td>
+              <td>${escapeHTML(p.name)}</td>
+              <td>${formatPrice(price)}</td>
+            </tr>
+          `;
         }
-      )
-      .join("");
+      ).join("");
 
-    pdfWindow
-    .document
-    .open();
+    win.document.open();
 
-    pdfWindow
-    .document
-    .write(
-`<!doctype html>
-
+    win.document.write(`
+<!doctype html>
 <html lang="fa" dir="rtl">
 
 <head>
 
 <meta charset="UTF-8">
 
-<title>
-OBCH - ${title}
-</title>
+<title>OBCH</title>
 
 <style>
 
 @page{
   size:A4 portrait;
-  margin:0;
+  margin:10mm 8mm 12mm;
 }
 
 *{
   box-sizing:border-box;
-
-  -webkit-print-color-adjust:
-  exact !important;
-
-  print-color-adjust:
-  exact !important;
+  -webkit-print-color-adjust:exact!important;
+  print-color-adjust:exact!important;
 }
 
 body{
   margin:0;
-
-  padding:8mm;
-
+  padding:0;
   background:#fff;
-
   color:#111;
-
-  font-family:
-  Tahoma,
-  Arial,
-  sans-serif;
+  font-family:Tahoma,Arial,sans-serif;
 }
 
-.page{
-  border:
-  2px solid #202326;
-
-  background:#fff;
+.pdfHeader{
+  page-break-after:avoid;
+  break-after:avoid;
 }
 
-.top{
+.pdfTitle{
   height:48px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
-  background:
-  #c83a42 !important;
+  color:#fff!important;
 
-  color:
-  #fff !important;
+  background:#c9343e!important;
 
-  font-size:20px;
+  border:
+    1.5px solid #373a3d;
 
-  font-weight:700;
+  border-bottom:0;
 
-  border-bottom:
-  2px solid #202326;
+  font-size:19px;
+  font-weight:800;
 }
 
 .pdfBrand{
-  height:52px;
+  height:56px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
-  color:
-  #c3262f !important;
+  border-left:
+    1.5px solid #373a3d;
+
+  border-right:
+    1.5px solid #373a3d;
+
+  background:#eceff1!important;
+
+  color:#c92d37!important;
 
   font:
-  900 32px Arial;
+    900 31px Arial;
 
-  letter-spacing:2px;
+  letter-spacing:6px;
+}
 
-  background:
-  #f4f5f6 !important;
-
-  border-bottom:
-  2px solid #202326;
+.pdfBrand span{
+  color:#737b82!important;
 }
 
 table{
   width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
 
-  border-collapse:
-  collapse;
+thead{
+  display:table-header-group;
+}
 
-  table-layout:
-  fixed;
+tfoot{
+  display:table-footer-group;
+}
+
+tr{
+  break-inside:avoid!important;
+  page-break-inside:avoid!important;
 }
 
 th{
-  height:48px;
-
-  background:
-  #c83a42 !important;
-
-  color:
-  #fff !important;
-
-  border-left:
-  1.5px solid #202326;
-
-  border-bottom:
-  1.5px solid #202326;
-
-  padding:7px;
-}
-
-td{
-  height:68px;
-
-  background:
-  #fff !important;
-
-  color:
-  #111 !important;
-
-  text-align:center;
-
-  border-left:
-  1.5px solid #202326;
-
-  border-bottom:
-  1.5px solid #202326;
+  height:46px;
 
   padding:6px;
 
-  font-weight:700;
+  color:#fff!important;
+
+  background:#c9343e!important;
+
+  border:1px solid #414447;
+
+  font-size:11px;
 }
 
-tr:nth-child(even) td{
-  background:
-  #f4f5f6 !important;
+td{
+  height:64px;
+
+  padding:5px;
+
+  text-align:center;
+
+  background:#fff!important;
+
+  border:1px solid #4a4d50;
+
+  font-size:11px;
+  font-weight:700;
+
+  break-inside:avoid!important;
+  page-break-inside:avoid!important;
+}
+
+tbody tr:nth-child(even) td{
+  background:#eef0f2!important;
 }
 
 th:nth-child(1),
@@ -3308,59 +2976,54 @@ td:nth-child(4){
 }
 
 .pic{
-  width:54px;
-
-  height:54px;
-
-  object-fit:
-  contain;
+  width:50px;
+  height:50px;
+  object-fit:contain;
 }
 
-.buttons{
+.printControls{
   text-align:center;
-
   margin:18px;
 }
 
-.buttons button{
+.printControls button{
   border:0;
-
-  border-radius:8px;
-
-  padding:
-  10px 16px;
-
+  border-radius:9px;
+  padding:11px 18px;
   margin:4px;
-
   font-weight:700;
 }
 
-.print{
-  background:#c83a42;
-
+.printBtn{
+  background:#c9343e;
   color:#fff;
 }
 
-.back{
-  background:#e6e8ea;
-
+.backBtn{
+  background:#dfe2e4;
   color:#222;
-
-  border:
-  1px solid #c8ccd0;
 }
 
 @media print{
 
   body{
-    padding:
-    8mm !important;
+    margin:0;
+    padding:0;
   }
 
-  .buttons{
-    display:none !important;
+  .printControls{
+    display:none!important;
   }
 
+  thead{
+    display:table-header-group!important;
+  }
+
+  tr,
+  td{
+    break-inside:avoid!important;
+    page-break-inside:avoid!important;
+  }
 }
 
 </style>
@@ -3369,62 +3032,53 @@ td:nth-child(4){
 
 <body>
 
-<div class="page">
+<div class="pdfHeader">
 
-<div class="top">
-${title}
+  <div class="pdfTitle">
+    ${title}
+  </div>
+
+  <div class="pdfBrand">
+    <span>OBC</span>H
+  </div>
+
 </div>
 
-<div class="pdfBrand">
-OBCH
-</div>
 
 <table>
 
 <thead>
 
 <tr>
-
-<th>
-ردیف
-</th>
-
-<th>
-تصویر محصول
-</th>
-
-<th>
-نام محصول
-</th>
-
-<th>
-قیمت (تومان)
-</th>
-
+  <th>ردیف</th>
+  <th>تصویر محصول</th>
+  <th>نام محصول</th>
+  <th>قیمت مصرف‌کننده</th>
 </tr>
 
 </thead>
 
 <tbody>
+
 ${rows}
+
 </tbody>
 
 </table>
 
-</div>
 
-<div class="buttons">
+<div class="printControls">
 
 <button
-class="print"
-onclick="window.print()"
+  class="printBtn"
+  onclick="window.print()"
 >
 چاپ / ذخیره PDF
 </button>
 
 <button
-class="back"
-onclick="window.close()"
+  class="backBtn"
+  onclick="window.close()"
 >
 بازگشت
 </button>
@@ -3432,129 +3086,86 @@ onclick="window.close()"
 </div>
 
 </body>
+</html>
+    `);
 
-</html>`
-    );
-
-    pdfWindow
-    .document
-    .close();
-
+    win.document.close();
   }
 );
 
-/* بستن پنجره‌ها */
+
+/* Close modals */
 
 document
-.querySelectorAll(
-  "[data-close]"
-)
-.forEach(
-  button=>{
+  .querySelectorAll(
+    "[data-close]"
+  )
+  .forEach(
+    button=>{
 
-    button
-    .addEventListener(
-      "click",
-      ()=>{
-
-        closeModal(
-          button.dataset.close
-        );
-
-      }
-    );
-
-  }
-);
-
-document
-.querySelectorAll(
-  ".modalBack"
-)
-.forEach(
-  modal=>{
-
-    modal
-    .addEventListener(
-      "click",
-      event=>{
-
-        if(
-          event.target ===
-          modal
-        ){
+      button.addEventListener(
+        "click",
+        ()=>{
 
           closeModal(
-            modal.id
-          );
-
-        }
-
-      }
-    );
-
-  }
-);
-
-document
-.addEventListener(
-  "keydown",
-  event=>{
-
-    if(
-      event.key ===
-      "Escape"
-    ){
-
-      document
-      .querySelectorAll(
-        ".modalBack.show"
-      )
-      .forEach(
-        modal=>{
-
-          closeModal(
-            modal.id
+            button.dataset.close
           );
 
         }
       );
 
     }
+  );
 
-  }
-);
 
-/* PWA */
+document
+  .querySelectorAll(
+    ".modalBack"
+  )
+  .forEach(
+    modal=>{
 
-if(
-  "serviceWorker"
-  in navigator
-){
+      modal.addEventListener(
+        "click",
+        event=>{
 
-  window
-  .addEventListener(
+          if(event.target === modal){
+
+            closeModal(
+              modal.id
+            );
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+if("serviceWorker" in navigator){
+
+  window.addEventListener(
     "load",
     ()=>{
 
-      navigator
-      .serviceWorker
-      .register(
-        "./service-worker.js",
-        {
-          scope:"./"
-        }
-      )
-      .catch(()=>{});
+      navigator.serviceWorker
+        .register(
+          "./service-worker.js"
+        )
+        .catch(()=>{});
 
     }
   );
 
 }
 
+initTheme();
+
 render();
 
 </script>
 
 </body>
-  </html>
+</html>
