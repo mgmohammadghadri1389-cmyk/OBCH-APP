@@ -1,22 +1,18 @@
 {
-  "id": "./",
-  "name": "OBCH",
-  "short_name": "OBCH",
-  "description": "سامانه مدیریت و محاسبه قیمت محصولات OBCH",
-  "lang": "fa",
-  "dir": "rtl",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#14171a",
-  "theme_color": "#1c1f23",
-  "icons": [
+  "name":"OBCH",
+  "short_name":"OBCH",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#101317",
+  "theme_color":"#101317",
+  "lang":"fa",
+  "dir":"rtl",
+  "icons":[
     {
-      "src": "./icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src":"./obch-icon.png",
+      "sizes":"512x512",
+      "type":"image/png",
+      "purpose":"any"
     }
   ]
 }
