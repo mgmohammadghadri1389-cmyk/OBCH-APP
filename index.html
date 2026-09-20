@@ -2,9 +2,18 @@
 <html lang="fa" dir="rtl" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-<meta id="themeColor" name="theme-color" content="#101317">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
+
+<meta
+  id="themeColor"
+  name="theme-color"
+  content="#111418"
+>
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="OBCH">
@@ -17,111 +26,188 @@
 
 <style>
 :root{
-  --red:#d72d37;
-  --red2:#ff505a;
-  --green:#229b62;
-  --radius:28px;
+  --red:#d92f39;
+  --red-light:#ff525c;
+  --red-dark:#9c1d25;
+
+  --green:#229d63;
+  --green-dark:#177649;
+
+  --radius-xl:30px;
+  --radius-lg:23px;
+  --radius-md:17px;
+
+  --transition:.22s ease;
 }
+
+/* ================================
+   DARK
+================================ */
 
 html[data-theme="dark"]{
   --bg:#0c0f12;
-  --bg2:#181c21;
-  --bg3:#2a3036;
+  --bg2:#171b20;
+  --bg3:#2b3036;
 
-  --glass:rgba(37,42,48,.56);
-  --glass2:rgba(57,63,69,.74);
-  --soft:rgba(255,255,255,.065);
+  --glass:rgba(36,41,47,.56);
+  --glass-strong:rgba(55,61,68,.74);
+  --glass-soft:rgba(255,255,255,.065);
 
-  --line:rgba(230,235,239,.18);
+  --line:rgba(232,236,239,.18);
+  --line-soft:rgba(255,255,255,.075);
 
   --text:#f7f8f9;
   --muted:#aeb6bd;
 
-  --field:#f6f7f8;
-  --fieldText:#20252a;
+  --field:#f7f8f9;
+  --field-text:#20252a;
 
-  --table:#fff;
-  --table2:#f3f5f6;
-  --tableText:#202428;
+  --table:#ffffff;
+  --table-alt:#f3f5f6;
+  --table-text:#202428;
 
   --shadow:0 28px 80px rgba(0,0,0,.43);
 }
 
+/* ================================
+   LIGHT
+================================ */
+
 html[data-theme="light"]{
   --bg:#e8ecef;
   --bg2:#f8f9fa;
-  --bg3:#dbe1e5;
+  --bg3:#dce2e6;
 
   --glass:rgba(255,255,255,.62);
-  --glass2:rgba(255,255,255,.86);
-  --soft:rgba(255,255,255,.58);
+  --glass-strong:rgba(255,255,255,.86);
+  --glass-soft:rgba(255,255,255,.58);
 
   --line:rgba(80,90,100,.18);
+  --line-soft:rgba(60,70,80,.075);
 
   --text:#24292e;
-  --muted:#68727a;
+  --muted:#69737b;
 
-  --field:#fff;
-  --fieldText:#20252a;
+  --field:#ffffff;
+  --field-text:#20252a;
 
-  --table:#fff;
-  --table2:#f5f7f8;
-  --tableText:#202428;
+  --table:#ffffff;
+  --table-alt:#f5f7f8;
+  --table-text:#202428;
 
   --shadow:0 25px 65px rgba(65,75,85,.15);
 }
+
+/* ================================
+   GLOBAL
+================================ */
 
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent!important;
 }
 
-html,body{
+html,
+body{
   margin:0;
   min-height:100%;
   font-family:Tahoma,Arial,sans-serif;
 }
 
+html{
+  background:var(--bg);
+}
+
 body{
   min-height:100dvh;
-  color:var(--text);
+
   overflow-x:hidden;
 
+  color:var(--text);
+
   background:
-    radial-gradient(circle at 90% 8%,rgba(215,45,55,.22),transparent 24%),
-    radial-gradient(circle at 10% 10%,rgba(255,255,255,.10),transparent 22%),
-    linear-gradient(145deg,var(--bg),var(--bg2) 50%,var(--bg3));
+    radial-gradient(
+      circle at 92% 8%,
+      rgba(217,47,57,.22),
+      transparent 24%
+    ),
+
+    radial-gradient(
+      circle at 8% 8%,
+      rgba(255,255,255,.10),
+      transparent 23%
+    ),
+
+    radial-gradient(
+      circle at 82% 89%,
+      rgba(217,47,57,.08),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      145deg,
+      var(--bg),
+      var(--bg2) 50%,
+      var(--bg3)
+    );
+
+  transition:
+    background var(--transition),
+    color var(--transition);
 }
 
 body::before{
   content:"";
+
   position:fixed;
-  width:620px;
-  height:300px;
-  right:-180px;
+
+  width:650px;
+  height:310px;
+
+  right:-190px;
   bottom:-80px;
+
   border-radius:50%;
+
   pointer-events:none;
+
   filter:blur(28px);
 
   background:
-    radial-gradient(ellipse at 30% 40%,rgba(255,255,255,.14),transparent 32%),
-    radial-gradient(ellipse at 68% 50%,rgba(215,45,55,.31),transparent 45%);
+    radial-gradient(
+      ellipse at 30% 44%,
+      rgba(255,255,255,.14),
+      transparent 31%
+    ),
+
+    radial-gradient(
+      ellipse at 65% 48%,
+      rgba(217,47,57,.32),
+      transparent 44%
+    );
 }
 
-button,input,select{
+button,
+input,
+select{
   font:inherit;
 }
 
 button{
   cursor:pointer;
+
   outline:none!important;
-  -webkit-tap-highlight-color:transparent!important;
+
+  -webkit-tap-highlight-color:
+    transparent!important;
+
+  user-select:none;
+  -webkit-user-select:none;
 }
 
 button:focus,
-button:active,
-button:focus-visible{
+button:focus-visible,
+button:active{
   outline:none!important;
 }
 
@@ -131,118 +217,201 @@ svg{
 
 .app{
   position:relative;
+
   z-index:2;
+
   width:min(1180px,100%);
+
   margin:auto;
+
   padding:8px;
 }
 
+/* ================================
+   GLASS
+================================ */
+
 .glass{
   position:relative;
+
   overflow:hidden;
 
-  border:1px solid var(--line);
+  border:
+    1px solid
+    var(--line);
 
   background:
     linear-gradient(
       135deg,
-      var(--glass2),
+      var(--glass-strong),
       var(--glass)
     );
 
-  backdrop-filter:blur(26px) saturate(145%);
-  -webkit-backdrop-filter:blur(26px) saturate(145%);
-
   box-shadow:
     var(--shadow),
-    inset 0 1px 0 rgba(255,255,255,.17);
+    inset 0 1px 0
+    rgba(255,255,255,.18);
+
+  backdrop-filter:
+    blur(27px)
+    saturate(145%);
+
+  -webkit-backdrop-filter:
+    blur(27px)
+    saturate(145%);
 }
 
 .glass::before{
   content:"";
+
   position:absolute;
+
+  top:0;
   left:24px;
   right:24px;
-  top:0;
+
   height:1px;
+
   pointer-events:none;
 
   background:
     linear-gradient(
       90deg,
       transparent,
-      rgba(255,255,255,.55),
+      rgba(255,255,255,.54),
       transparent
     );
 }
 
-/* شروع برنامه */
+/* ================================
+   SPLASH
+================================ */
 
 .splash{
   position:fixed;
+
   inset:0;
+
   z-index:9999;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 
   background:
-    radial-gradient(circle at 50% 40%,rgba(255,255,255,.12),transparent 23%),
-    radial-gradient(circle at 50% 55%,rgba(215,45,55,.25),transparent 30%),
-    linear-gradient(145deg,#0b0e11,#1d2228,#343a40);
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(255,255,255,.13),
+      transparent 24%
+    ),
 
-  animation:splashOut .7s ease 3.7s forwards;
+    radial-gradient(
+      circle at 50% 55%,
+      rgba(217,47,57,.25),
+      transparent 31%
+    ),
+
+    linear-gradient(
+      145deg,
+      #0b0e11,
+      #1d2228,
+      #343a40
+    );
+
+  animation:
+    splashOut
+    .7s
+    ease
+    3.5s forwards;
 }
 
 .splashLogo{
-  font:900 44px Arial,sans-serif;
-  letter-spacing:9px;
-  color:#e9edf0;
+  direction:ltr;
+
+  unicode-bidi:isolate;
+
   text-align:center;
 
+  font:
+    900 46px
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  letter-spacing:9px;
+
+  color:#e9edf0;
+
   opacity:0;
-  transform:scale(.75);
+
+  transform:
+    scale(.75);
 
   text-shadow:
-    0 0 12px rgba(255,255,255,.2),
-    0 0 28px rgba(215,45,55,.36);
+    0 0 12px
+    rgba(255,255,255,.20),
 
-  animation:logoIn 1s ease .2s forwards;
+    0 0 28px
+    rgba(217,47,57,.37);
+
+  animation:
+    logoIn
+    1s
+    ease
+    .2s forwards;
 }
 
-.splashLogo span{
-  color:var(--red2);
+.splashLogo .red{
+  color:var(--red-light);
 }
 
 .splashLine{
   width:0;
+
   height:3px;
-  margin:15px auto 0;
+
+  margin:
+    15px auto 0;
+
   border-radius:99px;
 
   background:
     linear-gradient(
       90deg,
       transparent,
-      silver,
-      white,
+      #adb4b9,
+      #fff,
       var(--red),
       transparent
     );
 
-  animation:lineIn .7s ease 1.3s forwards;
+  animation:
+    lineIn
+    .7s
+    ease
+    1.25s forwards;
 }
 
 .splashText{
   margin-top:12px;
+
   text-align:center;
-  font-size:12px;
-  letter-spacing:2px;
+
   color:#dbe0e3;
 
+  font-size:12px;
+
+  letter-spacing:2px;
+
   opacity:0;
-  animation:textIn .5s ease 1.8s forwards;
+
+  animation:
+    textIn
+    .5s
+    ease
+    1.75s forwards;
 }
 
 @keyframes logoIn{
@@ -272,86 +441,150 @@ svg{
   }
 }
 
-/* Header */
+/* ================================
+   HEADER
+================================ */
 
 .header{
-  border-radius:30px;
-  padding:14px 16px;
+  border-radius:
+    var(--radius-xl);
+
+  padding:
+    14px 16px;
+
   margin-bottom:11px;
 
   display:flex;
+
   align-items:center;
-  justify-content:space-between;
+
+  justify-content:
+    space-between;
+
   gap:10px;
 }
 
-.brand{
-  font:900 33px Arial,sans-serif;
-  letter-spacing:6px;
+.identity{
+  min-width:0;
 }
 
-.brand .h{
-  color:var(--red2);
-  text-shadow:0 0 16px rgba(255,80,90,.33);
+.brand{
+  direction:ltr;
+
+  unicode-bidi:isolate;
+
+  text-align:left;
+
+  font:
+    900 33px
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  letter-spacing:6px;
+
+  white-space:nowrap;
+}
+
+.brand .red{
+  color:var(--red-light);
+
+  text-shadow:
+    0 0 16px
+    rgba(255,82,92,.34);
 }
 
 .brandSub{
   margin-top:4px;
+
   color:var(--muted);
+
   font-size:11px;
 }
 
-.headerRight{
+.headerTools{
   display:flex;
+
   align-items:center;
+
   gap:8px;
 }
 
-.ready{
+.status{
   display:flex;
+
   align-items:center;
+
   gap:7px;
 
-  padding:8px 10px;
+  padding:
+    8px 10px;
 
-  border:1px solid var(--line);
+  border:
+    1px solid
+    var(--line);
+
   border-radius:14px;
 
-  background:var(--soft);
+  background:
+    var(--glass-soft);
 
-  color:var(--muted);
+  color:
+    var(--muted);
+
   font-size:10px;
 }
 
-.readyDot{
+.statusDot{
   width:8px;
+
   height:8px;
+
   border-radius:50%;
-  background:#26bd78;
-  box-shadow:0 0 12px rgba(38,189,120,.8);
+
+  background:#27bd78;
+
+  box-shadow:
+    0 0 12px
+    rgba(39,189,120,.80);
 }
 
 .themeBtn{
   width:46px;
+
   height:46px;
 
-  border:1px solid var(--line);
+  border:
+    1px solid
+    var(--line);
+
   border-radius:16px;
 
   display:grid;
+
   place-items:center;
 
-  color:var(--text);
-  background:var(--soft);
+  color:
+    var(--text);
+
+  background:
+    var(--glass-soft);
+
+  transition:
+    transform .12s ease;
 }
 
 .themeBtn:active{
-  transform:scale(.95);
-  background:var(--soft);
+  transform:
+    scale(.95);
+
+  background:
+    var(--glass-soft);
 }
 
 .themeBtn svg{
   width:23px;
+
   height:23px;
 }
 
@@ -360,167 +593,258 @@ svg{
   display:none;
 }
 
-html[data-theme="dark"] .moonIcon{
+html[data-theme="dark"]
+.moonIcon{
   display:block;
 }
 
-html[data-theme="light"] .sunIcon{
+html[data-theme="light"]
+.sunIcon{
   display:block;
 }
 
-/* Sections */
+/* ================================
+   SECTION
+================================ */
 
 .section{
-  border-radius:30px;
+  border-radius:
+    var(--radius-xl);
+
   padding:15px;
+
   margin-bottom:11px;
 }
 
 .sectionHead{
   display:flex;
+
   align-items:center;
+
   gap:9px;
+
   margin-bottom:15px;
 }
 
-.sectionHeadIcon{
+.sectionIcon{
   width:29px;
+
   height:29px;
-  color:var(--red2);
+
+  flex:0 0 auto;
+
+  color:
+    var(--red-light);
 }
 
-.sectionHeadIcon.silver{
-  color:var(--text);
+.sectionIcon.silver{
+  color:
+    var(--text);
 }
 
 .sectionTitle{
   font-size:15px;
+
   font-weight:800;
 }
 
 .sectionSub{
   margin-top:3px;
+
+  color:
+    var(--muted);
+
   font-size:11px;
-  color:var(--muted);
 }
 
-/* Rate */
+/* ================================
+   RATE
+================================ */
 
 .rateGrid{
   display:grid;
-  grid-template-columns:1.45fr 1fr;
+
+  grid-template-columns:
+    1.45fr 1fr;
+
   gap:11px;
 }
 
 .periodGrid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:9px;
 }
 
 .fieldCard{
   padding:12px;
-  border:1px solid rgba(150,160,170,.10);
+
+  border:
+    1px solid
+    var(--line-soft);
+
   border-radius:22px;
-  background:var(--soft);
+
+  background:
+    var(--glass-soft);
 }
 
 .fieldTitle{
   display:flex;
+
   align-items:center;
+
   gap:7px;
+
   margin-bottom:8px;
+
+  color:
+    var(--muted);
+
   font-size:11px;
-  color:var(--muted);
 }
 
 .fieldTitle svg{
   width:18px;
+
   height:18px;
-  color:var(--red2);
+
+  color:
+    var(--red-light);
 }
 
 input,
 select{
   width:100%;
+
   min-height:48px;
 
-  border:1px solid var(--line);
+  border:
+    1px solid
+    var(--line);
+
   border-radius:16px;
 
   outline:none;
 
-  padding:10px 13px;
+  padding:
+    10px 13px;
 
-  color:var(--fieldText);
-  background:var(--field);
+  color:
+    var(--field-text);
+
+  background:
+    var(--field);
 
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.7),
-    0 5px 14px rgba(0,0,0,.055);
+    inset 0 1px 0
+    rgba(255,255,255,.70),
+
+    0 5px 14px
+    rgba(0,0,0,.055);
 }
 
 input:focus,
 select:focus{
   outline:none;
-  border-color:rgba(215,45,55,.45);
-  box-shadow:0 0 0 3px rgba(215,45,55,.08);
+
+  border-color:
+    rgba(217,47,57,.45);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(217,47,57,.08);
 }
 
-/* Tools */
+/* ================================
+   TOOLS
+================================ */
 
 .tools{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:9px;
 }
 
 .toolBtn{
   min-height:90px;
 
-  border:1px solid var(--line);
+  border:
+    1px solid
+    var(--line);
+
   border-radius:21px;
 
-  color:var(--text);
-  background:var(--soft);
+  color:
+    var(--text);
+
+  background:
+    var(--glass-soft);
 
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
+
   justify-content:center;
+
   gap:8px;
 
-  transition:transform .12s ease;
+  transition:
+    transform .12s ease;
 }
 
 .toolBtn:active{
-  transform:scale(.975);
-  color:var(--text);
-  background:var(--soft);
+  transform:
+    scale(.975);
+
+  color:
+    var(--text);
+
+  background:
+    var(--glass-soft);
 }
 
 .toolIcon{
   width:30px;
+
   height:30px;
-  color:var(--red2);
+
+  color:
+    var(--red-light);
 }
 
 .toolIcon.silver{
-  color:var(--text);
+  color:
+    var(--text);
 }
 
 .toolText{
   font-size:11px;
+
   font-weight:700;
 }
 
-/* Products */
+/* ================================
+   PRODUCTS
+================================ */
 
-.productTitleIcon{
+.productIcon{
   width:43px;
+
   height:43px;
 
+  flex:0 0 auto;
+
   display:grid;
+
   place-items:center;
 
   border-radius:15px;
@@ -535,42 +859,60 @@ select:focus{
     );
 
   box-shadow:
-    0 8px 22px rgba(163,31,40,.25);
+    0 8px 22px
+    rgba(163,31,40,.25);
 }
 
-.productTitleIcon svg{
+.productIcon svg{
   width:23px;
+
   height:23px;
 }
 
 .tableShell{
   overflow:hidden;
-  border:1px solid var(--line);
+
+  border:
+    1px solid
+    var(--line);
+
   border-radius:23px;
 }
 
 .tableScroll{
   overflow:auto;
-  -webkit-overflow-scrolling:touch;
+
+  -webkit-overflow-scrolling:
+    touch;
 }
 
 table{
   width:100%;
+
   min-width:970px;
+
   table-layout:fixed;
+
   border-collapse:separate;
+
   border-spacing:0;
 }
 
 thead th{
   position:sticky;
+
   top:0;
+
   z-index:3;
 
   height:54px;
-  padding:10px 8px;
+
+  padding:
+    10px 8px;
 
   color:#fff;
+
+  text-align:center;
 
   background:
     linear-gradient(
@@ -579,31 +921,46 @@ thead th{
       #a8232c
     );
 
-  border-left:1px solid rgba(255,255,255,.12);
+  border-left:
+    1px solid
+    rgba(255,255,255,.12);
 
   font-size:12px;
 }
 
 tbody td{
   height:72px;
-  padding:9px 8px;
+
+  padding:
+    9px 8px;
 
   text-align:center;
 
-  color:var(--tableText);
-  background:var(--table);
+  color:
+    var(--table-text);
 
-  border-left:1px solid #edf0f2;
-  border-bottom:1px solid #dde1e4;
+  background:
+    var(--table);
+
+  border-left:
+    1px solid
+    #edf0f2;
+
+  border-bottom:
+    1px solid
+    #dde1e4;
 }
 
 tbody tr:nth-child(even) td{
-  background:var(--table2);
+  background:
+    var(--table-alt);
 }
 
 td.productName{
   text-align:right;
+
   line-height:1.8;
+
   font-weight:700;
 }
 
@@ -616,91 +973,129 @@ td.productName{
 
 .rowNo{
   width:34px;
+
   height:34px;
 
   margin:auto;
 
   display:grid;
+
   place-items:center;
 
   border-radius:11px;
 
   color:#98212a;
-  background:#f8e6e7;
-  border:1px solid #ecc8cb;
 
-  font-family:Arial,sans-serif;
+  background:#f8e6e7;
+
+  border:
+    1px solid
+    #ecc8cb;
+
+  font-family:
+    Arial,
+    sans-serif;
+
   font-weight:700;
 }
 
 .productImage,
 .noImage{
   width:54px;
+
   height:54px;
+
   margin:auto;
+
   border-radius:14px;
 }
 
 .productImage{
   display:block;
+
   object-fit:cover;
+
   background:#fff;
-  border:1px solid #d8dde0;
+
+  border:
+    1px solid
+    #d8dde0;
 }
 
 .noImage{
   display:grid;
+
   place-items:center;
+
   background:#e9ecef;
+
   color:#7f878e;
 }
 
-/* اعداد بدون مشکل صفر فارسی */
+/* اعداد انگلیسی استاندارد */
 
 .dollarValue,
 .priceValue{
   direction:ltr;
+
   unicode-bidi:isolate;
+
   display:inline-block;
 
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 }
 
 .dollarValue{
   color:#3b4248;
+
   font-size:14px;
+
   font-weight:700;
 }
 
 .priceValue{
   color:#a2222c;
+
   font-size:15px;
+
   font-weight:800;
 }
 
 .tableBtns{
   display:flex;
-  justify-content:center;
+
   align-items:center;
+
+  justify-content:center;
+
   gap:6px;
 }
 
 .smallBtn{
   min-width:65px;
+
   min-height:38px;
 
   border:0;
+
   border-radius:12px;
 
-  padding:7px 10px;
+  padding:
+    7px 10px;
 
   color:#fff;
+
   font-size:11px;
+
   font-weight:700;
 }
 
 .smallBtn:active{
-  transform:scale(.96);
+  transform:
+    scale(.96);
 }
 
 .editBtn{
@@ -741,29 +1136,42 @@ td.productName{
     );
 }
 
-/* Modal */
+/* ================================
+   MODAL
+================================ */
 
 .modalBack{
   position:fixed;
+
   inset:0;
+
   z-index:100;
 
   display:none;
 
   padding:9px;
 
-  background:rgba(5,7,9,.67);
+  background:
+    rgba(5,7,9,.67);
 
-  backdrop-filter:blur(13px);
-  -webkit-backdrop-filter:blur(13px);
+  backdrop-filter:
+    blur(13px);
+
+  -webkit-backdrop-filter:
+    blur(13px);
 
   overflow-y:auto;
+
   overflow-x:hidden;
 
-  -webkit-overflow-scrolling:touch;
-  touch-action:pan-y;
+  -webkit-overflow-scrolling:
+    touch;
+
+  touch-action:
+    pan-y;
 
   align-items:flex-start;
+
   justify-content:center;
 }
 
@@ -774,56 +1182,80 @@ td.productName{
 .modal{
   position:relative;
 
-  width:min(560px,100%);
+  width:
+    min(560px,100%);
 
-  margin:auto 0;
+  margin:
+    auto 0;
 
-  max-height:calc(100dvh - 18px);
+  max-height:
+    calc(100dvh - 18px);
 
   overflow-y:auto;
+
   overflow-x:hidden;
 
-  -webkit-overflow-scrolling:touch;
-  touch-action:pan-y;
+  -webkit-overflow-scrolling:
+    touch;
+
+  touch-action:
+    pan-y;
 
   border-radius:29px;
 
-  padding:19px 16px 18px;
+  padding:
+    19px 16px 18px;
 }
 
 .closeBtn{
   position:absolute;
+
   left:13px;
+
   top:12px;
 
   width:42px;
+
   height:42px;
 
-  border:1px solid var(--line);
+  border:
+    1px solid
+    var(--line);
+
   border-radius:50%;
 
   display:grid;
+
   place-items:center;
 
-  color:var(--text);
-  background:var(--soft);
+  color:
+    var(--text);
+
+  background:
+    var(--glass-soft);
 
   font-size:24px;
 }
 
 .closeBtn:active,
 .closeBtn:focus{
-  color:var(--text);
-  background:var(--soft);
+  color:
+    var(--text);
+
+  background:
+    var(--glass-soft);
 }
 
 .modalIcon{
   width:63px;
+
   height:63px;
 
-  margin:3px auto 12px;
+  margin:
+    3px auto 12px;
 
   display:grid;
+
   place-items:center;
 
   border-radius:21px;
@@ -838,24 +1270,33 @@ td.productName{
     );
 
   box-shadow:
-    0 11px 27px rgba(165,33,42,.27);
+    0 11px 27px
+    rgba(165,33,42,.27);
 }
 
 .modalIcon svg{
   width:31px;
+
   height:31px;
 }
 
 .modal h2{
-  margin:0 42px 5px;
+  margin:
+    0 42px 5px;
+
   text-align:center;
+
   font-size:20px;
 }
 
 .modalSub{
   margin-bottom:18px;
+
   text-align:center;
-  color:var(--muted);
+
+  color:
+    var(--muted);
+
   font-size:11px;
 }
 
@@ -865,25 +1306,35 @@ td.productName{
 
 .formLabel{
   margin-bottom:7px;
-  color:var(--muted);
+
+  color:
+    var(--muted);
+
   font-size:12px;
 }
 
 .formLabelRow{
   display:flex;
+
   align-items:center;
+
   gap:7px;
 }
 
 .formLabelRow svg{
   width:18px;
+
   height:18px;
-  color:var(--red2);
+
+  color:
+    var(--red-light);
 }
 
 .modal input{
   min-height:58px;
+
   border-radius:18px;
+
   font-size:16px;
 }
 
@@ -891,66 +1342,90 @@ td.productName{
   position:relative;
 
   width:100%;
+
   min-height:125px;
 
-  border:1.5px dashed rgba(145,155,165,.42);
+  border:
+    1.5px dashed
+    rgba(145,155,165,.42);
+
   border-radius:20px;
 
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
+
   justify-content:center;
 
   gap:8px;
 
-  background:var(--soft);
+  background:
+    var(--glass-soft);
 
   overflow:hidden;
 }
 
 .uploadBox input{
   position:absolute;
+
   inset:0;
+
   width:100%;
+
   height:100%;
+
   opacity:0;
 }
 
 .uploadIcon{
   width:36px;
+
   height:36px;
-  color:var(--red2);
+
+  color:
+    var(--red-light);
 }
 
 .uploadTitle{
   font-size:13px;
+
   font-weight:700;
 }
 
 .uploadHint{
+  color:
+    var(--muted);
+
   font-size:10px;
-  color:var(--muted);
 }
 
 .preview{
   display:none;
 
   width:100%;
+
   max-width:190px;
+
   height:120px;
 
   object-fit:contain;
 
-  margin:10px auto 0;
+  margin:
+    10px auto 0;
 
   border-radius:16px;
 }
 
-/* بدون نوار سفید */
+/* بدون مستطیل سفید */
 
 .modalActions{
   display:grid;
-  grid-template-columns:1fr 1.15fr;
+
+  grid-template-columns:
+    1fr 1.15fr;
+
   gap:10px;
 
   margin-top:18px;
@@ -965,28 +1440,40 @@ td.productName{
 .modalBtn{
   min-height:54px;
 
-  border:1px solid var(--line);
+  border:
+    1px solid
+    var(--line);
+
   border-radius:17px;
 
-  padding:10px 14px;
+  padding:
+    10px 14px;
 
   font-size:14px;
+
   font-weight:800;
 }
 
 .modalBtn:active{
-  transform:scale(.975);
+  transform:
+    scale(.975);
 }
 
 .cancelBtn{
-  color:var(--text);
-  background:var(--soft);
+  color:
+    var(--text);
+
+  background:
+    var(--glass-soft);
 }
 
 .cancelBtn:active,
 .cancelBtn:focus{
-  color:var(--text);
-  background:var(--soft);
+  color:
+    var(--text);
+
+  background:
+    var(--glass-soft);
 }
 
 .saveBtn{
@@ -1000,7 +1487,8 @@ td.productName{
     );
 
   box-shadow:
-    0 8px 20px rgba(180,40,48,.18);
+    0 8px 20px
+    rgba(180,40,48,.18);
 }
 
 .saveBtn:active,
@@ -1017,16 +1505,28 @@ td.productName{
 
 .empty{
   padding:27px;
+
   text-align:center;
-  color:var(--muted);
+
+  color:
+    var(--muted);
 }
 
 .footer{
-  padding:4px 0 14px;
+  padding:
+    4px 0 14px;
+
   text-align:center;
-  color:var(--muted);
+
+  color:
+    var(--muted);
+
   font-size:10px;
 }
+
+/* ================================
+   MOBILE
+================================ */
 
 @media(max-width:700px){
 
@@ -1036,6 +1536,7 @@ td.productName{
 
   .header{
     padding:12px;
+
     border-radius:24px;
   }
 
@@ -1047,7 +1548,7 @@ td.productName{
     font-size:9.5px;
   }
 
-  .ready{
+  .status{
     display:none;
   }
 
@@ -1058,6 +1559,7 @@ td.productName{
 
   .section{
     padding:13px;
+
     border-radius:24px;
   }
 
@@ -1070,7 +1572,8 @@ td.productName{
   }
 
   .tools{
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+      repeat(3,1fr);
   }
 
   .toolBtn{
@@ -1083,19 +1586,26 @@ td.productName{
 
   .modal{
     border-radius:26px;
-    padding:18px 14px;
+
+    padding:
+      18px 14px;
   }
 
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- شروع برنامه؛ بدون آیکون تصویری -->
+
 <div class="splash">
+
   <div>
+
     <div class="splashLogo">
-      OBC<span>H</span>
+      OBC<span class="red">H</span>
     </div>
 
     <div class="splashLine"></div>
@@ -1103,31 +1613,41 @@ td.productName{
     <div class="splashText">
       ELECTRICAL TECHNOLOGY
     </div>
+
   </div>
+
 </div>
 
 
 <main class="app">
 
+<!-- هدر -->
+
 <header class="header glass">
 
-  <div>
+  <div class="identity">
+
     <div class="brand">
-      OBC<span class="h">H</span>
+      OBC<span class="red">H</span>
     </div>
 
     <div class="brandSub">
       سامانه مدیریت و محاسبه قیمت محصولات
     </div>
+
   </div>
 
 
-  <div class="headerRight">
+  <div class="headerTools">
 
-    <div class="ready">
-      <span class="readyDot"></span>
+    <div class="status">
+
+      <span class="statusDot"></span>
+
       آماده
+
     </div>
+
 
     <button
       id="themeBtn"
@@ -1147,6 +1667,7 @@ td.productName{
           stroke-width="1.8"
         />
       </svg>
+
 
       <svg
         class="sunIcon"
@@ -1176,12 +1697,16 @@ td.productName{
 </header>
 
 
+<!-- نرخ -->
+
 <section class="section glass">
 
   <div class="sectionHead">
 
+    <!-- نماد پول بدون کادر -->
+
     <svg
-      class="sectionHeadIcon"
+      class="sectionIcon"
       viewBox="0 0 24 24"
       fill="none"
     >
@@ -1194,13 +1719,15 @@ td.productName{
       />
 
       <path
-        d="M9.5 9.5h4a2 2 0 1 1 0 4h-3a2 2 0 0 0 0 4h4M12 7v10"
+        d="M9.4 9.5h4.3a2 2 0 1 1 0 4h-3.4a2 2 0 0 0 0 4h4.4M12 7v10"
         stroke="currentColor"
         stroke-width="1.6"
       />
     </svg>
 
+
     <div>
+
       <div class="sectionTitle">
         محاسبه قیمت
       </div>
@@ -1208,12 +1735,14 @@ td.productName{
       <div class="sectionSub">
         نرخ ارز و دوره لیست قیمت
       </div>
+
     </div>
 
   </div>
 
 
   <div class="rateGrid">
+
 
     <div class="fieldCard">
 
@@ -1276,18 +1805,24 @@ td.productName{
         </div>
 
         <select id="month">
+
           <option>فروردین</option>
           <option>اردیبهشت</option>
           <option>خرداد</option>
           <option>تیر</option>
           <option>مرداد</option>
-          <option selected>شهریور</option>
+
+          <option selected>
+            شهریور
+          </option>
+
           <option>مهر</option>
           <option>آبان</option>
           <option>آذر</option>
           <option>دی</option>
           <option>بهمن</option>
           <option>اسفند</option>
+
         </select>
 
       </div>
@@ -1321,6 +1856,7 @@ td.productName{
         <input
           id="year"
           type="number"
+          inputmode="numeric"
           value="1405"
         >
 
@@ -1333,12 +1869,14 @@ td.productName{
 </section>
 
 
+<!-- ابزارها -->
+
 <section class="section glass">
 
   <div class="sectionHead">
 
     <svg
-      class="sectionHeadIcon silver"
+      class="sectionIcon silver"
       viewBox="0 0 24 24"
       fill="none"
     >
@@ -1359,7 +1897,9 @@ td.productName{
       />
     </svg>
 
+
     <div>
+
       <div class="sectionTitle">
         ابزارهای مدیریت
       </div>
@@ -1367,12 +1907,14 @@ td.productName{
       <div class="sectionSub">
         عملیات سریع برنامه
       </div>
+
     </div>
 
   </div>
 
 
   <div class="tools">
+
 
     <button
       id="addBtn"
@@ -1474,16 +2016,19 @@ td.productName{
 
     </button>
 
+
   </div>
 
 </section>
 
 
+<!-- محصولات -->
+
 <section class="section glass">
 
   <div class="sectionHead">
 
-    <div class="productTitleIcon">
+    <div class="productIcon">
 
       <svg
         viewBox="0 0 24 24"
@@ -1510,7 +2055,9 @@ td.productName{
 
     </div>
 
+
     <div>
+
       <div class="sectionTitle">
         محصولات OBCH
       </div>
@@ -1518,6 +2065,7 @@ td.productName{
       <div class="sectionSub">
         مدیریت قیمت، تصویر و اطلاعات محصولات
       </div>
+
     </div>
 
   </div>
@@ -1530,19 +2078,42 @@ td.productName{
       <table>
 
         <thead>
+
           <tr>
-            <th class="colNo">ردیف</th>
-            <th class="colImage">تصویر</th>
-            <th class="colName">نام محصول</th>
-            <th class="colDollar">دلار</th>
-            <th class="colPrice">قیمت مصرف‌کننده</th>
-            <th class="colActions">عملیات</th>
+
+            <th class="colNo">
+              ردیف
+            </th>
+
+            <th class="colImage">
+              تصویر
+            </th>
+
+            <th class="colName">
+              نام محصول
+            </th>
+
+            <th class="colDollar">
+              دلار
+            </th>
+
+            <th class="colPrice">
+              قیمت مصرف‌کننده
+            </th>
+
+            <th class="colActions">
+              عملیات
+            </th>
+
           </tr>
+
         </thead>
+
 
         <tbody id="tbody"></tbody>
 
       </table>
+
 
       <div
         id="empty"
@@ -1566,7 +2137,7 @@ td.productName{
 </main>
 
 
-<!-- ADD / EDIT -->
+<!-- افزودن / ویرایش -->
 
 <div
   id="productModal"
@@ -1574,6 +2145,7 @@ td.productName{
 >
 
   <section class="modal glass">
+
 
     <button
       class="closeBtn"
@@ -1758,7 +2330,7 @@ td.productName{
         </div>
 
         <div class="uploadHint">
-          برای انتخاب عکس این قسمت را لمس کنید
+          برای انتخاب تصویر این قسمت را لمس کنید
         </div>
 
 
@@ -1774,11 +2346,13 @@ td.productName{
       <img
         id="preview"
         class="preview"
-        alt="پیش نمایش"
+        alt=""
       >
 
     </div>
 
+
+    <!-- بدون مستطیل سفید -->
 
     <div class="modalActions">
 
@@ -1805,7 +2379,7 @@ td.productName{
 </div>
 
 
-<!-- PASSWORD -->
+<!-- رمز ویرایش -->
 
 <div
   id="passwordModal"
@@ -1855,7 +2429,7 @@ td.productName{
 
 
     <div class="modalSub">
-      رمز عبور را وارد کنید
+      برای ویرایش محصول رمز را وارد کنید
     </div>
 
 
@@ -1899,7 +2473,7 @@ td.productName{
 </div>
 
 
-<!-- DELETE -->
+<!-- حذف -->
 
 <div
   id="deleteModal"
@@ -1975,7 +2549,7 @@ td.productName{
 </div>
 
 
-<!-- SETTINGS -->
+<!-- تنظیمات رمز -->
 
 <div
   id="settingsModal"
@@ -2030,6 +2604,7 @@ td.productName{
 
 
     <div class="formField">
+
       <div class="formLabel">
         رمز فعلی
       </div>
@@ -2038,10 +2613,12 @@ td.productName{
         id="oldPassword"
         type="password"
       >
+
     </div>
 
 
     <div class="formField">
+
       <div class="formLabel">
         رمز جدید
       </div>
@@ -2050,10 +2627,12 @@ td.productName{
         id="newPassword"
         type="password"
       >
+
     </div>
 
 
     <div class="formField">
+
       <div class="formLabel">
         تکرار رمز جدید
       </div>
@@ -2062,6 +2641,7 @@ td.productName{
         id="repeatPassword"
         type="password"
       >
+
     </div>
 
 
@@ -2093,1079 +2673,346 @@ td.productName{
 <script>
 "use strict";
 
-const $ = id => document.getElementById(id);
+const $ = id =>
+  document.getElementById(id);
 
-const PRODUCTS_KEY = "obch_products_v3";
-const RATE_KEY = "obch_rate_v3";
-const PASS_KEY = "obch_pass_v3";
-const MONTH_KEY = "obch_month_v3";
-const YEAR_KEY = "obch_year_v3";
-const THEME_KEY = "obch_theme_v3";
+const PRODUCTS_KEY =
+  "obch_products_final_v1";
 
-const DEFAULT_PASS = "1234";
+const RATE_KEY =
+  "obch_rate_final_v1";
+
+const PASS_KEY =
+  "obch_pass_final_v1";
+
+const MONTH_KEY =
+  "obch_month_final_v1";
+
+const YEAR_KEY =
+  "obch_year_final_v1";
+
+const THEME_KEY =
+  "obch_theme_final_v1";
+
+const DEFAULT_PASS =
+  "1234";
+
 
 const defaultProducts = [
+
   {
-    name:"محافظ ولتاژ/جریان تک فاز + نول 63 آمپر",
+    name:
+      "محافظ ولتاژ/جریان تک فاز + نول 63 آمپر",
     usd:0,
     image:""
   },
+
   {
-    name:"محافظ ولتاژ/جریان تک فاز + نول 80 آمپر",
+    name:
+      "محافظ ولتاژ/جریان تک فاز + نول 80 آمپر",
     usd:0,
     image:""
   },
+
   {
-    name:"محافظ ولتاژ/جریان سه فاز + نول 80 آمپر",
+    name:
+      "محافظ ولتاژ/جریان سه فاز + نول 80 آمپر",
     usd:0,
     image:""
   },
+
   {
-    name:"محافظ ولتاژ/جریان سه فاز + نول 100 آمپر",
+    name:
+      "محافظ ولتاژ/جریان سه فاز + نول 100 آمپر",
     usd:0,
     image:""
   }
+
 ];
 
-let products = loadProducts();
-let editIndex = -1;
-let pendingEdit = -1;
-let pendingDelete = -1;
-let currentImage = "";
+
+let products =
+  loadProducts();
+
+let editIndex =
+  -1;
+
+let pendingEdit =
+  -1;
+
+let pendingDelete =
+  -1;
+
+let currentImage =
+  "";
+
+
+/* ================================
+   LOAD DATA
+================================ */
 
 function loadProducts(){
 
   const keys = [
+
     PRODUCTS_KEY,
+
+    "obch_products_v3",
+
     "obch_products_v2",
+
     "obch_products_v1"
+
   ];
+
 
   for(const key of keys){
 
     try{
 
-      const value =
+      const saved =
         JSON.parse(
-          localStorage.getItem(key) ||
+          localStorage.getItem(key)
+          ||
           "null"
         );
 
-      if(Array.isArray(value)){
-        return value;
+      if(Array.isArray(saved)){
+
+        return saved.map(
+          item => ({
+
+            name:
+              item.name || "",
+
+            usd:
+              Number(item.usd) || 0,
+
+            image:
+              item.image || ""
+
+          })
+        );
+
       }
 
     }catch(e){}
 
   }
 
-  return defaultProducts;
+
+  return defaultProducts.map(
+    item => ({...item})
+  );
+
 }
+
 
 function saveProducts(){
+
   localStorage.setItem(
+
     PRODUCTS_KEY,
+
     JSON.stringify(products)
+
   );
+
 }
 
-function rate(){
-  return Number($("rate").value) || 0;
+
+/* ================================
+   NUMBER FORMAT
+================================ */
+
+function getRate(){
+
+  return Number(
+    $("rate").value
+  ) || 0;
+
 }
+
 
 function formatPrice(value){
 
-  const number = Number(value);
+  const number =
+    Number(value);
 
-  if(!Number.isFinite(number)){
+  if(
+    !Number.isFinite(number)
+  ){
     return "0";
   }
 
   return number.toLocaleString(
+
     "en-US",
+
     {
       minimumFractionDigits:0,
       maximumFractionDigits:0
     }
+
   );
+
 }
+
 
 function formatUSD(value){
 
-  const number = Number(value);
+  const number =
+    Number(value);
 
-  if(!Number.isFinite(number)){
+  if(
+    !Number.isFinite(number)
+  ){
     return "0";
   }
 
   return number.toLocaleString(
+
     "en-US",
+
     {
       minimumFractionDigits:0,
       maximumFractionDigits:3
     }
+
   );
+
 }
+
 
 function escapeHTML(value){
 
   return String(value)
     .replace(
+
       /[&<>"']/g,
+
       ch => ({
+
         "&":"&amp;",
         "<":"&lt;",
         ">":"&gt;",
         '"':"&quot;",
         "'":"&#39;"
+
       }[ch])
+
     );
+
 }
 
-function openModal(id){
 
-  const bg = $(id);
-
-  bg.classList.add("show");
-
-  bg.scrollTop = 0;
-
-  const modal =
-    bg.querySelector(".modal");
-
-  if(modal){
-    modal.scrollTop = 0;
-  }
-}
-
-function closeModal(id){
-  $(id).classList.remove("show");
-}
-
-function showPreview(src){
-
-  const img = $("preview");
-
-  if(src){
-
-    img.src = src;
-    img.style.display = "block";
-
-  }else{
-
-    img.removeAttribute("src");
-    img.style.display = "none";
-
-  }
-}
+/* ================================
+   THEME
+================================ */
 
 function setTheme(theme){
 
   const value =
     theme === "light"
-      ? "light"
-      : "dark";
+    ?
+    "light"
+    :
+    "dark";
 
-  document.documentElement.dataset.theme = value;
+
+  document
+    .documentElement
+    .dataset
+    .theme =
+      value;
+
 
   localStorage.setItem(
     THEME_KEY,
     value
   );
 
-  $("themeColor").content =
-    value === "light"
-      ? "#edf0f2"
-      : "#101317";
+
+  $("themeColor")
+    .setAttribute(
+
+      "content",
+
+      value === "light"
+      ?
+      "#eef1f3"
+      :
+      "#111418"
+
+    );
+
 }
+
 
 function initTheme(){
 
   const saved =
-    localStorage.getItem(
-      THEME_KEY
-    );
+    localStorage
+      .getItem(
+        THEME_KEY
+      );
+
 
   if(saved){
 
     setTheme(saved);
 
     return;
+
   }
 
-  const isLight =
-    window.matchMedia &&
+
+  const light =
+    window.matchMedia
+    &&
     window.matchMedia(
       "(prefers-color-scheme: light)"
     ).matches;
 
+
   setTheme(
-    isLight
-      ? "light"
-      : "dark"
-  );
-}
-
-$("themeBtn").addEventListener(
-  "click",
-  ()=>{
-
-    setTheme(
-      document.documentElement.dataset.theme === "dark"
-        ? "light"
-        : "dark"
-    );
-
-  }
-);
-
-function render(){
-
-  const tbody = $("tbody");
-
-  tbody.innerHTML = "";
-
-  $("empty").style.display =
-    products.length
-      ? "none"
-      : "block";
-
-  products.forEach(
-    (product,index)=>{
-
-      const price =
-        Math.round(
-          Number(product.usd) *
-          rate()
-        );
-
-      const image =
-        product.image
-          ? `<img class="productImage" src="${product.image}" alt="">`
-          : `<div class="noImage">—</div>`;
-
-      const tr =
-        document.createElement(
-          "tr"
-        );
-
-      tr.innerHTML = `
-        <td>
-          <div class="rowNo">${index + 1}</div>
-        </td>
-
-        <td>
-          ${image}
-        </td>
-
-        <td class="productName">
-          ${escapeHTML(product.name)}
-        </td>
-
-        <td>
-          <span class="dollarValue">
-            ${formatUSD(product.usd)}
-          </span>
-        </td>
-
-        <td>
-          <span class="priceValue">
-            ${formatPrice(price)}
-          </span>
-        </td>
-
-        <td>
-          <div class="tableBtns">
-
-            <button
-              class="smallBtn editBtn"
-              data-edit="${index}"
-              type="button"
-            >
-              ویرایش
-            </button>
-
-            <button
-              class="smallBtn deleteBtn"
-              data-delete="${index}"
-              type="button"
-            >
-              حذف
-            </button>
-
-          </div>
-        </td>
-      `;
-
-      tbody.appendChild(tr);
-    }
-  );
-}
-
-$("addBtn").addEventListener(
-  "click",
-  ()=>{
-
-    editIndex = -1;
-    currentImage = "";
-
-    $("productModalTitle").textContent =
-      "افزودن محصول";
-
-    $("productName").value = "";
-    $("productUSD").value = "";
-    $("productImage").value = "";
-
-    showPreview("");
-
-    openModal(
-      "productModal"
-    );
-
-  }
-);
-
-$("productImage").addEventListener(
-  "change",
-  event=>{
-
-    const file =
-      event.target.files &&
-      event.target.files[0];
-
-    if(!file){
-      return;
-    }
-
-    const reader =
-      new FileReader();
-
-    reader.onload =
-      e => {
-
-        currentImage =
-          String(
-            e.target.result ||
-            ""
-          );
-
-        showPreview(
-          currentImage
-        );
-      };
-
-    reader.readAsDataURL(
-      file
-    );
-  }
-);
-
-$("saveProduct").addEventListener(
-  "click",
-  ()=>{
-
-    const name =
-      $("productName")
-        .value
-        .trim();
-
-    const usd =
-      Number(
-        $("productUSD").value
-      );
-
-    if(!name){
-
-      alert(
-        "نام محصول را وارد کنید."
-      );
-
-      return;
-    }
-
-    if(
-      !Number.isFinite(usd) ||
-      usd < 0
-    ){
-
-      alert(
-        "قیمت دلاری را درست وارد کنید."
-      );
-
-      return;
-    }
-
-    const item = {
-      name,
-      usd,
-      image:currentImage || ""
-    };
-
-    if(editIndex < 0){
-
-      products.push(item);
-
-    }else{
-
-      products[editIndex] =
-        item;
-    }
-
-    saveProducts();
-
-    render();
-
-    closeModal(
-      "productModal"
-    );
-  }
-);
-
-$("tbody").addEventListener(
-  "click",
-  event=>{
-
-    const edit =
-      event.target.closest(
-        "[data-edit]"
-      );
-
-    const del =
-      event.target.closest(
-        "[data-delete]"
-      );
-
-    if(edit){
-
-      pendingEdit =
-        Number(
-          edit.dataset.edit
-        );
-
-      $("editPassword").value = "";
-
-      openModal(
-        "passwordModal"
-      );
-    }
-
-    if(del){
-
-      pendingDelete =
-        Number(
-          del.dataset.delete
-        );
-
-      $("deleteText").textContent =
-        `آیا محصول «${products[pendingDelete].name}» حذف شود؟`;
-
-      openModal(
-        "deleteModal"
-      );
-    }
-  }
-);
-
-$("passwordOK").addEventListener(
-  "click",
-  ()=>{
-
-    const pass =
-      localStorage.getItem(PASS_KEY)
-      || DEFAULT_PASS;
-
-    if(
-      $("editPassword").value !==
-      pass
-    ){
-
-      alert(
-        "رمز عبور اشتباه است."
-      );
-
-      return;
-    }
-
-    closeModal(
-      "passwordModal"
-    );
-
-    editIndex =
-      pendingEdit;
-
-    const product =
-      products[editIndex];
-
-    currentImage =
-      product.image || "";
-
-    $("productModalTitle").textContent =
-      "ویرایش محصول";
-
-    $("productName").value =
-      product.name;
-
-    $("productUSD").value =
-      product.usd;
-
-    $("productImage").value = "";
-
-    showPreview(
-      currentImage
-    );
-
-    openModal(
-      "productModal"
-    );
-  }
-);
-
-$("deleteOK").addEventListener(
-  "click",
-  ()=>{
-
-    if(pendingDelete >= 0){
-
-      products.splice(
-        pendingDelete,
-        1
-      );
-
-      saveProducts();
-
-      render();
-    }
-
-    pendingDelete = -1;
-
-    closeModal(
-      "deleteModal"
-    );
-  }
-);
-
-$("settingsBtn").addEventListener(
-  "click",
-  ()=>{
-
-    $("oldPassword").value = "";
-    $("newPassword").value = "";
-    $("repeatPassword").value = "";
-
-    openModal(
-      "settingsModal"
-    );
-  }
-);
-
-$("savePassword").addEventListener(
-  "click",
-  ()=>{
-
-    const oldPass =
-      localStorage.getItem(PASS_KEY)
-      || DEFAULT_PASS;
-
-    if(
-      $("oldPassword").value !==
-      oldPass
-    ){
-
-      alert(
-        "رمز فعلی اشتباه است."
-      );
-
-      return;
-    }
-
-    const newPass =
-      $("newPassword").value;
-
-    const repeat =
-      $("repeatPassword").value;
-
-    if(!newPass){
-
-      alert(
-        "رمز جدید را وارد کنید."
-      );
-
-      return;
-    }
-
-    if(newPass !== repeat){
-
-      alert(
-        "تکرار رمز جدید یکسان نیست."
-      );
-
-      return;
-    }
-
-    localStorage.setItem(
-      PASS_KEY,
-      newPass
-    );
-
-    closeModal(
-      "settingsModal"
-    );
-
-    alert(
-      "رمز جدید ذخیره شد."
-    );
-  }
-);
-
-$("rate").value =
-  localStorage.getItem(RATE_KEY)
-  || "234000";
-
-$("rate").addEventListener(
-  "input",
-  ()=>{
-
-    localStorage.setItem(
-      RATE_KEY,
-      String(rate())
-    );
-
-    render();
-  }
-);
-
-$("month").value =
-  localStorage.getItem(MONTH_KEY)
-  || "شهریور";
-
-$("month").addEventListener(
-  "change",
-  ()=>{
-
-    localStorage.setItem(
-      MONTH_KEY,
-      $("month").value
-    );
-  }
-);
-
-$("year").value =
-  localStorage.getItem(YEAR_KEY)
-  || "1405";
-
-$("year").addEventListener(
-  "input",
-  ()=>{
-
-    localStorage.setItem(
-      YEAR_KEY,
-      $("year").value || "1405"
-    );
-  }
-);
-
-
-/* PDF */
-
-$("pdfBtn").addEventListener(
-  "click",
-  ()=>{
-
-    const win =
-      window.open(
-        "",
-        "_blank"
-      );
-
-    if(!win){
-
-      alert(
-        "مرورگر اجازه باز شدن صفحه PDF را نداده است."
-      );
-
-      return;
-    }
-
-    const title =
-      `لیست قیمت ${$("month").value} ماه ${$("year").value}`;
-
-    const rows =
-      products.map(
-        (p,i)=>{
-
-          const price =
-            Math.round(
-              Number(p.usd) *
-              rate()
-            );
-
-          const image =
-            p.image
-              ? `<img class="pic" src="${p.image}" alt="">`
-              : "—";
-
-          return `
-            <tr>
-              <td>${i + 1}</td>
-              <td>${image}</td>
-              <td>${escapeHTML(p.name)}</td>
-              <td>${formatPrice(price)}</td>
-            </tr>
-          `;
-        }
-      ).join("");
-
-    win.document.open();
-
-    win.document.write(`
-<!doctype html>
-<html lang="fa" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>OBCH</title>
-
-<style>
-
-@page{
-  size:A4 portrait;
-  margin:10mm 8mm 12mm;
-}
-
-*{
-  box-sizing:border-box;
-  -webkit-print-color-adjust:exact!important;
-  print-color-adjust:exact!important;
-}
-
-body{
-  margin:0;
-  padding:0;
-  background:#fff;
-  color:#111;
-  font-family:Tahoma,Arial,sans-serif;
-}
-
-.pdfHeader{
-  page-break-after:avoid;
-  break-after:avoid;
-}
-
-.pdfTitle{
-  height:48px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  color:#fff!important;
-
-  background:#c9343e!important;
-
-  border:
-    1.5px solid #373a3d;
-
-  border-bottom:0;
-
-  font-size:19px;
-  font-weight:800;
-}
-
-.pdfBrand{
-  height:56px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-left:
-    1.5px solid #373a3d;
-
-  border-right:
-    1.5px solid #373a3d;
-
-  background:#eceff1!important;
-
-  color:#c92d37!important;
-
-  font:
-    900 31px Arial;
-
-  letter-spacing:6px;
-}
-
-.pdfBrand span{
-  color:#737b82!important;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed;
-}
-
-thead{
-  display:table-header-group;
-}
-
-tfoot{
-  display:table-footer-group;
-}
-
-tr{
-  break-inside:avoid!important;
-  page-break-inside:avoid!important;
-}
-
-th{
-  height:46px;
-
-  padding:6px;
-
-  color:#fff!important;
-
-  background:#c9343e!important;
-
-  border:1px solid #414447;
-
-  font-size:11px;
-}
-
-td{
-  height:64px;
-
-  padding:5px;
-
-  text-align:center;
-
-  background:#fff!important;
-
-  border:1px solid #4a4d50;
-
-  font-size:11px;
-  font-weight:700;
-
-  break-inside:avoid!important;
-  page-break-inside:avoid!important;
-}
-
-tbody tr:nth-child(even) td{
-  background:#eef0f2!important;
-}
-
-th:nth-child(1),
-td:nth-child(1){
-  width:7%;
-}
-
-th:nth-child(2),
-td:nth-child(2){
-  width:15%;
-}
-
-th:nth-child(3),
-td:nth-child(3){
-  width:57%;
-}
-
-th:nth-child(4),
-td:nth-child(4){
-  width:21%;
-}
-
-.pic{
-  width:50px;
-  height:50px;
-  object-fit:contain;
-}
-
-.printControls{
-  text-align:center;
-  margin:18px;
-}
-
-.printControls button{
-  border:0;
-  border-radius:9px;
-  padding:11px 18px;
-  margin:4px;
-  font-weight:700;
-}
-
-.printBtn{
-  background:#c9343e;
-  color:#fff;
-}
-
-.backBtn{
-  background:#dfe2e4;
-  color:#222;
-}
-
-@media print{
-
-  body{
-    margin:0;
-    padding:0;
-  }
-
-  .printControls{
-    display:none!important;
-  }
-
-  thead{
-    display:table-header-group!important;
-  }
-
-  tr,
-  td{
-    break-inside:avoid!important;
-    page-break-inside:avoid!important;
-  }
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="pdfHeader">
-
-  <div class="pdfTitle">
-    ${title}
-  </div>
-
-  <div class="pdfBrand">
-    <span>OBC</span>H
-  </div>
-
-</div>
-
-
-<table>
-
-<thead>
-
-<tr>
-  <th>ردیف</th>
-  <th>تصویر محصول</th>
-  <th>نام محصول</th>
-  <th>قیمت مصرف‌کننده</th>
-</tr>
-
-</thead>
-
-<tbody>
-
-${rows}
-
-</tbody>
-
-</table>
-
-
-<div class="printControls">
-
-<button
-  class="printBtn"
-  onclick="window.print()"
->
-چاپ / ذخیره PDF
-</button>
-
-<button
-  class="backBtn"
-  onclick="window.close()"
->
-بازگشت
-</button>
-
-</div>
-
-</body>
-</html>
-    `);
-
-    win.document.close();
-  }
-);
-
-
-/* Close modals */
-
-document
-  .querySelectorAll(
-    "[data-close]"
-  )
-  .forEach(
-    button=>{
-
-      button.addEventListener(
-        "click",
-        ()=>{
-
-          closeModal(
-            button.dataset.close
-          );
-
-        }
-      );
-
-    }
+    light
+    ?
+    "light"
+    :
+    "dark"
   );
 
-
-document
-  .querySelectorAll(
-    ".modalBack"
-  )
-  .forEach(
-    modal=>{
-
-      modal.addEventListener(
-        "click",
-        event=>{
-
-          if(event.target === modal){
-
-            closeModal(
-              modal.id
-            );
-
-          }
-
-        }
-      );
-
-    }
-  );
+}
 
 
-if("serviceWorker" in navigator){
+$("themeBtn")
+  .addEventListener(
 
-  window.addEventListener(
-    "load",
+    "click",
+
     ()=>{
 
-      navigator.serviceWorker
-        .register(
-          "./service-worker.js"
-        )
-        .catch(()=>{});
+      setTheme(
+
+        document
+          .documentElement
+          .dataset
+          .theme === "dark"
+
+        ?
+
+        "light"
+
+        :
+
+        "dark"
+
+      );
 
     }
+
   );
 
-}
 
-initTheme();
-
-render();
-
-</script>
-
-</body>
-</html>
+/
