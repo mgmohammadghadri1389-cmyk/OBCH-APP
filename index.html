@@ -3023,4 +3023,2170 @@ Hr
 </div>
 
 
-<div class
+<div class="benefit">
+
+<svg
+  viewBox="0 0 24 24"
+  fill="none"
+>
+
+<circle
+  cx="12"
+  cy="10"
+  r="6"
+  stroke="currentColor"
+  stroke-width="1.6"
+/>
+
+<path
+  d="m9 16-1 5 4-2 4 2-1-5M12 7l1 2 2 .3-1.5 1.5.4 2.2-1.9-1-1.9 1 .4-2.2L9 9.3 11 9z"
+  stroke="currentColor"
+  stroke-width="1.3"
+/>
+
+</svg>
+
+
+<div>
+
+<b>
+کیفیت تضمینی
+</b>
+
+<small>
+تست ۱۰۰٪ قبل از عرضه به بازار
+</small>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- ==========================
+     CERTIFICATES
+========================== -->
+
+<div class="certRow">
+
+
+<div>
+
+<div class="stdMark">
+استاندارد
+</div>
+
+</div>
+
+
+<div class="isoWrap">
+
+<div class="iso">
+ISO
+<br>
+9001
+</div>
+
+<div class="iso">
+ISO
+<br>
+14001
+</div>
+
+<div class="iso">
+ISO
+<br>
+45001
+</div>
+
+</div>
+
+
+<div>
+
+<div class="made">
+Made in Iran
+</div>
+
+<div class="madeFa">
+ساخت ایران
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="bottomBar">
+
+REDSUN
+
+<small>
+Remain bright
+</small>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<script>
+
+"use strict";
+
+
+const $ =
+id =>
+document.getElementById(id);
+
+
+const BASE_RATE =
+234000;
+
+
+const STORE_KEY =
+"redsun_catalog_exact_v1";
+
+
+const RATE_KEY =
+"redsun_catalog_rate_v1";
+
+
+const PASS_KEY =
+"redsun_catalog_pass_v1";
+
+
+const THEME_KEY =
+"redsun_catalog_theme_v1";
+
+
+const DEFAULT_PASS =
+"1234";
+
+
+/* =====================================================
+   تمام مدل‌های نمونه اصلی
+===================================================== */
+
+const fixedProducts = [
+
+/* ==========================
+   LAMPS
+========================== */
+
+{
+  id:"l1",
+  cat:"lamp",
+  name:"لامپ اشکی 7 وات",
+  socket:"E14",
+  dim:"131×37",
+  voltage:"180-265",
+  current:"0.057 A",
+  pf:"0.5",
+  cct:"3000K / 6500K",
+  flux:"770 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"100",
+  refPrice:168200
+},
+
+{
+  id:"l2",
+  cat:"lamp",
+  name:"لامپ حبابی 9 وات",
+  socket:"E27",
+  dim:"125×65",
+  voltage:"180-265",
+  current:"0.07 A",
+  pf:"0.5",
+  cct:"3000K / 6500K",
+  flux:"990 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"100",
+  refPrice:169500
+},
+
+{
+  id:"l3",
+  cat:"lamp",
+  name:"لامپ حبابی 12 وات",
+  socket:"E27",
+  dim:"137×70",
+  voltage:"180-265",
+  current:"0.095 A",
+  pf:"0.5",
+  cct:"3000K / 6500K",
+  flux:"1320 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"100",
+  refPrice:213300
+},
+
+{
+  id:"l4",
+  cat:"lamp",
+  name:"لامپ حبابی 15 وات",
+  socket:"E27",
+  dim:"154×80",
+  voltage:"180-265",
+  current:"0.115 A",
+  pf:"0.5",
+  cct:"3000K / 6500K",
+  flux:"1650 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"80",
+  refPrice:297700
+},
+
+{
+  id:"l5",
+  cat:"lamp",
+  name:"لامپ حبابی 20 وات",
+  socket:"E27",
+  dim:"187×95",
+  voltage:"180-265",
+  current:"0.159 A",
+  pf:"0.5",
+  cct:"3000K / 6500K",
+  flux:"2200 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"48",
+  refPrice:396500
+},
+
+{
+  id:"l6",
+  cat:"lamp",
+  name:"لامپ حبابی 25 وات",
+  socket:"E27",
+  dim:"205×105",
+  voltage:"180-265",
+  current:"0.192 A",
+  pf:"0.5",
+  cct:"3000K / 6500K",
+  flux:"2750 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"48",
+  refPrice:524700
+},
+
+{
+  id:"l7",
+  cat:"lamp",
+  name:"لامپ استوانه‌ای 25 وات",
+  socket:"E27",
+  dim:"181×100",
+  voltage:"180-265",
+  current:"0.1 A",
+  pf:">0.95",
+  cct:"6500K",
+  flux:"3000 lm",
+  eff:"120 lm/w",
+  cri:">80",
+  life:"25000",
+  energy:"A+",
+  carton:"48",
+  refPrice:604000
+},
+
+{
+  id:"l8",
+  cat:"lamp",
+  name:"لامپ استوانه‌ای 30 وات",
+  socket:"E27",
+  dim:"205×115",
+  voltage:"180-265",
+  current:"0.11 A",
+  pf:">0.95",
+  cct:"6500K",
+  flux:"3600 lm",
+  eff:"120 lm/w",
+  cri:">80",
+  life:"25000",
+  energy:"A+",
+  carton:"30",
+  refPrice:663300
+},
+
+{
+  id:"l9",
+  cat:"lamp",
+  name:"لامپ استوانه‌ای 40 وات",
+  socket:"E27",
+  dim:"216×125",
+  voltage:"180-265",
+  current:"0.17 A",
+  pf:">0.95",
+  cct:"6500K",
+  flux:"4800 lm",
+  eff:"120 lm/w",
+  cri:">80",
+  life:"25000",
+  energy:"A+",
+  carton:"30",
+  refPrice:892500
+},
+
+{
+  id:"l10",
+  cat:"lamp",
+  name:"لامپ استوانه‌ای 50 وات",
+  socket:"E27",
+  dim:"243×135",
+  voltage:"180-265",
+  current:"0.21 A",
+  pf:">0.95",
+  cct:"6500K",
+  flux:"6000 lm",
+  eff:"120 lm/w",
+  cri:">80",
+  life:"25000",
+  energy:"A+",
+  carton:"30",
+  refPrice:1128100
+},
+
+
+/* ==========================
+   PANELS
+========================== */
+
+{
+  id:"p1",
+  cat:"panel",
+  name:"توکار سایزشو 10 وات",
+  socket:"",
+  dim:"Ø85×21",
+  voltage:"180-265",
+  current:"0.07 A",
+  pf:"0.5",
+  cct:"3000K / 4000K / 6500K",
+  flux:"1100 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"90",
+  refPrice:411600
+},
+
+{
+  id:"p2",
+  cat:"panel",
+  name:"توکار سایزشو 18 وات",
+  socket:"",
+  dim:"Ø120×21",
+  voltage:"180-265",
+  current:"0.14 A",
+  pf:"0.5",
+  cct:"3000K / 4000K / 6500K",
+  flux:"1980 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"66",
+  refPrice:635000
+},
+
+{
+  id:"p3",
+  cat:"panel",
+  name:"توکار سایزشو 24 وات",
+  socket:"",
+  dim:"Ø170×21",
+  voltage:"180-265",
+  current:"0.19 A",
+  pf:"0.5",
+  cct:"3000K / 4000K / 6500K",
+  flux:"2640 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"36",
+  refPrice:898200
+},
+
+{
+  id:"p4",
+  cat:"panel",
+  name:"توکار سایزشو 36 وات",
+  socket:"",
+  dim:"Ø220×22",
+  voltage:"180-265",
+  current:"0.29 A",
+  pf:"0.5",
+  cct:"3000K / 4000K / 6500K",
+  flux:"3960 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"30",
+  refPrice:1382400
+},
+
+{
+  id:"p5",
+  cat:"panel",
+  name:"روکار 18 وات",
+  socket:"",
+  dim:"Ø120×30",
+  voltage:"180-265",
+  current:"0.14 A",
+  pf:"0.5",
+  cct:"4000K / 6500K",
+  flux:"1980 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"66",
+  refPrice:822000
+},
+
+{
+  id:"p6",
+  cat:"panel",
+  name:"روکار 24 وات",
+  socket:"",
+  dim:"Ø170×30",
+  voltage:"180-265",
+  current:"0.19 A",
+  pf:"0.5",
+  cct:"4000K / 6500K",
+  flux:"2640 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"15000",
+  energy:"A+",
+  carton:"36",
+  refPrice:1140000
+},
+
+{
+  id:"p7",
+  cat:"panel",
+  name:"روکار 36 وات",
+  socket:"",
+  dim:"Ø225×30",
+  voltage:"180-265",
+  current:"0.29 A",
+  pf:"0.5",
+  cct:"4000K / 6500K",
+  flux:"3960 lm",
+  eff:"110 lm/w",
+  cri:">80",
+  life:"25000",
+  energy:"A+",
+  carton:"30",
+  refPrice:1575600
+}
+
+];
+
+
+let state =
+loadState();
+
+
+let addCategory =
+"lamp";
+
+
+let pendingEditId =
+null;
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+function loadState(){
+
+  try{
+
+    const saved =
+    JSON.parse(
+
+      localStorage.getItem(
+        STORE_KEY
+      )
+
+      ||
+
+      "null"
+
+    );
+
+
+    if(
+      saved
+      &&
+      Array.isArray(
+        saved.custom
+      )
+      &&
+      saved.overrides
+    ){
+
+      return saved;
+
+    }
+
+  }catch(e){}
+
+
+  return{
+
+    custom:[],
+
+    overrides:{}
+
+  };
+
+}
+
+
+function saveState(){
+
+  localStorage.setItem(
+
+    STORE_KEY,
+
+    JSON.stringify(
+      state
+    )
+
+  );
+
+}
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+function allProducts(){
+
+  return fixedProducts
+
+  .map(
+
+    product => ({
+
+      ...product,
+
+      refPrice:
+
+      state.overrides[
+        product.id
+      ]
+
+      ??
+
+      product.refPrice,
+
+      custom:false
+
+    })
+
+  )
+
+  .concat(
+
+    state.custom.map(
+
+      product => ({
+
+        ...product,
+
+        custom:true
+
+      })
+
+    )
+
+  );
+
+}
+
+
+/* =====================================================
+   RATE
+===================================================== */
+
+function rate(){
+
+  return Number(
+    $("rateInput").value
+  )
+
+  ||
+
+  BASE_RATE;
+
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+function currentPrice(
+  product
+){
+
+  return Math.round(
+
+    Number(
+      product.refPrice
+    )
+
+    *
+
+    rate()
+
+    /
+
+    BASE_RATE
+
+  );
+
+}
+
+
+/* =====================================================
+   NUMBER
+===================================================== */
+
+function num(
+  value
+){
+
+  return Number(value)
+  .toLocaleString(
+    "en-US"
+  );
+
+}
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function esc(
+  value
+){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+
+    /[&<>"']/g,
+
+    character => ({
+
+      "&":"&amp;",
+
+      "<":"&lt;",
+
+      ">":"&gt;",
+
+      '"':"&quot;",
+
+      "'":"&#39;"
+
+    }[character])
+
+  );
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(
+  id
+){
+
+  $(id)
+  .classList
+  .add(
+    "show"
+  );
+
+
+  $(id)
+  .scrollTop =
+  0;
+
+}
+
+
+function closeModal(
+  id
+){
+
+  $(id)
+  .classList
+  .remove(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+function setTheme(
+  theme
+){
+
+  const value =
+
+  theme === "light"
+
+  ?
+
+  "light"
+
+  :
+
+  "dark";
+
+
+  document
+  .documentElement
+  .dataset
+  .theme =
+  value;
+
+
+  localStorage.setItem(
+
+    THEME_KEY,
+
+    value
+
+  );
+
+
+  $("themeColor")
+  .content =
+
+  value === "light"
+
+  ?
+
+  "#eef1f4"
+
+  :
+
+  "#101319";
+
+}
+
+
+function initTheme(){
+
+  const saved =
+
+  localStorage.getItem(
+    THEME_KEY
+  );
+
+
+  setTheme(
+
+    saved
+
+    ||
+
+    (
+
+      window.matchMedia(
+        "(prefers-color-scheme: light)"
+      ).matches
+
+      ?
+
+      "light"
+
+      :
+
+      "dark"
+
+    )
+
+  );
+
+}
+
+
+/* =====================================================
+   RENDER APP
+===================================================== */
+
+function renderApp(){
+
+  const products =
+  allProducts();
+
+
+  const lamps =
+  products.filter(
+    product =>
+    product.cat === "lamp"
+  );
+
+
+  const panels =
+  products.filter(
+    product =>
+    product.cat === "panel"
+  );
+
+
+  $("lampCount")
+  .textContent =
+
+  lamps.length
+  +
+  " مدل";
+
+
+  $("panelCount")
+  .textContent =
+
+  panels.length
+  +
+  " مدل";
+
+
+  $("lampList")
+  .innerHTML =
+
+  lamps
+  .map(
+    appRow
+  )
+  .join("");
+
+
+  $("panelList")
+  .innerHTML =
+
+  panels
+  .map(
+    appRow
+  )
+  .join("");
+
+
+  renderPrint();
+
+}
+
+
+/* =====================================================
+   APP ROW
+===================================================== */
+
+function appRow(
+  product
+){
+
+  return `
+
+  <div class="productRow">
+
+    <div>
+
+      <div class="productName">
+
+        ${esc(product.name)}
+
+        ${
+          product.socket
+
+          ?
+
+          `<span
+            style="
+              font:700 10px Arial;
+              color:var(--soft)
+            "
+          >
+            ${esc(product.socket)}
+          </span>`
+
+          :
+
+          ""
+        }
+
+      </div>
+
+      <div class="specMini">
+
+        ${esc(product.dim)} mm
+
+        •
+
+        ${esc(product.flux)}
+
+        •
+
+        ${esc(product.cct)}
+
+      </div>
+
+    </div>
+
+
+    <div class="price">
+
+      ${num(
+        currentPrice(
+          product
+        )
+      )}
+
+    </div>
+
+
+    <div class="rowButtons">
+
+      <button
+        class="editPrice"
+        type="button"
+        data-edit="${product.id}"
+      >
+        ویرایش قیمت
+      </button>
+
+
+      ${
+        product.custom
+
+        ?
+
+        `<button
+          class="deleteCustom"
+          type="button"
+          data-delete="${product.id}"
+        >
+          حذف
+        </button>`
+
+        :
+
+        ""
+      }
+
+    </div>
+
+  </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   SIMPLE BULB DRAWING
+===================================================== */
+
+function lampSketch(){
+
+  return `
+
+  <svg
+    class="bulbSketch"
+    viewBox="0 0 60 30"
+    fill="none"
+  >
+
+    <path
+      d="M6 13h7l8-7h19c8 0 14 5 14 9s-6 9-14 9H21l-8-7H6z"
+      stroke="currentColor"
+      stroke-width="1.3"
+    />
+
+    <path
+      d="M6 11v8M10 11v8"
+      stroke="currentColor"
+      stroke-width="1"
+    />
+
+  </svg>
+
+  `;
+
+}
+
+
+/* =====================================================
+   CCT
+===================================================== */
+
+function cctHTML(
+  value
+){
+
+  return esc(
+    value
+  )
+  .replace(
+    /\s*\/\s*/g,
+    "<br>"
+  );
+
+}
+
+
+/* =====================================================
+   PDF TABLE ROW
+===================================================== */
+
+function printRow(
+  product,
+  isLamp
+){
+
+  const name =
+
+  product.name
+
+  +
+
+  (
+    product.socket
+
+    ?
+
+    `<br>
+     <span
+       style="
+         font:700 5px Arial
+       "
+     >
+       ${esc(product.socket)}
+     </span>`
+
+    :
+
+    ""
+  );
+
+
+  const dimension =
+
+  isLamp
+
+  ?
+
+  `
+  ${lampSketch()}
+
+  <div
+    style="
+      font:700 4.8px Arial
+    "
+  >
+    ${esc(product.dim)}
+  </div>
+  `
+
+  :
+
+  esc(
+    product.dim
+  )
+
+  +
+
+  " mm";
+
+
+  return `
+
+  <tr>
+
+    <td class="nameCell">
+      ${name}
+    </td>
+
+    <td>
+      ${dimension}
+    </td>
+
+    <td>
+      ${esc(product.voltage)}
+    </td>
+
+    <td>
+      ${esc(product.current)}
+    </td>
+
+    <td>
+      ${esc(product.pf)}
+    </td>
+
+    <td class="cct">
+      ${cctHTML(product.cct)}
+    </td>
+
+    <td>
+      ${esc(product.flux)}
+    </td>
+
+    <td>
+      ${esc(product.eff)}
+    </td>
+
+    <td>
+      ${esc(product.cri)}
+    </td>
+
+    <td>
+      ${esc(product.life)}
+    </td>
+
+    <td>
+      ${esc(product.energy)}
+    </td>
+
+    <td>
+      ${esc(product.carton)}
+    </td>
+
+    <td class="priceCell">
+
+      ${num(
+        currentPrice(
+          product
+        )
+      )}
+
+    </td>
+
+  </tr>
+
+  `;
+
+}
+
+
+/* =====================================================
+   RENDER PDF
+===================================================== */
+
+function renderPrint(){
+
+  const products =
+  allProducts();
+
+
+  $("printLampBody")
+  .innerHTML =
+
+  products
+
+  .filter(
+    product =>
+    product.cat === "lamp"
+  )
+
+  .map(
+    product =>
+    printRow(
+      product,
+      true
+    )
+  )
+
+  .join("");
+
+
+  $("printPanelBody")
+  .innerHTML =
+
+  products
+
+  .filter(
+    product =>
+    product.cat === "panel"
+  )
+
+  .map(
+    product =>
+    printRow(
+      product,
+      false
+    )
+  )
+
+  .join("");
+
+}
+
+
+/* =====================================================
+   RATE
+===================================================== */
+
+$("rateInput")
+.value =
+
+localStorage.getItem(
+  RATE_KEY
+)
+
+||
+
+BASE_RATE;
+
+
+$("rateInput")
+.addEventListener(
+
+  "input",
+
+  ()=>{
+
+    localStorage.setItem(
+
+      RATE_KEY,
+
+      String(
+        rate()
+      )
+
+    );
+
+
+    renderApp();
+
+  }
+
+);
+
+
+/* =====================================================
+   THEME BUTTON
+===================================================== */
+
+$("themeBtn")
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+    setTheme(
+
+      document
+      .documentElement
+      .dataset
+      .theme === "dark"
+
+      ?
+
+      "light"
+
+      :
+
+      "dark"
+
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   ADD PRODUCT
+===================================================== */
+
+$("addBtn")
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+    openModal(
+      "categoryModal"
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   SELECT CATEGORY
+===================================================== */
+
+document
+.querySelectorAll(
+  "[data-category]"
+)
+.forEach(
+
+  button=>{
+
+    button
+    .addEventListener(
+
+      "click",
+
+      ()=>{
+
+
+        addCategory =
+        button.dataset.category;
+
+
+        closeModal(
+          "categoryModal"
+        );
+
+
+        $("productModalTitle")
+        .textContent =
+
+        addCategory === "lamp"
+
+        ?
+
+        "افزودن لامپ LED"
+
+        :
+
+        "افزودن پنل LED";
+
+
+        [
+          "fName",
+          "fDim",
+          "fCurrent",
+          "fFlux",
+          "fCarton",
+          "fPrice"
+        ]
+        .forEach(
+
+          id=>{
+
+            $(id).value =
+            "";
+
+          }
+
+        );
+
+
+        $("fVolt").value =
+        "180-265";
+
+
+        $("fPf").value =
+        "0.5";
+
+
+        $("fCct").value =
+
+        addCategory === "panel"
+
+        ?
+
+        "3000K / 4000K / 6500K"
+
+        :
+
+        "3000K / 6500K";
+
+
+        $("fEff").value =
+        "110 lm/w";
+
+
+        $("fCri").value =
+        ">80";
+
+
+        $("fLife").value =
+        "15000";
+
+
+        $("fEnergy").value =
+        "A+";
+
+
+        openModal(
+          "productModal"
+        );
+
+      }
+
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   SAVE NEW PRODUCT
+===================================================== */
+
+$("saveProductBtn")
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+
+    const name =
+
+    $("fName")
+    .value
+    .trim();
+
+
+    const price =
+
+    Number(
+      $("fPrice").value
+    );
+
+
+    if(!name){
+
+      alert(
+        "شرح محصول را وارد کنید."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      !Number.isFinite(price)
+      ||
+      price <= 0
+    ){
+
+      alert(
+        "قیمت محصول را درست وارد کنید."
+      );
+
+      return;
+
+    }
+
+
+    /*
+      قیمت مرجع را با نرخ پایه محاسبه می‌کنیم
+      تا بعداً فقط با تغییر نرخ دلار قیمت تغییر کند.
+    */
+
+    const refPrice =
+
+    Math.round(
+
+      price
+
+      *
+
+      BASE_RATE
+
+      /
+
+      rate()
+
+    );
+
+
+    const id =
+    "c"
+    +
+    Date.now();
+
+
+    state.custom.push({
+
+      id:id,
+
+      cat:addCategory,
+
+      name:name,
+
+      socket:"",
+
+      dim:
+      $("fDim")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      voltage:
+      $("fVolt")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      current:
+      $("fCurrent")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      pf:
+      $("fPf")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      cct:
+      $("fCct")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      flux:
+      $("fFlux")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      eff:
+      $("fEff")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      cri:
+      $("fCri")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      life:
+      $("fLife")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      energy:
+      $("fEnergy")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      carton:
+      $("fCarton")
+      .value
+      .trim()
+
+      ||
+
+      "—",
+
+      refPrice:
+      refPrice
+
+    });
+
+
+    saveState();
+
+
+    closeModal(
+      "productModal"
+    );
+
+
+    renderApp();
+
+  }
+
+);
+
+
+/* =====================================================
+   EDIT / DELETE
+===================================================== */
+
+document
+.addEventListener(
+
+  "click",
+
+  event=>{
+
+
+    const edit =
+
+    event.target.closest(
+      "[data-edit]"
+    );
+
+
+    if(edit){
+
+      pendingEditId =
+      edit.dataset.edit;
+
+
+      $("passwordInput")
+      .value =
+      "";
+
+
+      openModal(
+        "passwordModal"
+      );
+
+    }
+
+
+    const remove =
+
+    event.target.closest(
+      "[data-delete]"
+    );
+
+
+    if(
+      remove
+
+      &&
+
+      confirm(
+        "این محصول حذف شود؟"
+      )
+    ){
+
+      state.custom =
+
+      state.custom.filter(
+
+        product =>
+        product.id
+        !==
+        remove.dataset.delete
+
+      );
+
+
+      saveState();
+
+
+      renderApp();
+
+    }
+
+  }
+
+);
+
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+$("passwordOkBtn")
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+
+    const password =
+
+    localStorage.getItem(
+      PASS_KEY
+    )
+
+    ||
+
+    DEFAULT_PASS;
+
+
+    if(
+
+      $("passwordInput")
+      .value
+
+      !==
+
+      password
+
+    ){
+
+      alert(
+        "رمز اشتباه است."
+      );
+
+      return;
+
+    }
+
+
+    const product =
+
+    allProducts()
+    .find(
+
+      item =>
+      item.id ===
+      pendingEditId
+
+    );
+
+
+    if(!product){
+
+      return;
+
+    }
+
+
+    closeModal(
+      "passwordModal"
+    );
+
+
+    $("priceModalName")
+    .textContent =
+    product.name;
+
+
+    $("newPriceInput")
+    .value =
+
+    currentPrice(
+      product
+    );
+
+
+    openModal(
+      "priceModal"
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   SAVE PRICE
+===================================================== */
+
+$("savePriceBtn")
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+
+    const value =
+
+    Number(
+      $("newPriceInput").value
+    );
+
+
+    if(
+      !Number.isFinite(value)
+      ||
+      value <= 0
+    ){
+
+      alert(
+        "قیمت را درست وارد کنید."
+      );
+
+      return;
+
+    }
+
+
+    const referencePrice =
+
+    Math.round(
+
+      value
+
+      *
+
+      BASE_RATE
+
+      /
+
+      rate()
+
+    );
+
+
+    const custom =
+
+    state.custom.find(
+
+      product =>
+      product.id ===
+      pendingEditId
+
+    );
+
+
+    if(custom){
+
+      custom.refPrice =
+      referencePrice;
+
+    }else{
+
+      state.overrides[
+        pendingEditId
+      ] =
+      referencePrice;
+
+    }
+
+
+    saveState();
+
+
+    closeModal(
+      "priceModal"
+    );
+
+
+    renderApp();
+
+  }
+
+);
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+$("settingsBtn")
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+
+    [
+      "oldPass",
+      "newPass",
+      "repeatPass"
+    ]
+    .forEach(
+
+      id=>{
+
+        $(id).value =
+        "";
+
+      }
+
+    );
+
+
+    openModal(
+      "settingsModal"
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   SAVE PASSWORD
+===================================================== */
+
+$("savePassBtn")
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+
+    const saved =
+
+    localStorage.getItem(
+      PASS_KEY
+    )
+
+    ||
+
+    DEFAULT_PASS;
+
+
+    if(
+
+      $("oldPass").value
+
+      !==
+
+      saved
+
+    ){
+
+      alert(
+        "رمز فعلی اشتباه است."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      !$("newPass").value
+    ){
+
+      alert(
+        "رمز جدید را وارد کنید."
+      );
+
+      return;
+
+    }
+
+
+    if(
+
+      $("newPass").value
+
+      !==
+
+      $("repeatPass").value
+
+    ){
+
+      alert(
+        "تکرار رمز یکسان نیست."
+      );
+
+      return;
+
+    }
+
+
+    localStorage.setItem(
+
+      PASS_KEY,
+
+      $("newPass").value
+
+    );
+
+
+    closeModal(
+      "settingsModal"
+    );
+
+
+    alert(
+      "رمز ذخیره شد."
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   PDF
+===================================================== */
+
+$("pdfBtn")
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+
+    renderPrint();
+
+
+    setTimeout(
+
+      ()=>{
+
+        window.print();
+
+      },
+
+      60
+
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   CLOSE MODALS
+===================================================== */
+
+document
+.querySelectorAll(
+  "[data-close]"
+)
+.forEach(
+
+  button=>{
+
+    button
+    .addEventListener(
+
+      "click",
+
+      ()=>{
+
+        closeModal(
+          button.dataset.close
+        );
+
+      }
+
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   CLOSE BY BACKDROP
+===================================================== */
+
+document
+.querySelectorAll(
+  ".backdrop"
+)
+.forEach(
+
+  backdrop=>{
+
+    backdrop
+    .addEventListener(
+
+      "click",
+
+      event=>{
+
+        if(
+          event.target ===
+          backdrop
+        ){
+
+          closeModal(
+            backdrop.id
+          );
+
+        }
+
+      }
+
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+initTheme();
+
+renderApp();
+
+</script>
+
+</body>
+  </html>
