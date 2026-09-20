@@ -2,9 +2,11 @@
   "name":"OBCH",
   "short_name":"OBCH",
   "start_url":"./",
+  "scope":"./",
   "display":"standalone",
-  "background_color":"#101317",
-  "theme_color":"#101317",
+  "orientation":"portrait-primary",
+  "background_color":"#111418",
+  "theme_color":"#111418",
   "lang":"fa",
   "dir":"rtl",
   "icons":[
